@@ -1,6 +1,6 @@
 budget:
-  ruby_version: 1.9.3 # 1.9.3, 1.9.2 or ree-1.8.7
-  environment: production # RAILS_ENV
+  ruby_version: 1.9.3
+  environment: production
   monitoring_email: smt116@gmail.com
   domains:
     - budget.shellyapp.com
@@ -8,9 +8,5 @@ budget:
     app1:
       size: large
       thin: 4
-      # whenever: on
-      # delayed_job: 1
       databases:
         - postgresql
-        # - mongodb
-        # - redis
