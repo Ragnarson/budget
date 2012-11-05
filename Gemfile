@@ -48,6 +48,8 @@ gem 'pg'
 gem 'wirble'
 gem 'devise'
 
+# For ShellyCloud.com
+gem 'shelly-dependencies', :group => :production
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
