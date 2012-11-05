@@ -1,0 +1,26 @@
+!!!
+%html{:lang => "pl"}
+  %head
+    %title Sprawdz.to czyli Testowwwanie na ekranie
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+  %body{:bgcolor => "#F0F0F0", :leftmargin => "0", :marginheight => "0", :marginwidth => "0", :offset => "0", :topmargin => "0"}
+    %table{:bgcolor => "#F0F0F0", :cellpadding => "0", :cellspacing => "0", :style => "font-size: 13px; line-height: 21px; font-family: Tahoma, Verdana, Arial, sans-serif; color: #666666;", :width => "98%"}
+      %tr
+        %td
+          %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "font-size: 13px; line-height: 21px; color: #666666;", :width => "550"}
+            %tr
+              %td{:align => "center", :style => "font-size: 18px; font-weight: bold; line-height: 36px; font-family: Tahoma, Verdana, Arial; color: #0C3F66;"}
+                Sprawdz.to czyli Testowwwanie na ekranie
+          %table{:align => "center", :bgcolor => "#FFFFFF", :border => "1", :bordercolor => "#c2c2c2", :cellpadding => "0", :cellspacing => "0", :frame => "border", :rules => "none", :style => "border-color: #c2c2c2 #c2c2c2 #c2c2c2 #c2c2c2; font-size: 13px; background: #ffffff; border-collapse: collapse; line-height: 21px; font-family: Tahoma, Verdana, Arial, sans-serif; color: #666666; border-spacing: 0px; border-style: solid solid solid solid; border-width: 1px 1px 1px 1px;", :width => "600"}
+            %tr
+              %td{:valign => "top"}
+                %table{:align => "left", :cellpadding => "7", :cellspacing => "0", :style => "font-size: 13px; line-height: 21px; font-family: Tahoma, Verdana, Arial, sans-serif; color: #252525;", :width => "580"}
+                  %tr
+                    %td
+                      =yield
+          %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "font-size: 13px; line-height: 21px; color: #666666;", :width => "550"}
+            %tr
+              %td{:style => "font-size: 11px; line-height: 22px; font-family: Arial; color: #666666;"}
+                Nadawcą wiadomości jest serwis #{link_to 'www.sprawdz.to', home_url}. Sisto, ul. Żytnia 12, 16-300 Augustów.
+          %br
+          %br
