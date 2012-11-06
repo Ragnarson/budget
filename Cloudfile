@@ -1,0 +1,12 @@
+budget:
+  ruby_version: 1.9.3
+  environment: production
+  monitoring_email: smt116@gmail.com
+  domains:
+    - budget.shellyapp.com
+  servers:
+    app1:
+      size: large
+      thin: 4
+      databases:
+        - postgresql

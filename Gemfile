@@ -20,3 +20,5 @@ gem 'pg'
 gem 'devise'
 gem 'simple_form'
 
+gem 'shelly-dependencies', :group => :production
+

@@ -1,1 +1,9 @@
+= Budget
 Budget system for planning how your income should be distributed among your expenses. Allows to share the account with other members of family which you can invite.
+
+== Shelly Cloud
+Application is hosted on http://shellycloud.com. To push changes to server you have to add remote:
+  git remote add budget git@git.shellycloud.com:budget.git
+and then type:
+  git push budget master
+application is available at http://budget.shellyapp.com
