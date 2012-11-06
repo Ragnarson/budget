@@ -1,4 +1,6 @@
 Budget::Application.routes.draw do
+  devise_for :users
+
   resources :incomes
 
   # The priority is based upon order of creation:
