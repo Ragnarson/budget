@@ -1,6 +1,6 @@
 <h1>Listing incomes</h1>
 
-<table>
+<table id="incomes">
   <tr>
     <th>Source</th>
     <th>Amount</th>
@@ -9,7 +9,6 @@
     <th></th>
     <th></th>
   </tr>
-  <% sum = 0 %>
 <% @incomes.each do |income| %>
   <tr id="income">
     <td><%= income.source %></td>
@@ -19,11 +18,10 @@
     <td><%= link_to 'Edit', edit_income_path(income) %></td>
     <td><%= link_to 'Destroy', income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% sum += income.amount %>
 <% end %>
 </table>
 <b>Total income:</b>
-<%= sum %>
+<%= sum_up %>
 <br />
 
 <%= link_to 'New Income', new_income_path %>
