@@ -1,3 +1,11 @@
+
+ <script type="text/javascript">
+      $(document).ready(function(){
+      if (! $("#income").length) {
+      alert("Add some income!");}
+      });
+      </script>
+
 <h1>Listing incomes</h1>
 
 <table>
@@ -11,7 +19,7 @@
   </tr>
   <% sum = 0 %>
 <% @incomes.each do |income| %>
-  <tr>
+  <tr id="income">
     <td><%= income.source %></td>
     <td><%= income.amount %></td>
     <td><%= income.tax %></td>
@@ -19,7 +27,7 @@
     <td><%= link_to 'Edit', edit_income_path(income) %></td>
     <td><%= link_to 'Destroy', income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-  <% sum += income.amount %>
+<% sum += income.amount %>
 <% end %>
 </table>
 <b>Total income:</b>
