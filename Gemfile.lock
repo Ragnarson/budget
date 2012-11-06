@@ -56,7 +56,7 @@ GEM
       railties (>= 3.1.0, < 5.0)
       thor (~> 0.14)
     json (1.7.5)
-    less (2.0.11)
+    less (2.0.12)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.9.9)
     less-rails (2.1.8)
@@ -148,5 +148,5 @@ DEPENDENCIES
   shelly-dependencies
   simple_form
   sqlite3
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (~> 2.0.4)
   uglifier (>= 1.0.3)
