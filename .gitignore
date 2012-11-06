@@ -10,5 +10,6 @@
 /config/database.yml
 /.**.swp
 *.*~
+*~
 config/database.yml
 .idea/*
