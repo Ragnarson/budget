@@ -18,5 +18,5 @@ gem 'twitter-bootstrap-rails'
 gem 'pg'
 
 gem 'devise'
-gem 'simple-form'
+gem 'simple_form'
 
