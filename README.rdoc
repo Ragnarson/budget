@@ -12,10 +12,11 @@ application is available at http://budget.shellyapp.com
 Following description assumes that you have installed and running PostgreSQL server. Its installation procedure may vary depending on your operating system and it's not mentioned here.
 In order to run application using PostgreSQL database, please copy config/database.yml.example as config/database.yml. By default, application uses 'budget' as your database name, login and password.
 Please follow below steps.
-1.  Connect to database using your Superuser role (ex. 'postgres')
+
+(1) Connect to database using your Superuser role (ex. 'postgres')
   $ psql -U postgres
-2.  Using SQL query create user and setup password
+(2) Using SQL query create user and setup password
   postgres=# CREATE USER budget WITH PASSWORD 'budget';
-3.  Create database and assign its owner
+(3) Create database and assign its owner
   postgres=# CREATE DATABASE budget WITH OWNER budget;
 Your database should be already configured. You're ready now to run application.
