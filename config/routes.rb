@@ -12,4 +12,17 @@ Budget::Application.routes.draw do
   match '/new_income' => 'incomes#new', :as => :new_income
   match '/create_income' => 'incomes#create', :as => :create_income, :via => :post
 
+  resources :users do
+    collection do
+      get :index
+      post :index
+    end
+  end
+
+  resources :invites do
+    collection do
+      get :index
+      post :index
+    end
+  end
 end
