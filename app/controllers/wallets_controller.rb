@@ -1,6 +1,6 @@
 class WalletsController < ApplicationController
 
-  def index
+  def new
     @wallet = Wallet.new
   end
 

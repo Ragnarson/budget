@@ -3,7 +3,7 @@ Budget::Application.routes.draw do
 
   devise_for :users
 
-  match '/new_budget' => 'wallets#index', :as => :new_budget
+  match '/new_budget' => 'wallets#new', :as => :new_budget
   match '/create_budget' => 'wallets#create', :as => :create_budget, :via=> :post
 
   match '/new_expense' => 'expenses#new', :as => :new_expense

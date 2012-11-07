@@ -1,0 +1,6 @@
+<div class="container">
+  <%= simple_form_for @wallet, :url=> create_budget_path do |f| %>
+    <%= f.input :name, :label=> 'Budget name' %>
+    <%= f.button :submit, 'save' %>
+  <% end %>
+</div>
