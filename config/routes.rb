@@ -1,8 +1,6 @@
 Budget::Application.routes.draw do
   root to: 'Home#index'
 
-  get "home/index"
-
   devise_for :users
 
   match '/new_budget' => 'wallets#index', :as => :new_budget
