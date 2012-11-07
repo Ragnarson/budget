@@ -6,7 +6,7 @@ budget:
     - budget.shellyapp.com
   servers:
     app1:
-      size: large
+      size: small
       thin: 4
       databases:
         - postgresql
