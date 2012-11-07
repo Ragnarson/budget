@@ -1,0 +1,6 @@
+<div class="container">
+  <%= simple_form_for @wallet do |f| %>
+    <%= render :partial=> 'form', :locals=> {:f=> f}  %>
+    <%= f.button :submit, 'add wallet' %>
+  <% end %>
+</div>
