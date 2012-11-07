@@ -1,5 +1,4 @@
 class ExpensesController < ApplicationController
-
   def new
     @expense = Expense.new
   end
@@ -15,6 +14,4 @@ class ExpensesController < ApplicationController
       end
     end
   end
-
-
 end
