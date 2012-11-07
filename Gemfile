@@ -22,3 +22,4 @@ gem 'simple_form'
 
 gem 'shelly-dependencies', :group => :production
 
+gem 'omniauth-google-oauth2'
