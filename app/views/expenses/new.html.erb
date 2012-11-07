@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for @expense, :url=> create_expense_path do |f| %>
+    <%= f.input :name, :label => 'Expense name' %>
+    <%= f.input :amount, :label => 'Amount', :to => :currency %>
+    <%= f.button :submit, 'save' %>
+  <% end %>
+</div>
