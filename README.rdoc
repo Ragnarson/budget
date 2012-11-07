@@ -3,9 +3,9 @@ Budget system for planning how your income should be distributed among your expe
 
 == Shelly Cloud
 Application is hosted on http://shellycloud.com. To push changes to server you have to add remote:
-  git remote add budget git@git.shellycloud.com:budget.git
+  git remote add shelly_budget git@git.shellycloud.com:budget.git
 and then type:
-  git push budget master
+  git push shelly_budget master
 application is available at http://budget.shellyapp.com
 
 == PostgreSQL setup
