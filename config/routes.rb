@@ -5,7 +5,8 @@ Budget::Application.routes.draw do
 
   devise_for :users
 
-  resources :wallets
+  match '/new_budget' => 'wallets#index', :as => :new_budget
+  match '/create_budget' => 'wallets#create', :as => :create_budget, :via=> :post
 
 
   # The priority is based upon order of creation:

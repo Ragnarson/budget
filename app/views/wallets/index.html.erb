@@ -1,7 +1,6 @@
-<ul>
-  <%- @wallets.each do |wallet| %>
-    <li><%= link_to wallet.name, edit_wallet_path(wallet.id) %>
-      (<%= link_to 'delete', wallet_path(wallet.id), :confirm => "Are you sure you want to delete this budget?", :method => :delete %>)</li>
-  <%- end %>
-</ul>
-<%= link_to 'add new budget', new_wallet_path %>
+<div class="container">
+  <%= simple_form_for @wallet, :url=> create_budget_path do |f| %>
+    <%= f.input :name, :label=> 'Budget name' %>
+    <%= f.button :submit, 'save' %>
+  <% end %>
+</div>
