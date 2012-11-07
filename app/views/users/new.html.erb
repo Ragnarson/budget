@@ -1,14 +1,6 @@
 <h1>Add new family member</h1>
 
-<%= form_tag("/users/new", :method => "get") do %>
-  <%= label_tag_tag(:email, "Email adress") %>
-  <%= text_field_tag(:email) %>
-  <%= submit_tag("Add") %>
-<% end %> 
+<%= render 'form' %>
 
 <br />
-<ul class="nav nav-pills">
-  <li>
-    <%= link_to "Back", users_path %>
-  </li>  
-</ul>
+<%= link_to "Back", users_path, :class => "btn" %>
