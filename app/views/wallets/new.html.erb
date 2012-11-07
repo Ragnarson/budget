@@ -1,0 +1,8 @@
+<%= simple_form_for @wallet, :url=> create_budget_path, :class=> "form-horizontal" do |f| %>
+  <div class="control-group">
+    <%= f.input :name, :label=> 'Budget name', :class=> 'control-label' %>
+    <div class="controls">
+      <%= f.button :submit, 'Add budget', :class=> 'btn btn-primary btn-large' %>
+    </div>
+  </div>
+<% end %>
