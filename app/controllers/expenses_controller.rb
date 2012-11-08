@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(params[:expense])
 
-    if @expense.valid?
+    if @expense.save
       redirect_to new_expense_path, notice: 'Expense was successfully created.'
     else
       render action: "new"
