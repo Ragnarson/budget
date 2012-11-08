@@ -8,4 +8,8 @@ Budget::Application.routes.draw do
 
   match '/new_expense' => 'expenses#new', :as => :new_expense
   match '/create_expense' => 'expenses#create', :as => :create_expense, :via => :post
+
+  match '/new_income' => 'incomes#new', :as => :new_income
+  match '/create_income' => 'incomes#create', :as => :create_income, :via => :post
+
 end
