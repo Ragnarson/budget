@@ -59,13 +59,11 @@
 		  <li><%= link_to(raw('<i class="icon-off"></i> Logout'), destroy_user_session_path, method: :delete) %></li>
 		</ul>
               </li>
-              <ul class="dropdown-menu">
-              </ul>
             </ul>
 	    <% else %>
             <p class="navbar-text pull-right">
               <% if !user_signed_in? %>
-	      <%= link_to "Login", "users/auth/google_oauth2", :class => "btn btn-inverse btm-large" %>
+	      <%= link_to "Login", user_omniauth_authorize_path(:google_oauth2), :class => "btn btn-inverse btm-large" %>
 	      <% end %>
 	    </p>
 	    <% end %>
