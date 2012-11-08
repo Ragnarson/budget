@@ -5,12 +5,13 @@ class WalletsController < ApplicationController
   end
 
   def create
-    if params[:wallet][:name].blank?
-      message = {:error => "Budget could not be empty"}
+    @wallet = Wallet.new(params[:wallet])
+
+    if @wallet.valid?
+      redirect_to new_budget_path, notice: 'Your budget was added successfully'
     else
-      message = {:notice => "Your budget was added successfully"}
+      render 'new'
     end
-    redirect_to new_budget_path, :flash => message
   end
 
 end
