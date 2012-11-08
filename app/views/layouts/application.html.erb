@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<div id="wrap">
+
 <div class="container">
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-#{name}" %>
@@ -90,11 +92,14 @@
   </div>
 </div>
 
+<div class="push"></div>
+</div>
 
+<div id="footer">
 <footer class="well well-small">
   <p>Project Budget 2012 | Ragnarson</p>
 </footer>
-
+</div>
 
 </body>
 </html>
