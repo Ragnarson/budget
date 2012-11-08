@@ -1,0 +1,13 @@
+.center h1 {
+  font-size: 3em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+article {
+  min-height: 550px;
+}
+
+footer {
+  text-align: center;
+}
