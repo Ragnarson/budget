@@ -66,10 +66,9 @@
         </ul>
       <% else %>
         <p class="navbar-text pull-right">
-          <% if !user_signed_in? %>
-	    <%= link_to "Login", "users/auth/google_oauth2", :class => "btn btn-primary btm-large" %>
-	  <% end %>
-	</p>
+          <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-small btn-primary" %> |
+          <%= link_to "Login", new_user_session_path, :class => "btn btn-small btn-primary" %>
+        </p>
       <% end %>
       </div>
     </div>
@@ -86,11 +85,11 @@
   </div>
 </div>
 
-
-<footer class="span3 offset4 well well-small">
+<div class="container">
+<footer class="span4 offset4">
   <p>Project Budget 2012 | Ragnarson</p>
 </footer>
-
+</div>
 
 </body>
 </html>
