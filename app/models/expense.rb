@@ -1,7 +1,7 @@
 class Expense < ActiveRecord::Base
   attr_accessible :name, :amount
   
-  belongs_to :wallet
+  has_many :assignments
 
   validates :name, :presence => true, :length => { in: 3..128 }
   validates :amount, :presence => true, 
