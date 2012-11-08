@@ -7,10 +7,11 @@ class WalletsController < ApplicationController
   def create
     @wallet = Wallet.new(params[:wallet])
 
-    if @wallet.valid?
-      redirect_to new_budget_path, notice: 'Your budget was added successfully'
+    if @wallet.save
+      message = {:notice => "Your new '"+ @wallet.name + "' budget was added successfully"}
+      redirect_to new_budget_path, :flash => message
     else
-      render 'new'
+      render action: "new"
     end
   end
 
