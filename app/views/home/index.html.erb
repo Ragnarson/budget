@@ -1,0 +1,5 @@
+<% if !user_signed_in? %>
+  <div class="span12 pagination-centered">
+  <%= link_to "Login via google account", new_income_path, :class => "btn btn-primary btn-large" %>
+  </div>
+<% end %>
