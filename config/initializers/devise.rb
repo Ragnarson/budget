@@ -202,9 +202,12 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
 
-  OmniAuth.config.full_host = "http://budget.shellyapp.com"
+  #OmniAuth.config.full_host = "http://budget.shellyapp.com"
   require "omniauth-google-oauth2"
-  config.omniauth :google_oauth2, "84144236811.apps.googleusercontent.com", "w4D1PU08qZg_5Lnkez13Re99", { access_type: "offline", approval_prompt: "" }
+  # shelly version
+  #config.omniauth :google_oauth2, "84144236811.apps.googleusercontent.com", "w4D1PU08qZg_5Lnkez13Re99", { access_type: "offline", approval_prompt: "" }
+  # local version
+  config.omniauth :google_oauth2, "213162003609.apps.googleusercontent.com", "8_6nN1C2WGOYLnvmYbHrUoT5", { access_type: "offline", approval_prompt: "" }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
