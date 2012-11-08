@@ -22,51 +22,13 @@
 	  </a>
 	  <%= link_to 'Budget', root_path, class: 'brand' %>
 	  <div class="nav-collapse collapse">
+
 	    <% if user_signed_in? %>
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Incomes <b class="caret"></b></a>
-		<ul class="dropdown-menu">
-		  <li><a href="#">New</a></li>
-		  <li><a href="#">All</a></li>
-		</ul>
-              </li>
-              <li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Expenses <b class="caret"></b></a>
-		<ul class="dropdown-menu">
-		  <li><a href="#">New</a></li>
-		  <li><a href="#">All</a></li>
-		</ul>
-		<ul class="dropdown-menu">
-		  <li><a href="#">New</a></li>
-		  <li><a href="#">All</a></li>
-		</ul>
-              </li>
-              <%# end %>
-            </ul>
-            <ul class="nav pull-right">
-              <li>
-		<a>Actual balance: 0,00</a>
-              </li>
-              <li class="dropdown">
-		<a href="#" class="dropdown-toggle btn-inverse btn-large" data-toggle="dropdown">
-		  <i class="icon-user icon-white" ></i>
-		  <%= current_user.email %> <b class="caret"></b>
-		</a>
-		<ul class="dropdown-menu">
-		  <li><%= link_to(raw('<i class="icon-pencil"></i> Edit profile'), edit_user_registration_path) %></li>
-		  <li><%= link_to(raw('<i class="icon-off"></i> Logout'), destroy_user_session_path, method: :delete) %></li>
-		</ul>
-              </li>
-            </ul>
+              <%= render 'layouts/user_signed' %>
 	    <% else %>
-            <p class="navbar-text pull-right">
-              <% if !user_signed_in? %>
-	      <%= link_to "Login", user_omniauth_authorize_path(:google_oauth2), :class => "btn btn-inverse btm-large" %>
-	      <% end %>
-	    </p>
+              <%= render 'layouts/user_unsigned' %>
 	    <% end %>
+
 	  </div>
 	</div>
       </div>
