@@ -22,9 +22,8 @@ class WalletsControllerTest < ActionController::TestCase
     assert_equal 'Your budget was added successfully', flash[:notice]
   end
 
-  test "should redirect to new with error" do
+  test "should redirect to new when validation fails" do
     post :create, :wallet => { :name=> ''}
-    assert_redirected_to :new_budget
-    assert_equal 'Budget could not be empty', flash[:error]
+    assert_template :new
   end
 end
