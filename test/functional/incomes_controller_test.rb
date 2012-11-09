@@ -19,6 +19,6 @@ class IncomesControllerTest < ActionController::TestCase
   test "should redirect to new income and notify about creation if source and amount are valid" do
     post:create, :income => { :source => 'source', :amount => 200 }
     assert_redirected_to new_income_path
-    assert_equal 'Income has been succesfully created', flash[:notice]
+    assert_equal 'Income has been successfully created', flash[:notice]
   end
 end
