@@ -1,8 +1,19 @@
 require 'test_helper'
 
 class ExpensesControllerTest < ActionController::TestCase
+  fixtures :users
+
+  def setup
+    sign_in users(:user1)
+  end
+
+  test "should get new" do
+    get :new
+    assert_response :success
+    assert_not_nil assigns(:expense)
+  end
+
   test "test form is visible on expense page" do
-    sign_in User.first
     get :new
     assert_select 'form' do
       assert_select 'input#expense_name'
@@ -11,48 +22,18 @@ class ExpensesControllerTest < ActionController::TestCase
     end
   end
 
-  test "recognizes invalid inputs" do
-    assert_equal Expense.new.valid?, false
-    assert_equal Expense.new(:name => 'My new SSD', :amount => -1).valid?, false
-    assert_equal Expense.new(:amount => 10).valid?, false
-    assert_equal Expense.new(:name => 'a', :amount => 100.55).valid?, false
-    assert_equal Expense.new(:name => 'My new SSD', :amount => 0.111).valid?, false
-  end
-
-  test "recognizes valid inputs" do
-    assert_equal Expense.new(:name => 'My new SSD', :amount => 1).valid?, true
-    assert_equal Expense.new(:name => 'My new SSD', :amount => 10.55).valid?, true
-    assert_equal Expense.new(:name => 'Milk', :amount => 3.15).valid?, true
-  end
-
-  test "should save valid expense to database" do
-    assert_equal Expense.new(:name => 'My new SSD', :amount => 100.50).save, true
-    assert_equal Expense.new(:name => 'Milk', :amount => 3).save, true
-  end
-
-  test "should not save invalid expense to database" do
-    assert_equal Expense.new(:name => 'a').save, false
-    assert_equal Expense.new(:name => 'My new SSD', :amount => 0).save, false
-    assert_equal Expense.new(:amount => 10).save, false
-    assert_equal Expense.new(:name => 'My new SSD', :amount => -1).save, false
-    assert_equal Expense.new(:name => 'My new SSD', :amount => 0.555).save, false
-  end
-
-  test "should redirect to new with notice" do
-    sign_in User.first
-    post :create, :expense => { :name => 'New SSD', :amount => 100.50 }
+  test "should create expense and redirect to new with notice on valid inputs" do
+    post :create, expense: { name: 'My new SSD', amount: 500 }
+    expense = Expense.new(@request.params[:expense])
+    assert_equal expense.valid?, true
     assert_redirected_to :new_expense
     assert_equal 'Expense was successfully created.', flash[:notice]
   end
 
-  test "should render new template" do
-    sign_in User.first
-    post :create, :expense => {}
+  test "should render new template on invalids inputs" do
+    post :create, expense: { name: 'Milk', amount: -100 }
+    expense = Expense.new(@request.params[:expense])
+    assert_equal expense.valid?, false
     assert_template :new
-    post :create, :expense => { :name => 'Rt' }
-    assert_template :new
-    post :create, :expense => { :name => 'My new SSD', :amount => -1 }
-    assert_template :new
-    post :create, :expense => { :amount => 10.53 }
   end
 end
