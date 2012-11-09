@@ -1,4 +1,4 @@
-development:
+development: &default
   adapter: postgresql
   encoding: unicode
   database: budget_development
@@ -7,17 +7,9 @@ development:
   password: budget
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: budget_test
-  pool: 5
-  username: budget
-  password: budget
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: budget_production
-  pool: 5
-  username: budget
-  password: budget
