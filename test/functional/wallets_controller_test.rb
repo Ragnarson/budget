@@ -2,6 +2,12 @@ require 'test_helper'
 
 class WalletsControllerTest < ActionController::TestCase
 
+  fixtures :users
+
+  def setup
+    sign_in users(:user1)
+  end
+
   test "should get new" do
     get :new
     assert_response :success
@@ -9,6 +15,7 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "should be form on page" do
+
     get :new
     assert_select 'form' do
       assert_select 'input#wallet_name'
@@ -17,13 +24,14 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "should create budget and redirect to new with notice" do
-    post :create, :wallet => { :name=> 'Some title'}
+    post :create, :wallet => {:name => 'Some title'}
+    wallet = Wallet.new(@request.params[:wallet])
     assert_redirected_to :new_budget
-    assert_equal 'Your budget was added successfully', flash[:notice]
+    assert_equal "Your new '#{wallet.name}' budget was added successfully", flash[:notice]
   end
 
   test "should redirect to new when validation fails" do
-    post :create, :wallet => { :name=> ''}
+    post :create, :wallet => {:name => ''}
     assert_template :new
   end
 end
