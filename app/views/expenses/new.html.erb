@@ -1,4 +1,5 @@
 <%= simple_form_for @expense, :url=> create_expense_path, :html => { :class=> "form-horizontal" } do |f| %>
+  <p>Fields tagged with * are required</p>
   <div class="control-group">
     <%= f.input :name, :label=> 'Expense name', :class=> 'control-label' %>
     <%= f.input :amount, :wrapper => :prepend, :class => 'inline' do %>
