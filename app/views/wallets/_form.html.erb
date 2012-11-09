@@ -3,6 +3,7 @@
     <%= f.input :name, :label=> 'Budget name', :class=> 'control-label' %>
     <%= f.input :amount, :label=> 'Amount', :class=> 'control-label' %>
     <div class="form-actions">
+      <%= button_tag 'Reset', :type => 'reset', :class=> 'btn' %>
       <%= f.button :submit, 'Add budget', :class=> 'btn btn-primary' %>
     </div>
   </div>
