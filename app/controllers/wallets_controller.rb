@@ -8,7 +8,7 @@ class WalletsController < ApplicationController
     @wallet = Wallet.new(params[:wallet])
     @wallet.user = current_user
     if @wallet.save
-      redirect_to new_budget_path, :notice=> "Your new '#{@wallet.name}' budget '#{@wallet.user}' was added successfully"
+      redirect_to new_budget_path, :notice=> "Your new '#{@wallet.name}' budget was added successfully"
     else
       render :action=> "new"
     end

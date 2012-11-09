@@ -1,6 +1,14 @@
-<div class="pagination-centered hero-unit">
-  <h2>Welcome to the Budget Application</h2>
-  <% if !user_signed_in? %>
-  <%= link_to "Login via Google account", user_omniauth_authorize_path(:google_oauth2), :class => "btn btn-inverse btn-large" %>
-  <% end %>
-</div>
+<% if !user_signed_in? %>
+  <div class="pagination-centered hero-unit">
+    <h2>Welcome to the Budget Application</h2>
+    <div>
+      <%= link_to "Login via Google account", user_omniauth_authorize_path(:google_oauth2), :class => "btn btn-inverse btn-large" %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="span6">
+      <%= render 'expenses/form' %>
+    </div>
+  </div>
+<% end %>

@@ -1,14 +1,1 @@
-<%= simple_form_for @expense, :url=> create_expense_path, :html => { :class=> "form-horizontal" } do |f| %>
-  <p>Fields tagged with * are required</p>
-  <div class="control-group">
-    <%= f.input :name, :label=> 'Expense name', :class=> 'control-label' %>
-    <%= f.input :amount, :wrapper => :prepend, :class => 'inline' do %>
-      <%= content_tag :span, '$', :class => 'add-on' %>
-      <%= f.input_field :amount, :to => :currency, :style => 'margin-left: -5px;' %>
-    <% end %>
-
-    <div class="form-actions">
-      <%= f.button :submit, 'Add expense', :class=> 'btn btn-primary' %>
-    </div>
-  </div>
-<% end %>
+<%= render 'form' %>
