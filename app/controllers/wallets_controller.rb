@@ -6,11 +6,11 @@ class WalletsController < ApplicationController
 
   def create
     @wallet = Wallet.new(params[:wallet])
+    @wallet.user = current_user
     if @wallet.save
-      message = {:notice => "Your new '#{@wallet.name}' budget was added successfully"}
-      redirect_to new_budget_path, :flash => message
+      redirect_to new_budget_path, :notice=> "Your new '#{@wallet.name}' budget '#{@wallet.user}' was added successfully"
     else
-      render action: "new"
+      render :action=> "new"
     end
   end
 
