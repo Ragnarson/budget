@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     respond_to do |format|
-      if @category.save
+      if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
       else
         format.html { render action: "new" }
