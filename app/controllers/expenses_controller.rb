@@ -2,6 +2,7 @@ class ExpensesController < ApplicationController
   before_filter :authenticate_user!
 
   def new
+    redirect_to new_budget_path, notice: 'First you have to add at least one budget.' unless Wallet.any?
     @expense = Expense.new
   end
 

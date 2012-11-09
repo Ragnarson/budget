@@ -5,7 +5,7 @@
       <%= content_tag :span, '$', class: 'add-on' %>
       <%= f.input_field :amount, style: 'margin-left: -5px;' %>
     <% end %>
-
+    <%= f.association :wallet, label: 'Budget', include_blank: false %>
     <div class="form-actions">
       <%= button_tag 'Reset', type: 'reset', class: 'btn' %>
       <%= f.button :submit, 'Add expense', class: 'btn btn-primary' %>
