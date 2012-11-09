@@ -28,6 +28,8 @@ gem 'shelly-dependencies', :group => :production
 
 gem 'omniauth-google-oauth2'
 
+gem 'minitest'
+
 group :development, :test do
   gem 'turn'
 end
