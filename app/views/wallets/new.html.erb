@@ -1,1 +1,7 @@
 <%= render 'form' %>
+
+<script type="text/javascript">
+  $('#budget_plan').bind('click', function () {
+    $('#budget_amount_wrapper .income_options').slideToggle();
+  })
+</script>

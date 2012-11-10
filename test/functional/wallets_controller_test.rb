@@ -19,6 +19,7 @@ class WalletsControllerTest < ActionController::TestCase
     get :new
     assert_select 'form' do
       assert_select 'input#wallet_name'
+      assert_select 'input#wallet_amount'
       assert_select 'input[TYPE=submit]'
     end
   end
@@ -30,8 +31,20 @@ class WalletsControllerTest < ActionController::TestCase
     assert_equal "Your new '#{wallet.name}' budget was added successfully", flash[:notice]
   end
 
-  test "should redirect to new when validation fails" do
+  test "should show error when name is empty" do
     post :create, :wallet => {:name => ''}
+    assert_tag :tag => 'span', :content => "can't be blank"
     assert_template :new
   end
+
+  test "on form page should be placeholder for income list" do
+    get :new
+    assert_tag :tag => 'div', :attributes => { :id => 'budget_amount_wrapper' }
+  end
+
+  test "on form page should be placed link to plan budget" do
+    get :new
+    assert_tag :tag => 'a', :attributes => { :id => 'budget_plan'}
+  end
+
 end
