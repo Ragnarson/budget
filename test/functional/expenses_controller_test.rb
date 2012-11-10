@@ -2,10 +2,10 @@ require 'test_helper'
 
 class ExpensesControllerTest < ActionController::TestCase
   fixtures :users
+  fixtures :wallets
 
   def setup
     sign_in users(:user1)
-    Wallet.new(name: 'Test', amount: 1000).save
   end
 
   test "should get new" do
@@ -31,7 +31,7 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   test "should create expense and redirect to new with notice on valid inputs" do
-    post :create, expense: { name: 'My new SSD', amount: 500, wallet_id: Wallet.all.first.id }
+    post :create, expense: { name: 'My new SSD', amount: 500, wallet_id: 1 }
     expense = Expense.new(@request.params[:expense])
     assert_equal expense.valid?, true
     assert_redirected_to :new_expense
