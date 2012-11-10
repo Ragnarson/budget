@@ -18,6 +18,7 @@ class HomeControllerTest < ActionController::TestCase
 
   test 'should redirect to new_budget_path when authenticated' do
     sign_in users(:user1)
+    Wallet.where(user_id: 1).delete_all
     get :index
     assert_redirected_to :new_budget
     assert_equal 'Successfully authenticated! Now please create your first budget.', flash[:notice]
