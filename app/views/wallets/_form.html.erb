@@ -1,10 +1,32 @@
-<%= simple_form_for @wallet, :url=> create_budget_path, :html=>{:class=> "form-horizontal"} do |f| %>
+<%= simple_form_for @wallet, :url => create_budget_path, :html => {:class => "form-horizontal"} do |f| %>
+  <p>Fields tagged with * are required</p>
   <div class="control-group">
-    <%= f.input :name, :label=> 'Budget name', :class=> 'control-label' %>
-    <%= f.input :amount, :label=> 'Amount', :class=> 'control-label' %>
+    <%= f.input :name, :label => 'Budget name', :class => 'control-label' %>
+    <%= f.input :amount, :wrapper => :prepend, :wrapper_html => {:class=> 'budget-amount'} do %>
+      <%= f.input_field :amount, :as => :currency %>
+      <br>
+      <%= link_to('Plan this budget', '#', :id => 'budget_plan') %>
+    <% end %>
+
+    <div id="budget_amount_wrapper">
+      <ul class="income_options" style="display: none;">
+        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #1 - $1000,00</li>
+        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #2 - $2000,00</li>
+        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #3 - $10000,00</li>
+        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #4 - $1000,00</li>
+        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #5 - $500,00</li>
+      </ul>
+
+    </div>
+
     <div class="form-actions">
       <%= button_tag 'Reset', :type => 'reset', :class=> 'btn' %>
       <%= f.button :submit, 'Add budget', :class=> 'btn btn-primary' %>
     </div>
   </div>
 <% end %>
+<script type="text/javascript">
+  $('#budget_plan').bind('click', function () {
+    $('#budget_amount_wrapper .income_options').slideToggle();
+  })
+</script>

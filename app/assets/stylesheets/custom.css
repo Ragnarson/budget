@@ -11,3 +11,15 @@ article {
 footer {
   text-align: center;
 }
+
+#budget_amount_wrapper ul.income_options {
+  list-style: none;
+  margin-left: 160px;
+}
+ul.income_options li {
+  margin-bottom: 6px;
+}
+.budget-amount .help-inline {
+  vertical-align: top;
+  padding-top: 4px;
+}

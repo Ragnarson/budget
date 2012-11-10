@@ -2,11 +2,7 @@
   <p>Fields tagged with * are required</p>
   <div class="control-group">
     <%= f.input :source, :label=> 'Source of income', :class=> 'control-label' %>
-    <%= f.input :amount, :wrapper => :prepend, :class => 'inline' do %>
-      <%= content_tag :span, '$', :class => 'add-on' %>
-      <%= f.input_field :amount, :to => :currency, :style => 'margin-left: -5px;' 'max-width: 185px' %>
-    <% end %>
-    
+    <%= f.input :amount, as: :currency, wrapper: 'prepend' %>
     <%= f.input :tax, :class => 'inline'%>
     
     <div class="form-actions">
