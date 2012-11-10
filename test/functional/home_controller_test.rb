@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
-
-  fixtures :users
-
   test 'should get index' do
     get :index
     assert_response :success
@@ -23,6 +20,4 @@ class HomeControllerTest < ActionController::TestCase
     assert_redirected_to :new_budget
     assert_equal 'Successfully authenticated! Now please create your first budget.', flash[:notice]
   end
-  
-
 end

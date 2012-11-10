@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class WalletsControllerTest < ActionController::TestCase
-
-  fixtures :users
-
   def setup
     sign_in users(:user1)
   end

@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class ExpensesControllerTest < ActionController::TestCase
-  fixtures :users
-  fixtures :wallets
-
   def setup
     sign_in users(:user1)
   end

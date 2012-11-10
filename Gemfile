@@ -33,3 +33,5 @@ gem 'minitest'
 group :development, :test do
   gem 'turn'
 end
+
+gem 'database_cleaner', :group => :test

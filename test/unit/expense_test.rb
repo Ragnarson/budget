@@ -1,8 +1,6 @@
 require 'test_helper'
  
 class ExpenseTest < ActiveSupport::TestCase
-  fixtures :wallets
-
   test "should recognize empty inputs" do
     assert_equal Expense.new.valid?, false
   end
