@@ -24,4 +24,13 @@ class HomeControllerTest < ActionController::TestCase
     assert_redirected_to :new_budget
     assert_equal 'Successfully authenticated! Now please create your first budget.', flash[:notice]
   end
+
+  test 'should be message with actual balance' do
+    sign_in users(:user1)
+    get :index
+    assert_select 'ul.pull-right' do
+      assert_select 'a', 'Actual balance: 0,00'
+    end
+  end
+
 end
