@@ -5,6 +5,10 @@ class ExpensesControllerTest < ActionController::TestCase
     sign_in users(:user1)
   end
 
+  def after
+    DatabaseCleaner.clean
+  end
+
   test "should get new" do
     get :new
     assert_response :success

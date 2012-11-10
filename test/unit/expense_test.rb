@@ -1,6 +1,10 @@
 require 'test_helper'
  
 class ExpenseTest < ActiveSupport::TestCase
+  def after
+    DatabaseCleaner.clean
+  end
+
   test "should recognize empty inputs" do
     assert_equal Expense.new.valid?, false
   end

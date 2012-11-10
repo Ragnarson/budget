@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class IncomesControllerTest < ActionController::TestCase
+  def after
+    DatabaseCleaner.clean
+  end
 
   test "should generate proper form on new income page" do
     get :new

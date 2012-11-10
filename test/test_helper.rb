@@ -7,7 +7,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   DatabaseCleaner.strategy = :truncation
-  DatabaseCleaner.clean
+  DatabaseCleaner.start
 end
 
 class ActionController::TestCase
