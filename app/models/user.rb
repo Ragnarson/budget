@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_password(length = 8)
-    rand(36**length).to_s(36)
+    Devise.friendly_token.first(length)
   end
 end
-
