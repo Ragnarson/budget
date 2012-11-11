@@ -28,10 +28,9 @@ gem 'shelly-dependencies', :group => :production
 
 gem 'omniauth-google-oauth2'
 
-gem 'minitest'
-
 group :development, :test do
   gem 'turn'
+  gem 'minitest'
 end
 
 gem 'database_cleaner', :group => :test
