@@ -10,3 +10,19 @@ budget:
       thin: 4
       databases:
         - postgresql
+budget-staging:
+  ruby_version: 1.9.3 # 1.9.3, 1.9.2 or ree-1.8.7
+  environment: production # RAILS_ENV
+  monitoring_email: seba.wesol@gmail.com
+  domains:
+    - budget-staging.shellyapp.com
+  servers:
+    app1:
+      size: large
+      thin: 4
+      # whenever: on
+      # delayed_job: 1
+      databases:
+        - postgresql
+        # - mongodb
+        # - redis
