@@ -1,31 +1,28 @@
 <ul class="nav">
-  <li class="active"><a href="#">Home</a></li>
+  <li class="active"><%= link_to 'Home', root_path %></li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Incomes <b class="caret"></b></a>
     <ul class="dropdown-menu">
       <li><%= link_to 'Add new income', new_income_path %></li>
-      <li><a href="#">All incomes</a></li>
     </ul>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Expenses <b class="caret"></b></a>
     <ul class="dropdown-menu">
       <li><%= link_to 'Add new expense', new_expense_path %></li>
-      <li><%= link_to 'All expenses', '#'%></li>
     </ul>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Budgets <b class="caret"></b></a>
     <ul class="dropdown-menu">
       <li><%= link_to 'Add new budget', new_budget_path %></li>
-      <li><%= link_to 'All budgets', '#' %></li>
     </ul>
   </li>
   <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Family Members<b class="caret"></b></a>
   <ul class="dropdown-menu">
-    <li><%= link_to 'List', users_path %></li>
-    <li><%= link_to 'Add', new_user_path %></li>
+    <li><%= link_to 'Add new member', new_user_path %></li>
+    <li><%= link_to 'List all member', users_path %></li>
   </ul>  
   </li>
   <%# end %>
