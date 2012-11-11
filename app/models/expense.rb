@@ -3,8 +3,8 @@ class Expense < ActiveRecord::Base
   
   belongs_to :wallet
 
-  validates :name, length: { in: 3..128 }
-  validates :amount,
+  validates :name, length: { in: 3..128 }, presence: true
+  validates :amount, presence: true,
     format: { with: /^\d+??(?:\.\d{0,2})?$/, message: 'must be valid price' }, 
     numericality: { :greater_than => 0 }
   validates :wallet_id, presence: true, numericality: { only_integer: true }
