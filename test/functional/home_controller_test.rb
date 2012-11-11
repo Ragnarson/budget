@@ -15,14 +15,26 @@ class HomeControllerTest < ActionController::TestCase
     get :index
     assert_select 'h2', 'Welcome to the Budget Application'
     assert_select 'a', 'Login via Google account'
+    assert_select 'a', 'Login via Google account'
   end
 
-  test 'should redirect to new_budget_path when authenticated' do
-    sign_in users(:user1)
-    Wallet.where(user_id: 1).delete_all
+  test 'should not contain login, home, incomes, expenses and budgets link' do
     get :index
-    assert_redirected_to :new_budget
-    assert_equal 'Successfully authenticated! Now please create your first budget.', flash[:notice]
+    assert_select 'a', text: 'user1@budget.com', count: 0
+    assert_select 'a', text: 'Home', count: 0
+    assert_select 'a', text: 'Incomes', count: 0
+    assert_select 'a', text: 'Expenses', count: 0
+    assert_select 'a', text: 'Budgets', count: 0
+  end
+
+  test 'when authenticated should contain login, home, incomes, expenses and budgets links' do
+    sign_in users(:user1)
+    get :index
+    assert_select 'a', 'user1@budget.com'
+    assert_select 'a', 'Home'
+    assert_select 'a', 'Incomes'
+    assert_select 'a', 'Expenses'
+    assert_select 'a', 'Budgets'
   end
 
   test 'should be message with actual balance' do
