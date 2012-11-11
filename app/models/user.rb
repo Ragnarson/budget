@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
     user
   end
 
+  def self.generate_password(length = 8)
+    rand(36**length).to_s(36)
+  end
 end
+

@@ -14,3 +14,8 @@ user2:
   email: user2@budget.com
   encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
 
+user3:
+  id: 100
+  email: test@wp.pl
+  invited_by: 1
+  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
