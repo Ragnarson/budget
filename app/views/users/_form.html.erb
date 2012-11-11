@@ -1,0 +1,19 @@
+<%= simple_form_for @user, :url => create_user_path, :html => { :class => "form-horizontal"} do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.input :email, :label => 'Email address', :class => 'control-label' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Add', :class => 'btn btn-primary'%>
+  </div>
+<% end %>
