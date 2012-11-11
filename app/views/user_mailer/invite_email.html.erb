@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome <%= @user.email %></h1>
+    <p>
+      You have been successfully invited to budget.shelly.com.
+    </p>
+    <p>
+      To login to the page visit <%= @url %> and use your gmail account data to sign up or use data:
+    </p>
+    <p>
+      email: <%= @user.email %>
+    </p>
+    <p>
+      password: <%= @user.password %>
+    </p>
+    <p>
+      Have a great day!
+    </p>
+  </body>
+</html>
