@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   # GET users
   def index
-    @users = User.find(:all, :conditions => {:invited_by => current_user.id})
+    @users = User.where(:users => {:invited_by => current_user.id})
 
     respond_to do |format|
       format.html # index.html.erb
