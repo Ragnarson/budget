@@ -11,46 +11,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-	<div class="container">
-	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-	  </a>
-	  <%= link_to 'Budget', root_path, class: 'brand' %>
-	  <div class="nav-collapse collapse">
-
-	    <% if user_signed_in? %>
-            <%= render 'layouts/user_signed' %>
-	    <% end %>
-
-	  </div>
-	</div>
+    <div class="wrapper">
+      <div class="wrapper-inner">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+              <%= link_to 'Budget', root_path, class: 'brand' %>
+              <div class="nav-collapse collapse">
+                <% if user_signed_in? %>
+                  <%= render 'layouts/user_signed' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <article class="container">
+          <div class="row">
+            <div class="span12">
+              <div class="row">
+                <div class="container">
+                  <% flash.each do |name, msg| %>
+                    <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+                  <% end %>
+                </div>
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
+      <div class="push"></div>
     </div>
-
-    <article class="container">
-      <div class="row">
-	<div class="span12">
-	  <div class="row">
-	    <div class="container">
-	      <% flash.each do |name, msg| %>
-	      <%= content_tag :div, msg, class: "alert alert-#{name}" %>
-	      <% end %>
-	    </div>
-	    <%= yield %>
-	  </div>
-	</div>
+    <footer class="modal-footer">
+      <div class="container">
+        <ul class="footer-links">
+          <li>Project Budget 2012</li>
+          <li class="muted">·</li>
+          <li><%= link_to "Source code @ Github", "http://github.com/Ragnarson/budget" %></li>
+          <li class="muted">·</li>
+          <li><%= link_to "Hosted @ Shelly Cloud", "http://shellycloud.com" %></li>
+          <li class="muted">·</li>
+          <li><%= link_to "Ragnarson", "http://ragnarson.com" %></li>
+        </ul>
       </div>
-    </article>
-
-    <footer class="well well-small">
-      <p>Project Budget 2012 | Ragnarson</p>
     </footer>
-
   </body>
 </html>
 

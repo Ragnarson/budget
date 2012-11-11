@@ -1,17 +1,31 @@
+html, body {
+  height: 100%;
+}
+body {
+  padding-top: 0;
+}
+.wrapper-inner {
+  border-top: 60px solid transparent;
+}
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -70px;
+}
+.push {
+  height: 70px;
+}
+@media(max-width: 979px) {
+  .wrapper-inner {
+    border-top: 0 none;
+  }
+}
 .hero-unit h2 {
   font-size: 3em;
   margin-bottom: 30px;
   text-align: center;
 }
-
-article {
-  min-height: 550px;
-}
-
-footer {
-  text-align: center;
-}
-
 #budget_amount_wrapper ul.income_options {
   list-style: none;
   margin-left: 160px;
@@ -22,4 +36,15 @@ ul.income_options li {
 .budget-amount .help-inline {
   vertical-align: top;
   padding-top: 4px;
+}
+.footer-links {
+  float: left;
+  margin: 10px 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
 }
