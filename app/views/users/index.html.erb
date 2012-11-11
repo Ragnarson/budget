@@ -1,12 +1,16 @@
-<h1>Users list</h1>
+<h1>Family members</h1>
 
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" class="table">
   <tr>
-    <th>Email</th>
+    <td>No.</td>
+    <td>Email</td>
+    <td>Delete</td>
   </tr>
-  <% @users.each do |user| %>
+  <% @users.each_with_index do |user, index| %>
     <tr>
-      <td> <%= user.email %><td>
+      <td><%= index+1 %></td>
+      <td><%= user.email %></td>
+      <td><%= link_to 'Delete', destroy_user_path(user.id), :class => "btn btn-primary", data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>

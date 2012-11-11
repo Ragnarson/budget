@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
                                                         password: Devise.friendly_token[0,20])
   end
 
+  def self.generate_password(length = 8)
+    rand(36**length).to_s(36)
+  end
 end
+
