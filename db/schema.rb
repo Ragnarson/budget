@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111091628) do
+ActiveRecord::Schema.define(:version => 20121109142136) do
 
   create_table "expenses", :force => true do |t|
     t.string   "name",                                                       :null => false
