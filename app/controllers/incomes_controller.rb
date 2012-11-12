@@ -5,10 +5,7 @@ class IncomesController < ApplicationController
   end
 
   def index
-    @incomes = Income.where user_id: current_user.id
-    respond_to do |f|
-      f.html # index.html.erb
-    end
+    @incomes = current_user.incomes
   end
 
   def create 

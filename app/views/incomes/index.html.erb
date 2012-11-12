@@ -2,13 +2,13 @@
   <tr>
     <td>Source</td>
     <td>Amount</td>
-    <td>User</td>
+    <td>Tax</td>
   </tr>
   <% @incomes.each do |income| %>
     <tr>
       <td><%= income.source %></td>
       <td><%= income.amount %></td>
-      <td><%= income.user_id  %></td>
+      <td><%= income.tax  %></td>
     </tr>
   <% end %>
 </table>
