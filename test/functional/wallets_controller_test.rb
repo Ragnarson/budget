@@ -28,7 +28,7 @@ class WalletsControllerTest < ActionController::TestCase
   test "should create budget and redirect to new with notice" do
     post :create, :wallet => {:name => 'Some title'}
     wallet = Wallet.new(@request.params[:wallet])
-    assert_redirected_to :new_budget
+    assert_redirected_to :budgets
     assert_equal "Your new '#{wallet.name}' budget was added successfully", flash[:notice]
   end
 
@@ -43,11 +43,6 @@ class WalletsControllerTest < ActionController::TestCase
     assert_tag :tag => 'div', :attributes => { :id => 'budget_amount_wrapper' }
   end
 
-  test "on form page should be placed link to plan budget" do
-    get :new
-    assert_tag :tag => 'a', :attributes => { :id => 'budget_plan'}
-  end
-
   test "if no wallets are present should redirect to new budget page" do
     sign_in users(:user_without_wallet_1)
     get :index
@@ -55,7 +50,6 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "if wallets are present should show table with wallets list" do
-    sign_in users(:user_with_wallet_1)
     post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
     get :index
     assert_tag :tag => 'table', :attributes => { :class => 'table'}

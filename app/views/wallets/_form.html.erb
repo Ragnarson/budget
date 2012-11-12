@@ -4,19 +4,10 @@
     <%= f.input :amount, :wrapper => :prepend, :wrapper_html => {:class=> 'budget-amount'} do %>
       <%= f.input_field :amount, :as => :currency %>
       <br>
-      <%= link_to('Plan this budget', '#', :id => 'budget_plan') %>
+      <%#= link_to('Plan this budget', '#', :id => 'budget_plan') %>
     <% end %>
 
-    <div id="budget_amount_wrapper">
-      <ul class="income_options" style="display: none;">
-        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #1 - $1000,00</li>
-        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #2 - $2000,00</li>
-        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #3 - $10000,00</li>
-        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #4 - $1000,00</li>
-        <li><input id="user_options_true" name="user[options][]" type="checkbox" value="true" /> some income #5 - $500,00</li>
-      </ul>
-
-    </div>
+    <div id="budget_amount_wrapper"></div>
 
     <h6>Fields tagged with * are required</h6>
     <div class="form-actions">
