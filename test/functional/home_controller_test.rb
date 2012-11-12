@@ -45,4 +45,10 @@ class HomeControllerTest < ActionController::TestCase
     end
   end
 
+  test 'should not be a message with actual balance without logging'  do
+    get :index
+    assert_select 'a', text: 'Actual balance: 0,00', count: 0
+
+  end
+
 end
