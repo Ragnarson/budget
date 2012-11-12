@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :wallets
+  has_many :incomes
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info

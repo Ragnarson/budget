@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class IncomesControllerTest < ActionController::TestCase
+  def setup
+    sign_in users(:user3)
+  end
+
   def after
     DatabaseCleaner.clean
   end
@@ -20,8 +24,14 @@ class IncomesControllerTest < ActionController::TestCase
   end
 
   test "should redirect to new income and notify about creation if source and amount are valid" do
-    post:create, :income => { :source => 'source', :amount => 200 }
-    assert_redirected_to new_income_path
+    post :create, :income => { :source => 'source', :amount => 200 }
+    assert_redirected_to all_incomes_path
     assert_equal 'Income has been successfully created', flash[:notice]
+  end
+  
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:incomes)
   end
 end
