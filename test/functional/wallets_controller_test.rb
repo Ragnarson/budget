@@ -49,13 +49,13 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "if no wallets are present should redirect to new budget page" do
-    sign_in users(:user3)
+    sign_in users(:user_without_wallet_1)
     get :index
     assert_redirected_to :new_budget
   end
 
   test "if wallets are present should show table with wallets list" do
-    sign_in users(:user1)
+    sign_in users(:user_with_wallet_1)
     post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
     get :index
     assert_tag :tag => 'table', :attributes => { :class => 'table'}
