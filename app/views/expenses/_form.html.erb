@@ -3,7 +3,7 @@
   <div class="control-group">
     <%= f.input :name, label: 'Expense name', class: 'control-label' %>
     <%= f.input :amount, as: :currency, wrapper: 'prepend' %>
-    <%= f.association :wallet, label: 'Budget', collection: Wallet.where(user_id: current_user.id), include_blank: false %>
+    <%= f.association :wallet, label: 'Budget', collection: current_user.wallets, include_blank: false %>
     <div class="form-actions">
       <%= f.button :submit, 'Add expense', class: 'btn btn-primary' %>
       <%= button_tag 'Reset', type: 'reset', class: 'btn' %>
