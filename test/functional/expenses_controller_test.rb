@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ExpensesControllerTest < ActionController::TestCase
   def setup
-    sign_in users(:user1)
+    sign_in users(:user_with_wallet_1)
   end
 
   def after
@@ -36,7 +36,7 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   test "should redirect to new budget if there are not any wallets in database" do
-    sign_in users(:user3)
+    sign_in users(:user_without_wallet_1)
     get :new
     assert_redirected_to :new_budget
   end

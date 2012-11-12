@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   def setup
-    sign_in users(:user3)
+    sign_in users(:user_without_wallet_1)
   end
 
   def after

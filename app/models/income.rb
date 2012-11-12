@@ -5,5 +5,5 @@ class Income < ActiveRecord::Base
   
   validates :source, length: { in: 1..128 }
   validates :amount, numericality: { greater_than: 0}
-  validates :tax, inclusion: { in: [18, 23, nil] }
+  validates :tax, inclusion: { in: [18, 23] }, allow_nil: true
 end
