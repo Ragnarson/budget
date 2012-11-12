@@ -37,6 +37,23 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'a', 'Budgets'
   end
 
+  test "add new expense form should not be visible on home page for guess" do
+    get :index
+    assert_select 'input#expense_name', count: 0
+    assert_select 'input#expense_amount', count: 0
+    assert_select 'select#expense_wallet_id', count: 0
+  end 
+
+  test "add new expense form should be visible on home page if user is authenticated" do
+    sign_in users(:user_with_wallet_1)
+    get :index
+    assert_select 'form' do
+      assert_select 'input#expense_name'
+      assert_select 'input#expense_amount'
+      assert_select 'select#expense_wallet_id'
+    end
+  end 
+
   test 'should be message with actual balance' do
     sign_in users(:user_with_wallet_1)
     get :index
