@@ -7,8 +7,8 @@
   <% @incomes.each do |income| %>
     <tr>
       <td><%= income.source %></td>
-      <td><%= income.amount %></td>
-      <td><%= income.user_id  %></td>
+      <td><%= number_to_currency income.amount %></td>
+      <td><%= income.user.email  %></td>
     </tr>
   <% end %>
 </table>

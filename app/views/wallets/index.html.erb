@@ -1,0 +1,17 @@
+<table class="table">
+  <tr>
+    <td>Budget name</td>
+    <td>Amount</td>
+  </tr>
+  <% @wallets.each do |wallet| %>
+    <tr>
+      <td><%= wallet.name %></td>
+      <td><%= number_to_currency wallet.amount %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="form-actions">
+  <%= link_to "Add new budget", new_budget_path, :class => "btn btn-primary" %>
+</div>  
+

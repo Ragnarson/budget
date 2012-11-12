@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//= require_self
+
+$(document).ready(function () {
+  if ($('#budget_amount_wrapper').length) {
+    $('#budget_plan').bind('click', function () {
+      $('#budget_amount_wrapper .income_options').slideToggle();
+    });
+  }
+});
