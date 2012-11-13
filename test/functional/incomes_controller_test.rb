@@ -1,4 +1,4 @@
-require 'test_helper'
+require_relative '../test_helper'
 
 class IncomesControllerTest < ActionController::TestCase
   def setup
@@ -51,6 +51,13 @@ class IncomesControllerTest < ActionController::TestCase
 
   test "should create an array" do
     get :index
-    assert_equal assigns(:incomes).class, Array
+    assert assigns(:incomes).instance_of?(Array)
+  end
+  
+  test "total sum should be zero if array is empty" do
+    get :index
+    if assert_equal assigns(:incomes).length, 0
+      assert_equal assigns(:total), 0
+    end
   end
 end

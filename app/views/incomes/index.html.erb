@@ -20,7 +20,10 @@
 		</tbody>
 	</table>
 <% end %>
+<p>
+	Total income: <%= number_to_currency @total %>
+</p>
 <div class="form-actions">
-  <%= link_to "Add new income", new_income_path, :class => "btn btn-primary" %>
+  <%= link_to "Add new income", new_income_path, class: "btn btn-primary" %>
 </div>  
 
