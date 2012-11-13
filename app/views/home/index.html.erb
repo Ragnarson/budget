@@ -1,10 +1,16 @@
-<% if !user_signed_in? %>
-  <div class="pagination-centered hero-unit">
-    <h4>Welcome to the Budget Application</h4>
-    <div>
-      <%= link_to "Login via Google account", user_omniauth_authorize_path(:google_oauth2), :class => "btn btn-inverse btn-medium" %>
-    </div>
+<% unless user_signed_in? %>
+<div class="pagination-centered hero-unit">
+  <h4>Welcome to the Budget Application</h4>
+  <div>
+    <%= link_to "Login via Google account", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-inverse btn-medium" %>
   </div>
+</div>
 <% else %>
-  <%= render 'expenses/form' %>
+<%= render 'expenses/form' %>
+<% end %>
+<% if current_user.incomes.empty? %>
+<div class="pagination-centered">
+  <p>You don't have any incomes, please specify one</p>
+  <%= link_to "Add first income", new_income_path, class: "btn btn-primary btn-small" %>
+</div>
 <% end %>
