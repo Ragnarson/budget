@@ -11,6 +11,12 @@ class HomeControllerTest < ActionController::TestCase
     assert_template :index
   end
 
+  test 'should get about' do
+    get :about
+    assert_response :success
+    assert_template :about
+  end
+
   test 'should contain hello message and login link' do
     get :index
     assert_select 'h4', 'Welcome to the Budget Application'

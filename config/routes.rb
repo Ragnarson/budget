@@ -18,7 +18,7 @@ Budget::Application.routes.draw do
   match '/create_family_member' => 'users#create', :as => :create_user, :via => :post
   match '/delete_family_member/(:id)' => 'users#destroy', :as => :destroy_user
 
-  match '/about' => 'about#index'
+  match '/about' => 'home#about'
   
   resources :users do
     collection do
