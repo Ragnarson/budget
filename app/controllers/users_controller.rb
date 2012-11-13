@@ -2,12 +2,15 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where(:users => {:invited_by => current_user.id})
-    respond_to do |format|
-      format.html # index.html.erb
+    if @users.empty?
+      redirect_to new_user_path, notice: "You didn't add any family member."
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+      end
     end
   end
 
-  # GET users/new
   def new
     @user = User.new
     respond_to do |format|
@@ -20,7 +23,8 @@ class UsersController < ApplicationController
     @user.password = User.generate_password
     @user.invited_by = current_user.id
     if @user.save
-      UserMailer.invite_email(@user).deliver
+      mail_params = Hash["email" => @user.email, "current_user_email" => current_user.email, "url" => "http://budget.shellyapp.com"]
+      UserMailer.invite_email(mail_params).deliver
       redirect_to users_path, notice: 'User was successfully created.'
     else
       render action: "new"
@@ -30,6 +34,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path, notice: 'User was successfully deleted' 
+    redirect_to users_path, notice: 'User was successfully deleted'
   end
 end

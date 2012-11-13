@@ -1,9 +1,10 @@
 class UserMailer < ActionMailer::Base
-  default from: "budget.app.ruby@gmail.com"
+  default from: "no-reply@shellyapp.com"
 
-  def invite_email(user)
-    @user = user
-    @url = "http://budget.shellyapp.com/"
-    mail(:to => user.email, :subject => "Welcome to Budget application")
+  def invite_email(params)
+    @user = params["email"]
+    @url = params["url"]
+    @current_user_email = params["current_user_email"]
+    mail(:to => params["email"], :subject => "Welcome to Budget application")
   end
 end

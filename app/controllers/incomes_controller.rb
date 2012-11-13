@@ -9,7 +9,7 @@ class IncomesController < ApplicationController
     @total = current_user.incomes.map(&:amount).inject(0, &:+)
   end
 
-  def create 
+  def create
     @income = Income.new(params[:income])
     @income.user_id = current_user.id
     if @income.save

@@ -4,18 +4,12 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Welcome <%= @user.email %></h1>
+    <h1>Welcome <%= @user %></h1>
     <p>
-      You have been successfully invited to budget.shelly.com.
+      User <%= @current_user_email %> invited you to budget application. Thanks to this application you can organized your family budget.  
     </p>
     <p>
-      To login to the page visit <%= @url %> and use your gmail account data to sign up or use data:
-    </p>
-    <p>
-      email: <%= @user.email %>
-    </p>
-    <p>
-      password: <%= @user.password %>
+      To login to the page visit <%= @url %> and use your gmail account data to sign up.
     </p>
     <p>
       Have a great day!
