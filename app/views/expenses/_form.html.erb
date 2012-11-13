@@ -1,12 +1,8 @@
 <%= simple_form_for @expense, url: create_expense_path, html: { class: "form-horizontal" } do |f| %>
-  <div class="control-group">
-    <%= f.input :name, label: 'Expense name', class: 'control-label' %>
-    <%= f.input :amount, as: :currency, wrapper: 'prepend' %>
-    <%= f.association :wallet, label: 'Budget', collection: current_user.wallets, include_blank: false %>
-    <h6>Fields tagged with * are required</h6>
-    <div class="form-actions">
-      <%= f.button :submit, 'Add expense', class: 'btn btn-primary' %>
-      <%= button_tag 'Reset', type: 'reset', class: 'btn' %>
-    </div>
+  <%= f.input :name, label: 'Expense name' %>
+  <%= f.input :amount, as: :currency, wrapper: 'append' %>
+  <%= f.association :wallet, label: 'Budget', collection: current_user.wallets, include_blank: false %>
+  <div class="form-actions">
+    <%= f.button :submit, 'Add expense', class: 'btn btn-primary' %>
   </div>
 <% end %>

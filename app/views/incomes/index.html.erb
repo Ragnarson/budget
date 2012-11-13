@@ -1,18 +1,21 @@
-<table cellpadding="0" cellspacing="0" class="table">
-  <tr>
-    <td>Source</td>
-    <td>Amount</td>
-    <td>Tax</td>
-  </tr>
-  <% @incomes.each do |income| %>
-    <tr>
-      <td><%= income.source %></td>
-      <td><%= number_to_currency income.amount %></td>
-      <td><%= income.tax  %></td>
-    </tr>
-  <% end %>
-</table>
-
+<% if @incomes.empty? %>
+	<p>No income</p>
+<% else %>
+	<table cellpadding="0" cellspacing="0" class="table">
+	  <tr>
+	    <td>Source</td>
+	    <td>Amount</td>
+	    <td>Tax</td>
+	  </tr>
+	  <% @incomes.each do |income| %>
+	    <tr>
+	      <td><%= income.source %></td>
+	      <td><%= number_to_currency income.amount %></td>
+	      <td><%= income.tax  %></td>
+	    </tr>
+	  <% end %>
+	</table>
+<% end %>
 <div class="form-actions">
   <%= link_to "Add new income", new_income_path, :class => "btn btn-primary" %>
 </div>  
