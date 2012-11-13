@@ -18,13 +18,21 @@ class IncomesControllerTest < ActionController::TestCase
     end
   end
   
+  test "should create income" do
+    assert_difference('Income.count') do
+      post :create, income: { source: 'source', amount: 200, tax: 23, user_id: 1 }
+    end
+    assert_redirected_to all_incomes_path
+    assert_equal 'Income has been successfully created', flash[:notice]
+  end
+
   test "should render new if income amount is not valid" do
-    post :create, :income => { :source => 'source', :amount => 'zero' }
+    post :create, income: { source: 'source', amount: 'zero' }
     assert_template 'new'
   end
 
   test "should redirect to new income and notify about creation if source and amount are valid" do
-    post :create, :income => { :source => 'source', :amount => 200 }
+    post :create, income: { source: 'source', amount: 200 }
     assert_redirected_to all_incomes_path
     assert_equal 'Income has been successfully created', flash[:notice]
   end
