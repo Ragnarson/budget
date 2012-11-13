@@ -9,6 +9,12 @@ class IncomesControllerTest < ActionController::TestCase
     DatabaseCleaner.clean
   end
 
+  test "should get new"do
+    get :new 
+    assert_response :success
+    assert_not_nil assigns(:income)
+  end
+  
   test "should generate proper form on new income page" do
     get :new
     assert_select 'form' do
@@ -36,10 +42,15 @@ class IncomesControllerTest < ActionController::TestCase
     assert_redirected_to all_incomes_path
     assert_equal 'Income has been successfully created', flash[:notice]
   end
-  
+
   test "should get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:incomes)
+  end
+
+  test "should create an array" do
+    get :index
+    assert_equal assigns(:incomes).class, Array
   end
 end
