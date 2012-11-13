@@ -30,6 +30,7 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'form' do
       assert_select 'input#expense_name'
       assert_select 'input#expense_amount'
+      assert_select 'input#expense_execution_date'
       assert_select 'select#expense_wallet_id'
       assert_select 'input[TYPE=submit]'
     end

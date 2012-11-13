@@ -47,9 +47,7 @@ class HomeControllerTest < ActionController::TestCase
     get :index
     assert_select 'input#expense_name', count: 0
     assert_select 'input#expense_amount', count: 0
-    assert_select 'select#expense_execution_date_1i', count: 0
-    assert_select 'select#expense_execution_date_2i', count: 0
-    assert_select 'select#expense_execution_date_3i', count: 0
+    assert_select 'input#expense_execution_date', count: 0
     assert_select 'select#expense_wallet_id', count: 0
   end 
 
@@ -59,9 +57,7 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'form' do
       assert_select 'input#expense_name'
       assert_select 'input#expense_amount'
-      assert_select 'select#expense_execution_date_1i'
-      assert_select 'select#expense_execution_date_2i'
-      assert_select 'select#expense_execution_date_3i'
+      assert_select 'input#expense_execution_date'
       assert_select 'select#expense_wallet_id'
     end
   end 
