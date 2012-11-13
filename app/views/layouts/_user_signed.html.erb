@@ -1,40 +1,15 @@
 <ul class="nav">
-  <li class="active"><%= link_to 'Home', root_path %></li>
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Incomes <b class="caret"></b></a>
-    <ul class="dropdown-menu">
-      <li><%= link_to 'Add new income', new_income_path %></li>
-      <li><%= link_to 'List your incomes', all_incomes_path %></li>
-    </ul>
-  </li>
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Expenses <b class="caret"></b></a>
-    <ul class="dropdown-menu">
-      <li><%= link_to 'Add new expense', new_expense_path %></li>
-    </ul>
-  </li>
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Budgets <b class="caret"></b></a>
-    <ul class="dropdown-menu">
-      <li><%= link_to 'Budget list', budgets_path %></li>
-      <li><%= link_to 'Add new budget', new_budget_path %></li>
-    </ul>
-  </li>
-  <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Family Members<b class="caret"></b></a>
-  <ul class="dropdown-menu">
-    <li><%= link_to 'Add new member', new_user_path %></li>
-    <li><%= link_to 'List all member', users_path %></li>
-  </ul>  
-  </li>
-  <%# end %>
+  <li><%= link_to 'Incomes', all_incomes_path %></li>
+  <li><%= link_to 'New expense', new_expense_path %></li>
+  <li><%= link_to 'Budgets', budgets_path %></li>
+  <li><%= link_to 'Members', users_path %></li>
 </ul>
 <ul class="nav pull-right">
   <li>
     <a>Actual balance: 0,00</a>
   </li>
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle btn-inverse btn-large" data-toggle="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
       <i class="icon-user icon-white"></i>
       <%= current_user.email %> <b class="caret"></b>
     </a>

@@ -18,23 +18,23 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'a', 'Login via Google account'
   end
 
-  test 'should not contain login, home, incomes, expenses and budgets link' do
+  test 'should not contain login, incomes, expenses and budgets link' do
     get :index
     assert_select 'a', text: 'user_with_wallet_1@budget.shellyapp.com', count: 0
-    assert_select 'a', text: 'Home', count: 0
     assert_select 'a', text: 'Incomes', count: 0
-    assert_select 'a', text: 'Expenses', count: 0
+    assert_select 'a', text: 'New expense', count: 0
     assert_select 'a', text: 'Budgets', count: 0
+    assert_select 'a', text: 'Members', count: 0
   end
 
-  test 'when authenticated should contain login, home, incomes, expenses and budgets links' do
+  test 'when authenticated should contain login, incomes, expenses and budgets links' do
     sign_in users(:user_with_wallet_1)
     get :index
     assert_select 'a', 'user_with_wallet_1@budget.shellyapp.com'
-    assert_select 'a', 'Home'
     assert_select 'a', 'Incomes'
-    assert_select 'a', 'Expenses'
+    assert_select 'a', 'New expense'
     assert_select 'a', 'Budgets'
+    assert_select 'a', 'Members'
   end
 
   test "add new expense form should not be visible on home page for guess" do
