@@ -1,13 +1,6 @@
 = Budget
 Budget system for planning how your income should be distributed among your expenses. Allows to share the account with other members of family which you can invite.
 
-== Shelly Cloud
-Application is hosted on http://shellycloud.com. To push changes to server you have to add remote:
-  git remote add shelly_budget git@git.shellycloud.com:budget.git
-and then type:
-  git push shelly_budget master
-application is available at http://budget.shellyapp.com
-
 == PostgreSQL setup
 Following description assumes that you have installed and running PostgreSQL server. Its installation procedure may vary depending on your operating system and it's not mentioned here.
 In order to run application using PostgreSQL database, please copy config/database.yml.example as config/database.yml. By default, application uses 'budget' as your database name, login and password.
