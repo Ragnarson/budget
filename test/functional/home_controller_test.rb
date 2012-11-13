@@ -13,7 +13,7 @@ class HomeControllerTest < ActionController::TestCase
 
   test 'should contain hello message and login link' do
     get :index
-    assert_select 'h2', 'Welcome to the Budget Application'
+    assert_select 'h4', 'Welcome to the Budget Application'
     assert_select 'a', 'Login via Google account'
     assert_select 'a', 'Login via Google account'
   end

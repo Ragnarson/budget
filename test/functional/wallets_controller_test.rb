@@ -52,7 +52,7 @@ class WalletsControllerTest < ActionController::TestCase
   test "if wallets are present should show table with wallets list" do
     post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
     get :index
-    assert_tag :tag => 'table', :attributes => { :class => 'table'}
+    assert_tag :tag => 'table', :attributes => { :class => 'table table-striped'}
 
   end
 
