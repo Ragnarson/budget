@@ -66,5 +66,4 @@ class HomeControllerTest < ActionController::TestCase
     get :index
     assert_select 'a', text: 'Actual balance: 0,00', count: 0
   end
-
 end

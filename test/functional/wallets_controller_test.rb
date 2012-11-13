@@ -16,7 +16,6 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "should be form on page" do
-
     get :new
     assert_select 'form' do
       assert_select 'input#wallet_name'
@@ -53,7 +52,5 @@ class WalletsControllerTest < ActionController::TestCase
     post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
     get :index
     assert_tag :tag => 'table', :attributes => { :class => 'table table-striped'}
-
   end
-
 end
