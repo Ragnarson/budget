@@ -13,12 +13,12 @@ class HomeControllerTest < ActionController::TestCase
 
   test 'should contain hello message and login link' do
     get :index
-    assert_select 'h2', 'Welcome to the Budget Application'
+    assert_select 'h4', 'Welcome to the Budget Application'
     assert_select 'a', 'Login via Google account'
     assert_select 'a', 'Login via Google account'
   end
 
-  test 'should not contain login, incomes, expenses and budgets link' do
+  test 'should not contain login, incomes, new expense, budgets and members link' do
     get :index
     assert_select 'a', text: 'user_with_wallet_1@budget.shellyapp.com', count: 0
     assert_select 'a', text: 'Incomes', count: 0
@@ -27,7 +27,7 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'a', text: 'Members', count: 0
   end
 
-  test 'when authenticated should contain login, incomes, expenses and budgets links' do
+  test 'when authenticated should contain login, incomes, new expense, budgets and members links' do
     sign_in users(:user_with_wallet_1)
     get :index
     assert_select 'a', 'user_with_wallet_1@budget.shellyapp.com'

@@ -1,19 +1,23 @@
 <% if @users.empty? %>
   <p>No members</p>
 <% else %>
-	<table cellpadding="0" cellspacing="0" class="table">
-	  <tr>
-	    <td>No.</td>
-	    <td>Email</td>
-	    <td>Delete</td>
-	  </tr>
-	  <% @users.each_with_index do |user, index| %>
-	    <tr>
-	      <td><%= index+1 %></td>
-	      <td><%= user.email %></td>
-	      <td><%= link_to 'Delete', destroy_user_path(user.id), :class => "btn btn-primary", data: { confirm: 'Are you sure?' } %></td>
-	    </tr>
-	  <% end %>
+  <table class="table table-striped">
+    <thead>
+		  <tr>
+		    <th>No.</th>
+		    <th>Email</th>
+		    <th>Delete</th>
+		  </tr>
+		</thead>
+	  <tbody>
+		  <% @users.each_with_index do |user, index| %>
+		    <tr>
+		      <td><%= index+1 %></td>
+		      <td><%= user.email %></td>
+		      <td><%= link_to 'Delete', destroy_user_path(user.id), :class => "btn btn-primary", data: { confirm: 'Are you sure?' } %></td>
+		    </tr>
+		  <% end %>
+	  </tbody>
 	</table>
 <% end %>
 

@@ -1,17 +1,21 @@
 <% if @wallets.empty? %>
   <p>No wallets</p>
 <% else %>
-	<table class="table">
-	  <tr>
-	    <td>Budget name</td>
-	    <td>Amount</td>
-	  </tr>
-	  <% @wallets.each do |wallet| %>
-	    <tr>
-	      <td><%= wallet.name %></td>
-	      <td><%= number_to_currency wallet.amount %></td>
-	    </tr>
-	  <% end %>
+	<table class="table table-striped">
+	  <thead>
+		  <tr>
+		    <th>Budget name</th>
+		    <th>Amount</th>
+		  </tr>
+	  </thead>
+		<tbody>
+		  <% @wallets.each do |wallet| %>
+		    <tr>
+		      <td><%= wallet.name %></td>
+		      <td><%= number_to_currency wallet.amount %></td>
+		    </tr>
+		  <% end %>
+		</tbody>
 	</table>
 <% end %>
 <div class="form-actions">
