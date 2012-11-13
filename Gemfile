@@ -34,3 +34,5 @@ group :development, :test do
 end
 
 gem 'database_cleaner', :group => :test
+
+gem 'bootstrap-datepicker-rails'
