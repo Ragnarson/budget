@@ -28,4 +28,10 @@ $(document).ready(function () {
     'format': 'dd/mm/yyyy',
     'autoclose': true
   });
+
+  $('input.currency').click(function() {
+    if($(this).val() == '0.0') {
+      $(this).val('');
+    }
+  });
 });
