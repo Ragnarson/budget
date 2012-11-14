@@ -17,4 +17,10 @@ class User < ActiveRecord::Base
   def self.generate_password(length = 8)
     Devise.friendly_token.first(length)
   end
+
+  def username
+    login = self.email.split('@').first
+    login.gsub(/[.\-_]/, ' ') unless login.blank?
+  end
+
 end

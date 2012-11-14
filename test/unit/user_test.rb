@@ -1,7 +1,14 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  fixtures :users
+
+  def setup
+    @user = users(:user_with_wallet_1)
+  end
+
+  test "should create some username from email" do
+    assert_equal @user.username, 'user with wallet 1'
+  end
+
 end
