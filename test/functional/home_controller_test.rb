@@ -38,7 +38,7 @@ class HomeControllerTest < ActionController::TestCase
     get :index
     assert_select 'a', 'user_with_wallet_1@budget.shellyapp.com'
     assert_select 'a', 'Incomes'
-    assert_select 'a', 'New expense'
+    assert_select 'a', 'Expenses'
     assert_select 'a', 'Budgets'
     assert_select 'a', 'Members'
   end

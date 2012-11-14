@@ -25,6 +25,29 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:expense)
   end
 
+  test "should be redirected to sign_in" do
+    sign_out users(:user_with_wallet_1)
+    get :new
+    assert_response 302
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:expense)
+  end
+
+  test "should get index with pagination" do
+    get :index
+    assert_select 'div.pagination'
+  end
+
+  test "should get index with information about no expenses" do
+    sign_in users(:user_with_wallet_2)
+    get :index
+    assert_select 'p', 'No expenses'
+  end
+
   test "test form is visible on expense page" do
     get :new
     assert_select 'form' do

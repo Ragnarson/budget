@@ -31,7 +31,7 @@ $(document).ready(function () {
 
   $('input.currency').click(function() {
     if($(this).val() == '0.0') {
-      $(this).val('');
+      $(this).val('')
     }
   });
 });

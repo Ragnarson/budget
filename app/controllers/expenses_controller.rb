@@ -1,4 +1,5 @@
 class ExpensesController < ApplicationController
+  require 'will_paginate/array'
   before_filter :authenticate_user!
 
   def new
@@ -14,5 +15,16 @@ class ExpensesController < ApplicationController
     else
       render action: "new"
     end
+  end
+ 
+  def index
+    @expense = Array.new
+    current_user.wallets.each do |wallet|
+      wallet.expenses.each do |expense|
+        @expense.push(expense)
+      end
+    end
+    @expense = @expense.sort!{ |a,b| b.execution_date.to_date <=> a.execution_date.to_date }
+    @expense = @expense.paginate(:page => params[:page], :per_page => 10)
   end
 end

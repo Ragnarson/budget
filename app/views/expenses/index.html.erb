@@ -1,0 +1,29 @@
+<% if @expense.empty? %>
+  <p>No expenses</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @expense.each do |r| %>
+      <tr<%= ' class=warning' if r.execution_date.future? %>>
+        <td><%= r.name %></td>
+        <td><%= r.amount %> pln</td>
+        <td><%= r.execution_date.strftime("%d %B %Y")  %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="hidden-phone">
+    <%= will_paginate @expense %>
+  </div>
+<% end %>
+<div class="form-actions">
+  <%= link_to "Add new expense", new_expense_path, class: "btn btn-primary" %>
+</div>  
+

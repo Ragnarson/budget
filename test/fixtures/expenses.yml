@@ -1,0 +1,77 @@
+expense_1:
+  id: 1
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-12'
+  wallet_id: 1
+
+expense_2:
+  id: 2
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-13'
+  wallet_id: 1
+
+expense_3:
+  id: 3
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-14'
+  wallet_id: 1
+
+expense_4:
+  id: 4
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-15'
+  wallet_id: 1
+
+expense_5:
+  id: 5
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-16'
+  wallet_id: 1
+
+expense_6:
+  id: 6
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-17'
+  wallet_id: 1
+
+expense_7:
+  id: 7
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-17'
+  wallet_id: 1
+
+expense_8:
+  id: 8
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-20'
+  wallet_id: 1
+
+expense_9:
+  id: 9
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-21'
+  wallet_id: 1
+
+expense_10:
+  id: 10
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-23'
+  wallet_id: 1
+
+expense_11:
+  id: 11
+  name: Test
+  amount: 10000
+  execution_date: '2012-12-24'
+  wallet_id: 1
+
