@@ -66,7 +66,7 @@ class HomeControllerTest < ActionController::TestCase
     sign_in users(:user_with_wallet_1)
     get :index
     assert_select 'ul.pull-right' do
-      assert_select 'a', 'Actual balance: 0,00'
+      assert_select 'a', 'Balance: 0,00'
     end
   end
 
