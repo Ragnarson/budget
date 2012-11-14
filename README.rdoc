@@ -1,6 +1,15 @@
 = Budget
 Budget system for planning how your income should be distributed among your expenses. Allows to share the account with other members of family which you can invite.
 
+== Before you make a commit
+
+1. Run `bundle install` if you have changed Gemfile. Include updated Gemfile.lock in your commit: `git add Gemfile.lock`.
+2. Run `rake db:migrate` if you have added a migration. Include updated schema.rb in your commit: `git add db/schema.rb`.
+3. Make sure `git status` shows no unstaged changes, i.e. there should be no "Changes not staged for commit:" nor "Untracked files:" in the output. If there are, either `git add` them or remove them.
+4. Run the tests to make sure your change didn't break anything: `rake test`. If it did, fix it and go to step 3 again.
+5. Review your own change: `git diff --cached`. Make sure everything looks as you intended. This diff is what will be reviewed later by senior developers. If you have to fix something, do it and go to step 3 again.
+6. Finally, commit your change, describing in the commit message the reason why it was made. Try to include information that is not clearly visible in the code.
+
 == PostgreSQL setup
 Following description assumes that you have installed and running PostgreSQL server. Its installation procedure may vary depending on your operating system and it's not mentioned here.
 In order to run application using PostgreSQL database, please copy config/database.yml.example as config/database.yml. By default, application uses 'budget' as your database name, login and password.
@@ -14,9 +23,3 @@ Please follow those steps.
   postgres=# CREATE DATABASE budget WITH OWNER budget;
 Your database should already be configured. You're now ready to run application.
 
-== Before you make a commit
-
-1. Make sure `git status` shows no unstaged changes, i.e. there should be no "Changes not staged for commit:" nor "Untracked files:" in the output. If there are, either `git add` them or remove them.
-2. Run the tests to make sure your change didn't break anything: `rake test`. If it did, fix it and go to step 1 again.
-3. Review your own change: `git diff --cached`. Make sure everything looks as you intended. This diff is what will be reviewed later by senior developers. If you have to fix something, do it and go to step 1 again.
-4. Finally, commit your change, describing in the commit message the reason why it was made. Try to include information that is not clearly visible in the code.
