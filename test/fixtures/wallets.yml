@@ -9,3 +9,9 @@ wallet_2:
   name: Food
   amount: 15000
   user_id: 2
+
+wallet_3:
+  id: 3
+  name: Cars
+  amount: 10000000
+  user_id: 4

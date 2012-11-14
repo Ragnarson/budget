@@ -7,6 +7,7 @@
         <th>Name</th>
         <th>Amount</th>
         <th>Date</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
         <td><%= r.name %></td>
         <td><%= r.amount %> pln</td>
         <td><%= r.execution_date.strftime("%d %B %Y")  %></td>
+        <td><%= link_to "Delete", delete_expense_path(r.id), class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </tbody>

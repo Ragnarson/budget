@@ -77,4 +77,18 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_invalid(@request.params[:expense])
     assert_template :new
   end
+
+  test "should destroy expense and redirect to all_expense" do
+    assert_difference('Expense.count', -1) do
+      delete :destroy, id: 1
+    end
+    assert_redirected_to :all_expenses
+  end
+
+  test "should not destroy expense with belongs to another user" do
+    assert_difference('Expense.count', 0) do
+      delete :destroy, id: 12
+    end
+    assert_redirected_to :all_expenses
+  end
 end

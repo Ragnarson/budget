@@ -27,4 +27,14 @@ class ExpensesController < ApplicationController
     @expense = @expense.sort!{ |a,b| b.execution_date.to_date <=> a.execution_date.to_date }
     @expense = @expense.paginate(:page => params[:page], :per_page => 10)
   end
+
+  def destroy
+    @expense = Expense.find(params[:id])
+    if current_user.wallets.include? Wallet.find(@expense.wallet_id)
+      @expense.destroy
+      redirect_to all_expenses_path, notice: 'Expense was successfully deleted'
+    else
+      redirect_to all_expenses_path, notice: "Couldn't find expense"
+    end
+  end
 end
