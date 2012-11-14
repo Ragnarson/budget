@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.9'
 
 gem 'sqlite3'
+gem 'pg'
+gem 'database_cleaner', :group => :test
 
 gem 'therubyracer'
 
@@ -14,25 +16,20 @@ group :assets do
 end
 
 gem 'less-rails'
-
 gem 'jquery-rails'
 
 gem 'twitter-bootstrap-rails'
-
-gem 'pg'
+gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-will_paginate'
 
 gem 'devise'
+gem 'omniauth-google-oauth2'
+
 gem 'simple_form'
 
 gem 'shelly-dependencies', :group => :production
-
-gem 'omniauth-google-oauth2'
 
 group :development, :test do
   gem 'turn'
   gem 'minitest'
 end
-
-gem 'database_cleaner', :group => :test
-
-gem 'bootstrap-datepicker-rails'
