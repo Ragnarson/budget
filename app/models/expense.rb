@@ -3,6 +3,8 @@ class Expense < ActiveRecord::Base
   
   belongs_to :wallet
 
+  default_scope order('execution_date DESC')
+
   validates :name, length: { in: 3..128 }, presence: true
   validates :amount, presence: true,
     format: { with: /^\d+??(?:\.\d{0,2})?$/, message: 'must be valid price' }, 

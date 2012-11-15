@@ -18,22 +18,14 @@ class ExpensesController < ApplicationController
   end
  
   def index
-    @expense = Array.new
-    current_user.wallets.each do |wallet|
-      wallet.expenses.each do |expense|
-        @expense.push(expense)
-      end
-    end
-    @expense = @expense.sort!{ |a,b| b.execution_date.to_date <=> a.execution_date.to_date }
-    @expense = @expense.paginate(:page => params[:page], :per_page => 10)
+    @expenses = current_user.expenses.paginate(page: params[:page], per_page: 10)
   end
 
   def destroy
-    @expense = Expense.find(params[:id])
-    if current_user.wallets.include? Wallet.find(@expense.wallet_id)
-      @expense.destroy
+    begin
+      current_user.expenses.find(params[:id]).destroy
       redirect_to all_expenses_path, notice: 'Expense was successfully deleted'
-    else
+    rescue ActiveRecord::RecordNotFound
       redirect_to all_expenses_path, notice: "Couldn't find expense"
     end
   end

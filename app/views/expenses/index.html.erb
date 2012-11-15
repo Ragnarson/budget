@@ -1,4 +1,4 @@
-<% if @expense.empty? %>
+<% if @expenses.empty? %>
   <p>No expenses</p>
 <% else %>
   <table class="table table-striped">
@@ -11,18 +11,18 @@
       </tr>
     </thead>
     <tbody>
-    <% @expense.each do |r| %>
+    <% @expenses.each do |r| %>
       <tr<%= ' class=warning' if r.execution_date.future? %>>
         <td><%= r.name %></td>
         <td><%= r.amount %> pln</td>
         <td><%= r.execution_date.strftime("%d %B %Y")  %></td>
-        <td><%= link_to "Delete", delete_expense_path(r.id), class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Delete", delete_expense_path(r), class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
   <div class="hidden-phone">
-    <%= will_paginate @expense %>
+    <%= will_paginate @expenses %>
   </div>
 <% end %>
 <div class="form-actions">
