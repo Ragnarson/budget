@@ -1,0 +1,8 @@
+test:
+  host: 127.0.0.1
+  port: 5432
+  adapter: postgresql
+  database: budget_test
+  username: postgres
+  password:
+  encoding: utf8
