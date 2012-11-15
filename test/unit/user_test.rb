@@ -11,4 +11,20 @@ class UserTest < ActiveSupport::TestCase
     assert_equal @user.username, 'user with wallet 1'
   end
 
+  test "sum should be zero if user doesn't have any incomes" do
+    assert_equal User.new.incomes_sum, 0
+  end
+
+  test "sum should be equal to amount of lone users income" do
+    user = User.new
+    user.incomes[0] = Income.new(amount: 20)
+    assert_equal user.incomes_sum, 20
+  end
+
+  test "sum should be equal to all amounts summed up" do
+    user = User.new
+    user.incomes[0] = Income.new(amount: 30)
+    user.incomes[1] = Income.new(amount: 20)
+    assert_equal user.incomes_sum, 50
+  end
 end

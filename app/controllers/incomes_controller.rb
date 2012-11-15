@@ -6,7 +6,7 @@ class IncomesController < ApplicationController
 
   def index
     @incomes = current_user.incomes
-    @total = current_user.incomes.map(&:amount).inject(0, &:+)
+    @total = current_user.incomes_sum
   end
 
   def create

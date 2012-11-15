@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable
+  :recoverable, :rememberable, :trackable, :validatable,
+  :omniauthable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
@@ -23,4 +23,7 @@ class User < ActiveRecord::Base
     login.gsub(/[.\-_]/, ' ') unless login.blank?
   end
 
+  def incomes_sum
+    self.incomes.map(&:amount).inject(0, &:+)
+  end
 end
