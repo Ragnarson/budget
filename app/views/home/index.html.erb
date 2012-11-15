@@ -6,11 +6,18 @@
     </div>
   </div>
 <% else %>
-  <%= render 'expenses/form' %>
   <% if current_user.incomes.empty? %>
-    <div class="pagination-centered">
-      <p>You don't have any incomes, please specify one</p>
-      <%= link_to "Add first income", new_income_path, class: "btn btn-primary btn-small" %>
-    </div>
+    <p class="pagination-centered">
+      You don't have any incomes, please specify one
+      <%= link_to "New income", new_income_path, class: "btn btn-primary btn-small" %>
+    </p>
+  <% end %>
+  <% if current_user.wallets.empty? %>
+    <p class="pagination-centered">
+      Please define your first budget
+      <%= link_to "New budget", new_budget_path, class: "btn btn-primary btn-small" %>
+    </p>
+  <% else %>
+    <%= render 'expenses/form' %>
   <% end %>
 <% end %>
