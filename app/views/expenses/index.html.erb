@@ -16,7 +16,10 @@
         <td><%= r.name %></td>
         <td><%= r.amount %> pln</td>
         <td><%= r.execution_date.strftime("%d %B %Y")  %></td>
-        <td><%= link_to "Delete", delete_expense_path(r), class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to "Edit", edit_expense_path(r), class: "btn btn-primary" %>
+          <%= link_to "Delete", expense_path(r), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
     </tbody>

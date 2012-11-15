@@ -72,6 +72,7 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "table should contain delete buttons" do
     get :index
+    assert_select 'tbody tr td a', 'Edit'
     assert_select 'tbody tr td a', 'Delete'
   end
 
@@ -138,12 +139,12 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_template :new
   end
 
-  test "should destroy expense and redirect to all_expense" do
+  test "should destroy expense and redirect to all expenses" do
     assert_difference('Expense.count', -1) do
       delete :destroy, id: 1
     end
     assert_equal 'Expense was successfully deleted', flash[:notice]
-    assert_redirected_to :all_expenses
+    assert_redirected_to :expenses
   end
 
   test "should not destroy expense with belongs to another user" do
@@ -151,7 +152,7 @@ class ExpensesControllerTest < ActionController::TestCase
       delete :destroy, id: 12
     end
     assert_equal "Couldn't find expense", flash[:notice]
-    assert_redirected_to :all_expenses
+    assert_redirected_to :expenses
   end
 
   test "should not destroy expense does not exist" do
@@ -159,6 +160,24 @@ class ExpensesControllerTest < ActionController::TestCase
       delete :destroy, id: 100
     end
     assert_equal "Couldn't find expense", flash[:notice]
-    assert_redirected_to :all_expenses
+    assert_redirected_to :expenses
+  end
+
+  test "should update expense and redirect to all expenses" do
+    put :update, id: users(:user_with_wallet_1).expenses.first.id, expense: {name: 'Inna nazwa'}
+    assert_equal "Expense was successfully updated", flash[:notice]
+    assert_redirected_to :expenses
+  end
+
+  test "should not update expense with belongs to another user" do
+    put :update, id: 12, expense: {name: 'Inna nazwa'}
+    assert_equal "Couldn't find expense", flash[:notice]
+    assert_redirected_to :expenses
+  end
+
+  test "should not update expense does not exist" do
+    put :update, id: 100, expense: {name: 'Inna nazwa'}
+    assert_equal "Couldn't find expense", flash[:notice]
+    assert_redirected_to :expenses
   end
 end

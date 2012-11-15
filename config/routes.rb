@@ -7,10 +7,7 @@ Budget::Application.routes.draw do
   match '/new_budget' => 'wallets#new', :as => :new_budget
   match '/create_budget' => 'wallets#create', :as => :create_budget, :via=> :post
 
-  match '/new_expense' => 'expenses#new', :as => :new_expense
-  match '/create_expense' => 'expenses#create', :as => :create_expense, :via => :post
-  match '/all_expenses' => 'expenses#index', :as => :all_expenses
-  match '/delete_expense/:id' => 'expenses#destroy', :as => :delete_expense
+  resources :expenses, except: :show
 
   match '/new_income' => 'incomes#new', :as => :new_income
   match '/create_income' => 'incomes#create', :as => :create_income, :via => :post

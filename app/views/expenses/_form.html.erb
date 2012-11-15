@@ -1,4 +1,4 @@
-<%= simple_form_for @expense, url: create_expense_path, html: { class: "form-horizontal" } do |f| %>
+<%= simple_form_for @expense, html: { class: "form-horizontal" } do |f| %>
   <%= f.input :name, label: 'Expense name' %>
   <%= f.input :amount, as: :currency, wrapper: 'append' %>
   <%= f.association :wallet, label: 'Budget', collection: current_user.wallets, include_blank: false %>
