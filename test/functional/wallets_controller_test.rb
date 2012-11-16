@@ -37,9 +37,9 @@ class WalletsControllerTest < ActionController::TestCase
     assert_template :new
   end
 
-  test "on form page should be placeholder for income list" do
+  test "on form page should be placeholder for planning budget with expenses" do
     get :new
-    assert_tag :tag => 'div', :attributes => { :id => 'budget_amount_wrapper' }
+    assert_tag tag: 'div', attributes: { id: 'budget_plan' }
   end
 
   test "if no wallets are present should redirect to new budget page" do

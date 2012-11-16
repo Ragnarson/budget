@@ -17,21 +17,19 @@
 //= require_tree .
 //= require_self
 
-$(document).ready(function () {
-  if ($('#budget_amount_wrapper').length) {
-    $('#budget_plan').bind('click', function () {
-      $('#budget_amount_wrapper .income_options').slideToggle();
+function set_date_picker(){
+    $('input.date_picker').datepicker({
+        'format': 'dd/mm/yyyy',
+        'autoclose': true
     });
-  }
 
-  $('input.date_picker').datepicker({
-    'format': 'dd/mm/yyyy',
-    'autoclose': true
-  });
+    $('input.currency').click(function() {
+        if($(this).val() == '0.0') {
+            $(this).val('')
+        }
+    });
+}
 
-  $('input.currency').click(function() {
-    if($(this).val() == '0.0') {
-      $(this).val('')
-    }
-  });
+$(document).ready(function () {
+    set_date_picker()
 });

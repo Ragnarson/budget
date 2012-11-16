@@ -1,0 +1,5 @@
+<div class="row expense_amount">
+	<%= f.input :name, label: 'Expense name' %>
+	<%= f.input :amount, as: :currency, wrapper: 'append' %>
+	<%= f.input :execution_date, label: 'Date', as: :date_picker, input_html: { value: "#{Date.today.strftime("%d/%m/%Y")}" } %>
+</div>
