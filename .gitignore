@@ -9,6 +9,7 @@
 /tmp
 /config/database.yml
 *.swp
+*.swo
 *.*~
 *~
 .idea/*
