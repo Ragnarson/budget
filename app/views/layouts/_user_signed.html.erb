@@ -1,13 +1,13 @@
 <ul class="nav">
-  <li><%= link_to 'Incomes', all_incomes_path %></li>
-  <li><%= link_to 'Expenses', expenses_path %></li>
-  <li><%= link_to 'Budgets', budgets_path %></li>
-  <li><%= link_to 'Members', users_path %></li>
-  <li><%= link_to 'About', about_path %></li>
+  <li><%= link_to t('header.incomes'), all_incomes_path %></li>
+  <li><%= link_to t('header.expenses'), expenses_path %></li>
+  <li><%= link_to t('header.budgets'), budgets_path %></li>
+  <li><%= link_to t('header.members'), users_path %></li>
+  <li><%= link_to t('header.about'), about_path %></li>
 </ul>
 <ul class="nav pull-right">
   <li>
-    <a>Balance: 0,00</a>
+    <a><%= "#{t('header.balance')}: #{number_to_currency(0)}" %></a>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -15,8 +15,8 @@
       <%= current_user.email %> <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <li><%= link_to(raw('<i class="icon-pencil"></i> Edit profile'), edit_user_registration_path) %></li>
-      <li><%= link_to(raw('<i class="icon-off"></i> Logout'), destroy_user_session_path, method: :delete) %></li>
+      <li><%= link_to t('header.edit_profile'), edit_user_registration_path  %></li>
+      <li><%= link_to t('header.logout'), destroy_user_session_path, method: :delete %></li>
     </ul>
   </li>
 </ul>

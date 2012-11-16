@@ -12,4 +12,5 @@ end
 
 class ActionController::TestCase
   include Devise::TestHelpers
+  include ActionView::Helpers::NumberHelper
 end

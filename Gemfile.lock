@@ -46,6 +46,8 @@ GEM
     commonjs (0.2.6)
     daemons (1.1.9)
     database_cleaner (0.9.1)
+    delocalize (0.3.1)
+      rails (>= 3.0)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -175,6 +177,7 @@ DEPENDENCIES
   bootstrap-will_paginate
   coffee-rails (~> 3.2.1)
   database_cleaner
+  delocalize
   devise
   jquery-rails
   less-rails

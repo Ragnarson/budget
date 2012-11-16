@@ -7,7 +7,7 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    redirect_to new_budget_path, notice: 'First you have to add at least one budget.' if current_user.wallets.empty?
+    redirect_to new_budget_path, notice: t('flash.add_budget') if current_user.wallets.empty?
     @expense = Expense.new
   end
 
@@ -15,7 +15,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(params[:expense])
 
     if @expense.save
-      redirect_to new_expense_path, notice: 'Expense was successfully created.'
+      redirect_to new_expense_path, notice: t('flash.success_one', model: t('activerecord.models.expense'))
     else
       render action: "new"
     end
@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
     begin
       @expense = current_user.expenses.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      redirect_to expenses_path, notice: "Couldn't find expense"
+      redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
     end
   end
 
@@ -33,18 +33,18 @@ class ExpensesController < ApplicationController
     begin
       @expense = current_user.expenses.find(params[:id])
       @expense.update_attributes(params[:expense])
-      redirect_to expenses_path, notice: 'Expense was successfully updated'
+      redirect_to expenses_path, notice: t('flash.update_one', model: t('activerecord.models.expense'))
     rescue ActiveRecord::RecordNotFound
-      redirect_to expenses_path, notice: "Couldn't find expense"
+      redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
     end
   end
 
   def destroy
     begin
       current_user.expenses.find(params[:id]).destroy
-      redirect_to expenses_path, notice: 'Expense was successfully deleted'
+      redirect_to expenses_path, notice: t('flash.delete_one', model: t('activerecord.models.expense'))
     rescue ActiveRecord::RecordNotFound
-      redirect_to expenses_path, notice: "Couldn't find expense"
+      redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
     end
   end
 end

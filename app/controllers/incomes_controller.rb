@@ -2,6 +2,7 @@ class IncomesController < ApplicationController
 
   def new
     @income = Income.new
+    @income.tax = 23
   end
 
   def index
@@ -13,7 +14,7 @@ class IncomesController < ApplicationController
     @income = Income.new(params[:income])
     @income.user_id = current_user.id
     if @income.save
-      redirect_to all_incomes_path, notice: 'Income has been successfully created'
+      redirect_to all_incomes_path, notice: t('flash.success_one', model: t('activerecord.models.income'))
     else
       render action: "new"
     end

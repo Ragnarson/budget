@@ -28,12 +28,12 @@ class WalletsControllerTest < ActionController::TestCase
     post :create, :wallet => {:name => 'Some title'}
     wallet = Wallet.new(@request.params[:wallet])
     assert_redirected_to :budgets
-    assert_equal "Your new '#{wallet.name}' budget was added successfully", flash[:notice]
+    assert_equal I18n.t('flash.wallet_success', name: wallet.name), flash[:notice]
   end
 
   test "should show error when name is empty" do
     post :create, :wallet => {:name => ''}
-    assert_tag :tag => 'span', :content => "can't be blank"
+    assert_tag :tag => 'span', :content => I18n.t('errors.messages.blank')
     assert_template :new
   end
 

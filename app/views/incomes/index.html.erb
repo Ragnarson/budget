@@ -4,26 +4,26 @@
 	<table class="table table-striped">
 		<thead>
 		  <tr>
-		    <th>Source</th>
-		    <th>Amount</th>
-		    <th>Tax</th>
+		    <th><%= t('activerecord.attributes.income.source') %></th>
+		    <th><%= t('activerecord.attributes.income.amount') %></th>
+		    <th><%= t('activerecord.attributes.income.tax') %></th>
 		  </tr>
 		</thead>
 		<tbody>
 		  <% @incomes.each do |income| %>
 		    <tr>
 		      <td><%= income.source %></td>
-		      <td><%= income.amount %> pln</td>
-		      <td><%= income.tax  %></td>
+		      <td><%= number_to_currency income.amount %> </td>
+		      <td><%= income.tax  %>%</td>
 		    </tr>
 		  <% end %>
 		</tbody>
 	</table>
   <p>
-	  Total income: <%= @total %> pln
+	  <%= t('total_income') %>: <%= number_to_currency @total %>
   </p>
 <% end %>
 <div class="form-actions">
-  <%= link_to "Add new income", new_income_path, class: "btn btn-primary" %>
+  <%= link_to t('add_income'), new_income_path, class: "btn btn-primary" %>
 </div>  
 

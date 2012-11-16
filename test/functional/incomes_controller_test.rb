@@ -29,7 +29,7 @@ class IncomesControllerTest < ActionController::TestCase
       post :create, income: { source: 'source', amount: 200, tax: 23, user_id: 1 }
     end
     assert_redirected_to all_incomes_path
-    assert_equal 'Income has been successfully created', flash[:notice]
+    assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.income')), flash[:notice]
   end
 
   test "should render new if income amount is not valid" do
@@ -40,7 +40,7 @@ class IncomesControllerTest < ActionController::TestCase
   test "should redirect to new income and notify about creation if source and amount are valid" do
     post :create, income: { source: 'source', amount: 200 }
     assert_redirected_to all_incomes_path
-    assert_equal 'Income has been successfully created', flash[:notice]
+    assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.income')), flash[:notice]
   end
 
   test "should get index" do

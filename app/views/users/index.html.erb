@@ -4,9 +4,9 @@
   <table class="table table-striped">
     <thead>
 		  <tr>
-		    <th>No.</th>
-		    <th>Email</th>
-		    <th>Delete</th>
+		    <th><%= t 'row_num' %></th>
+		    <th><%= t 'activerecord.attributes.user.email' %></th>
+		    <th>&nbsp;</th>
 		  </tr>
 		</thead>
 	  <tbody>
@@ -14,13 +14,12 @@
 		    <tr>
 		      <td><%= index+1 %></td>
 		      <td><%= user.email %></td>
-		      <td><%= link_to 'Delete', destroy_user_path(user.id), :class => "btn btn-primary", data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to t('delete'), destroy_user_path(user.id), class: "btn btn-danger", data: { confirm: t('confirm_delete')} %></td>
 		    </tr>
 		  <% end %>
 	  </tbody>
 	</table>
 <% end %>
-
 <div class="form-actions">
-  <%= link_to "Add new family member", new_user_path, :class => "btn btn-primary" %>
+  <%= link_to t('add_member'), new_user_path, :class => "btn btn-primary" %>
 </div>  

@@ -59,10 +59,10 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "table should contain information about name, amount, date and also action buttons" do
     get :index
-    assert_select 'thead th', 'Name'
-    assert_select 'thead th', 'Amount'
-    assert_select 'thead th', 'Date'
-    assert_select 'thead th', 'Actions'
+    assert_select 'thead th', I18n.t('activerecord.attributes.expense.name')
+    assert_select 'thead th', I18n.t('activerecord.attributes.expense.amount')
+    assert_select 'thead th', I18n.t('activerecord.attributes.expense.execution_date')
+    assert_select 'thead th', I18n.t('actions')
   end
 
   test "expense with name 'First' should be on the top of table" do
@@ -72,8 +72,8 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "table should contain delete buttons" do
     get :index
-    assert_select 'tbody tr td a', 'Edit'
-    assert_select 'tbody tr td a', 'Delete'
+    assert_select 'tbody tr td a', I18n.t('edit')
+    assert_select 'tbody tr td a', I18n.t('delete')
   end
 
   test "should contain pagination" do
@@ -106,7 +106,7 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "should contain link to adding new expense" do
     get :index
-    assert_select 'div.form-actions a', 'Add new expense'
+    assert_select 'div.form-actions a', I18n.t('add_expense')
   end
 
   test "test form is visible on expense page" do
@@ -130,7 +130,7 @@ class ExpensesControllerTest < ActionController::TestCase
     post :create, expense: { name: 'My new SSD', amount: 500, wallet_id: 1, execution_date: '2012-11-25' }
     assert_valid(@request.params[:expense])
     assert_redirected_to :new_expense
-    assert_equal 'Expense was successfully created.', flash[:notice]
+    assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
   end
 
   test "should render new template on invalids inputs" do
@@ -143,7 +143,7 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_difference('Expense.count', -1) do
       delete :destroy, id: 1
     end
-    assert_equal 'Expense was successfully deleted', flash[:notice]
+    assert_equal  I18n.t('flash.delete_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 
@@ -151,7 +151,7 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_no_difference('Expense.count') do
       delete :destroy, id: 12
     end
-    assert_equal "Couldn't find expense", flash[:notice]
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 
@@ -159,25 +159,25 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_no_difference('Expense.count') do
       delete :destroy, id: 100
     end
-    assert_equal "Couldn't find expense", flash[:notice]
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 
   test "should update expense and redirect to all expenses" do
     put :update, id: users(:user_with_wallet_1).expenses.first.id, expense: {name: 'Inna nazwa'}
-    assert_equal "Expense was successfully updated", flash[:notice]
+    assert_equal I18n.t('flash.update_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 
   test "should not update expense with belongs to another user" do
     put :update, id: 12, expense: {name: 'Inna nazwa'}
-    assert_equal "Couldn't find expense", flash[:notice]
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 
   test "should not update expense does not exist" do
     put :update, id: 100, expense: {name: 'Inna nazwa'}
-    assert_equal "Couldn't find expense", flash[:notice]
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 end

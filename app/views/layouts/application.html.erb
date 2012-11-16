@@ -22,6 +22,10 @@
                 <span class="icon-bar"></span>
               </a>
               <%= link_to 'Budget', root_path, class: 'brand' %>
+              <ul class="nav lang">
+                <li>(<%= link_to 'En', url_for( :locale => 'en' ), class: (I18n.locale == :en ? 'active' : '') %></li>
+                <li> <%= link_to 'Pl', url_for( :locale => 'pl' ), class: (I18n.locale == :pl ? 'active' : '') %>)</li>
+              </ul>
               <div class="nav-collapse collapse">
                 <% if user_signed_in? %>
                   <%= render 'layouts/user_signed' %>

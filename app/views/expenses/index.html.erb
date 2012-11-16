@@ -1,25 +1,24 @@
-<% if @expenses.empty? %>
+<% if @expenses.blank? %>
   <p>No expenses</p>
 <% else %>
   <table class="table table-striped">
     <thead>
-      <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Date</th>
-        <th>Actions</th>
-      </tr>
+    <tr>
+      <th><%= t('activerecord.attributes.expense.name') %></th>
+      <th><%= t('activerecord.attributes.expense.amount') %></th>
+      <th><%= t('activerecord.attributes.expense.execution_date') %></th>
+      <th><%= t('actions') %></th>
+    </tr>
     </thead>
     <tbody>
     <% @expenses.each do |r| %>
       <tr<%= ' class=warning' if r.execution_date.future? %>>
         <td><%= r.name %></td>
-        <td><%= r.amount %> pln</td>
-        <td><%= r.execution_date.strftime("%d %B %Y")  %></td>
+        <td><%= number_to_currency r.amount %></td>
+        <td><%= l r.execution_date %> </td>
         <td>
-          <%= link_to "Edit", edit_expense_path(r), class: "btn btn-primary" %>
-          <%= link_to "Delete", expense_path(r), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-        </td>
+          <%= link_to t('edit'), edit_expense_path(r), class: "btn btn-primary" %>
+          <%= link_to t('delete'), expense_path(r.id), class: "btn btn-danger", data: {confirm: t('confirm_delete')} %></td>
       </tr>
     <% end %>
     </tbody>
@@ -29,6 +28,5 @@
   </div>
 <% end %>
 <div class="form-actions">
-  <%= link_to "Add new expense", new_expense_path, class: "btn btn-primary" %>
-</div>  
-
+  <%= link_to t('add_expense'), new_expense_path, class: "btn btn-primary" %>
+</div>

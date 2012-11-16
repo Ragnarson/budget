@@ -28,9 +28,9 @@ class UsersControllerTest < ActionController::TestCase
     user = User.new(@request.params[:user])
   end
 
-  test "should error when email is empty" do
+  test "should show error when email is empty" do
     post :create, :user => {:email => ''}
-    assert_tag :tag => 'span', :content => "can't be blank"
+    assert_tag :tag => 'span', :content => I18n.t('errors.messages.blank')
     assert_template :new
   end
 end

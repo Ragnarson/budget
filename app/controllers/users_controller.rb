@@ -2,20 +2,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where(:users => {:invited_by => current_user.id})
-    if @users.empty?
-      redirect_to new_user_path, notice: "You didn't add any family member."
-    else
-      respond_to do |format|
-        format.html # index.html.erb
-      end
-    end
+    redirect_to new_user_path, notice: t('flash.no_members') if @users.blank?
   end
 
   def new
     @user = User.new
-    respond_to do |format|
-      format.html # new.html.erb
-    end
   end
 
   def create
@@ -23,9 +14,9 @@ class UsersController < ApplicationController
     @user.password = User.generate_password
     @user.invited_by = current_user.id
     if @user.save
-      mail_params = Hash["email" => @user.email, "current_user_email" => current_user.email, "url" => "http://budget.shellyapp.com"]
+      mail_params = {email: @user.email, current_user_email: current_user.email, url: "http://budget.shellyapp.com"}
       UserMailer.invite_email(mail_params).deliver
-      redirect_to users_path, notice: 'User was successfully created.'
+      redirect_to users_path, notice: t('flash.success_one', model: t('activerecord.models.user'))
     else
       render action: "new"
     end
@@ -34,6 +25,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path, notice: 'User was successfully deleted'
+    redirect_to users_path, notice: t('flash.delete_one', model: t('activerecord.models.user'))
   end
 end

@@ -1,8 +1,8 @@
 <%= simple_form_for @income, url: create_income_path, html: { class: "form-horizontal" } do |f| %>
-  <%= f.input :source, label: 'Source of income' %>
+  <%= f.input :source %>
   <%= f.input :amount, as: :currency, wrapper: 'append' %>
-  <%= f.input :tax, label: 'Tax rate', collection: [18, 23], as: :radio_buttons %>
+  <%= f.input :tax, collection: [['23%', 23], [ '18%', 18]], as: :radio_buttons %>
   <div class="form-actions">
-    <%= f.button :submit, 'Add income', class: 'btn btn-primary' %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
   </div>
 <% end %>

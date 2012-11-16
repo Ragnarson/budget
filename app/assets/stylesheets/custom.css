@@ -48,3 +48,20 @@ ul.income_options li {
 .footer-links li:first-child {
   padding-left: 0;
 }
+input.currency {
+  width: 166px;
+}
+.alert:first-letter {
+  text-transform: uppercase;;
+}
+.navbar .nav.lang > li > a {
+  padding: 10px 2px;
+  display: inline-block;
+}
+.navbar .nav.lang {
+  padding: 0 15px;
+}
+.navbar .nav.lang > li > a.active {
+  color: #fff;
+  background-color: transparent;
+}

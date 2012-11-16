@@ -3,7 +3,7 @@ class WalletsController < ApplicationController
 
   def index
     @wallets = current_user.wallets
-    redirect_to new_budget_path, notice: "You dont have any budgets. Please define new budget." if @wallets.blank?
+    redirect_to new_budget_path, notice: t('flash.no_wallets') if @wallets.blank?
   end
 
   def new
@@ -14,7 +14,7 @@ class WalletsController < ApplicationController
     @wallet = Wallet.new(params[:wallet])
     @wallet.user = current_user
     if @wallet.save
-      redirect_to budgets_path, notice: "Your new '#{@wallet.name}' budget was added successfully"
+      redirect_to budgets_path, notice: t('flash.wallet_success', name: @wallet.name)
     else
       render :action=> "new"
     end

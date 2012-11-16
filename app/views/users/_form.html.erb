@@ -8,8 +8,9 @@
       </ul>
     </div>
   <% end %>
-  <%= f.input :email, :label => 'Email address', :class => 'control-label' %>
+  <%= f.input :email, :class => 'control-label' %>
   <div class="form-actions">
-    <%= f.button :submit, 'Add member', :class => 'btn btn-primary'%>
+    <%#= f.button :submit, t('helpers.submit.create', model:  'Member'), :class => 'btn btn-primary'%>
+    <%= f.button :submit, t('helpers.submit.create', model: ''), :class => 'btn btn-primary'%>
   </div>
 <% end %>
