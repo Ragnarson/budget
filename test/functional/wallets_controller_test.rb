@@ -43,7 +43,7 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "if no wallets are present should redirect to new budget page" do
-    sign_in users(:user_without_wallet_1)
+    sign_in users(:user_without_wallet)
     get :index
     assert_redirected_to :new_budget
   end

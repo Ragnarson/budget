@@ -2,7 +2,7 @@ require_relative '../test_helper'
 
 class IncomesControllerTest < ActionController::TestCase
   def setup
-    sign_in users(:user_without_wallet_1)
+    sign_in users(:user_without_wallet)
   end
 
   def after

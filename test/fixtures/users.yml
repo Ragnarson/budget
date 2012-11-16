@@ -3,14 +3,14 @@ user_with_wallet_1:
   email: user_with_wallet_1@budget.shellyapp.com
   encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
 
-user_without_expenses_1:
+user_without_expenses:
   id: 2
-  email: user_without_expenses_1@budget.shellyapp.com
+  email: user_without_expenses@budget.shellyapp.com
   encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
 
-user_without_wallet_1:
+user_without_wallet:
   id: 3
-  email: user_without_wallet_1@budget.shellyapp.com
+  email: user_without_wallet@budget.shellyapp.com
   invited_by: 1
   encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
 

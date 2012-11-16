@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @expenses = current_user.expenses.paginate(page: params[:page], per_page: 10)
+    @expenses = current_user.expenses.order('execution_date DESC').paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -22,29 +22,22 @@ class ExpensesController < ApplicationController
   end
 
   def edit
-    begin
-      @expense = current_user.expenses.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
-    end
+    @expense = current_user.expenses.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
   end
 
   def update
-    begin
-      @expense = current_user.expenses.find(params[:id])
-      @expense.update_attributes(params[:expense])
-      redirect_to expenses_path, notice: t('flash.update_one', model: t('activerecord.models.expense'))
-    rescue ActiveRecord::RecordNotFound
-      redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
-    end
+    current_user.expenses.find(params[:id]).update_attributes(params[:expense])
+    redirect_to expenses_path, notice: t('flash.update_one', model: t('activerecord.models.expense'))
+  rescue ActiveRecord::RecordNotFound
+    redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
   end
 
   def destroy
-    begin
-      current_user.expenses.find(params[:id]).destroy
-      redirect_to expenses_path, notice: t('flash.delete_one', model: t('activerecord.models.expense'))
-    rescue ActiveRecord::RecordNotFound
-      redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
-    end
+    current_user.expenses.find(params[:id]).destroy
+    redirect_to expenses_path, notice: t('flash.delete_one', model: t('activerecord.models.expense'))
+  rescue ActiveRecord::RecordNotFound
+    redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
   end
 end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserMailerTest < ActionMailer::TestCase
   def test_invite_email
-    user = users(:user_without_wallet_1)
+    user = users(:user_without_wallet)
  
     # Send the email, then test that it got queued
     email = UserMailer.invite_email(user).deliver

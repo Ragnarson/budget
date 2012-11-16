@@ -52,7 +52,7 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'p', 'No expenses'
   end
 
-  test "first tr should have 'warning' class" do
+  test "first tr should have 'warning' class, because it contain future expense" do
     get :index
     assert_select 'tr.warning'
   end
@@ -70,7 +70,7 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'tbody tr:first-child td:first-child', 'First'
   end
 
-  test "table should contain delete buttons" do
+  test "table should contain delete and edit buttons" do
     get :index
     assert_select 'tbody tr td a', I18n.t('edit')
     assert_select 'tbody tr td a', I18n.t('delete')
@@ -87,7 +87,6 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   test "should not contain pagination" do
-    sign_out users(:user_with_wallet_1)
     sign_in users(:user_with_wallet_2)
     get :index
     assert_select 'div.pagination', count: 0
@@ -99,7 +98,7 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   test "should get index with information about no expenses" do
-    sign_in users(:user_without_expenses_1)
+    sign_in users(:user_without_expenses)
     get :index
     assert_select 'p', 'No expenses'
   end
@@ -121,7 +120,7 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   test "should redirect to new budget if there are not any wallets in database" do
-    sign_in users(:user_without_wallet_1)
+    sign_in users(:user_without_wallet)
     get :new
     assert_redirected_to :new_budget
   end
@@ -141,7 +140,7 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "should destroy expense and redirect to all expenses" do
     assert_difference('Expense.count', -1) do
-      delete :destroy, id: 1
+      delete :destroy, id: expenses(:expense_1).id
     end
     assert_equal  I18n.t('flash.delete_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
@@ -149,34 +148,36 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "should not destroy expense with belongs to another user" do
     assert_no_difference('Expense.count') do
-      delete :destroy, id: 12
+      delete :destroy, id: expenses(:expense_12).id
     end
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 
   test "should not destroy expense does not exist" do
+    expenses(:expense_1).destroy
     assert_no_difference('Expense.count') do
-      delete :destroy, id: 100
+      delete :destroy, id: 1
     end
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 
   test "should update expense and redirect to all expenses" do
-    put :update, id: users(:user_with_wallet_1).expenses.first.id, expense: {name: 'Inna nazwa'}
+    put :update, id: expenses(:expense_1), expense: {name: 'New car'}
     assert_equal I18n.t('flash.update_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 
   test "should not update expense with belongs to another user" do
-    put :update, id: 12, expense: {name: 'Inna nazwa'}
+    put :update, id: expenses(:expense_12), expense: {name: 'New car'}
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 
-  test "should not update expense does not exist" do
-    put :update, id: 100, expense: {name: 'Inna nazwa'}
+  test "should not update expense that not exist" do
+    expenses(:expense_1).destroy
+    put :update, id: 1, expense: {name: 'New car'}
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end

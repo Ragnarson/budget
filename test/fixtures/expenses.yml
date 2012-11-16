@@ -2,82 +2,82 @@ expense_1:
   id: 1
   name: Test
   amount: 10000
-  execution_date: <%= (DateTime.now-13).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 131.days.ago %>
   wallet_id: 1
 
 expense_2:
   id: 2
   name: Test
   amount: 10000
-  execution_date: <%= (DateTime.now-33).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 12.days.ago %>
   wallet_id: 1
 
 expense_3:
   id: 3
   name: Test
   amount: 10000
-  execution_date: <%= (DateTime.now+2).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 13.days.from_now %>
   wallet_id: 1
 
 expense_4:
   id: 4
   name: Test
   amount: 10000
-  execution_date: <%= (DateTime.now-9).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 10.days.ago %>
   wallet_id: 1
 
 expense_5:
   id: 5
   name: Test
   amount: 10000
-  execution_date: <%= DateTime.now.strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 13.days.from_now %>
   wallet_id: 1
 
 expense_6:
   id: 6
   name: Test
   amount: 10000
-  execution_date: <%= (DateTime.now-17).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 17.days.ago %>
   wallet_id: 1
 
 expense_7:
   id: 7
   name: Test
   amount: 10000
-  execution_date: <%= (DateTime.now-3).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 13.days.ago %>
   wallet_id: 1
 
 expense_8:
   id: 8
   name: Test
   amount: 10000
-  execution_date: <%= (DateTime.now-2).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 2.days.ago %>
   wallet_id: 1
 
 expense_9:
   id: 9
   name: Test
   amount: 10000
-  execution_date: <%= (DateTime.now-3).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 3.days.ago %>
   wallet_id: 1
 
 expense_10:
   id: 10
   name: Test
   amount: 10000
-  execution_date: <%= (DateTime.now-1).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 1.days.ago %>
   wallet_id: 1
 
 expense_11:
   id: 11
   name: First
   amount: 10000
-  execution_date: <%= (DateTime.now+100).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 103.days.from_now %>
   wallet_id: 1
 
 expense_12:
   id: 12
   name: test
   amount: 200
-  execution_date: <%= (DateTime.now-1).strftime("%Y-%m-%d").to_s %>
+  execution_date: <%= 2.days.ago %>
   wallet_id: 3
