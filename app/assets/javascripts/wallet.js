@@ -23,12 +23,15 @@ $(document).ready(function () {
     var budget_amount = $('#budget_amount');
     var total_header =  $('#total_header');
     var total_amount = $('#total_amount');
-    var plan_add_link = $('#plan_add_link');
+    var plan_budget_link = $('#plan_budget_link');
+    var add_expense_link = $('#add_expense_link');
 
+    add_expense_link.hide();
     total_header.hide();
 
-    plan_add_link.click(function(){
-        $(this).text("Add expense");
+    plan_budget_link.click(function(){
+        add_expense_link.show();
+        plan_budget_link.hide();
         budget_amount.hide();
         total_header.show();
         if(total_amount.is(':empty')){
@@ -38,10 +41,16 @@ $(document).ready(function () {
         set_date_picker();
     });
 
+    add_expense_link.click(function(){
+        amount_change_listener();
+        set_date_picker();
+    });
+
     if(budget_plan.children().size()>0){
-        plan_add_link.text("Add expense");
         budget_amount.hide();
         total_header.show();
+        add_expense_link.show();
+        plan_budget_link.hide();
         set_budget_amount();
         amount_change_listener();
     }

@@ -271,10 +271,11 @@ pl:
     edit_profile: Edytuj profilj
     logout: Wyloguj się
   ago: temu
-  add_budget: dodaj nowy budżet
+  add_budget: dodaj budżet
   add_expense: dodaj wydatek
-  add_income: dodaj nowy przychód
-  add_member: dodaj nowego użytkownika
+  add_income: dodaj przychód
+  add_member: dodaj użytkownika
+  plan_budget: planuj budżet
   no_wallets: Brak zdefiniowanego budżetu
   delete: usuń
   edit: edytuj

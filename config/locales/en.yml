@@ -151,9 +151,9 @@ en:
     select:
       prompt: Please select
     submit:
-      create: Add %{model}
-      submit: Save %{model}
-      update: Update %{model}
+      create: add %{model}
+      submit: save %{model}
+      update: update %{model}
   number:
     currency:
       format:
@@ -251,10 +251,11 @@ en:
     edit_profile: Edit profile
     logout: Logout
   ago: ago
-  add_budget: add new budget
-  add_expense: add new expense
-  add_income: add new income
-  add_member: add new family member
+  add_budget: add budget
+  add_expense: add expense
+  add_income: add income
+  add_member: add family member
+  plan_budget: plan budget
   no_wallets: No budgets
   delete: delete
   edit: edit

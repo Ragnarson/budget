@@ -11,6 +11,7 @@
 
     <div class="form-actions">
       <%= f.button :submit, class: 'btn btn-primary' %>
-      <%= link_to_add_fields "Plan this budget", f, :expenses %>
+      <%= link_to_add_fields t('plan_budget'), f, :expenses, 'plan_budget_link' %>
+      <%= link_to_add_fields t('add_expense'), f, :expenses, 'add_expense_link' %>
     </div>
 <% end %>
