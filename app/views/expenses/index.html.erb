@@ -11,14 +11,14 @@
     </tr>
     </thead>
     <tbody>
-    <% @expenses.each do |r| %>
-      <tr<%= ' class=warning' if r.execution_date.future? %>>
-        <td><%= r.name %></td>
-        <td><%= number_to_currency r.amount %></td>
-        <td><%= l r.execution_date %> </td>
+    <% @expenses.each do |expense| %>
+      <tr<%= ' class=warning' if expense.execution_date.future? %>>
+        <td><%= expense.name %></td>
+        <td><%= number_to_currency expense.amount %></td>
+        <td><%= l expense.execution_date %> </td>
         <td>
-          <%= link_to t('edit'), edit_expense_path(r), class: "btn btn-primary" %>
-          <%= link_to t('delete'), expense_path(r.id), class: "btn btn-danger", data: {confirm: t('confirm_delete')} %></td>
+          <%= link_to t('edit'), edit_expense_path(expense), class: "btn btn-primary" %>
+          <%= link_to t('delete'), expense_path(expense), method: :delete, class: "btn btn-danger", data: {confirm: t('confirm_delete')} %></td>
       </tr>
     <% end %>
     </tbody>
