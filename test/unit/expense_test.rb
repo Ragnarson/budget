@@ -68,7 +68,7 @@ class ExpenseTest < ActiveSupport::TestCase
   end
 
   test "should recognize invalid type of wallet_id" do
-    assert_invalid(name: 'Milk', amount: 10, wallet_id: '4e1', execution_date: '2011-11-11')
+    assert_invalid(name: 'Milk', amount: 10, wallet_id: 'abc', execution_date: '2011-11-11')
   end
 
   test "should recognize empty execution_date" do

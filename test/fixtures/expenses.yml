@@ -56,9 +56,9 @@ expense_8:
 
 expense_9:
   id: 9
-  name: Test
+  name: Second
   amount: 10000
-  execution_date: <%= 3.days.ago %>
+  execution_date: <%= 101.days.from_now %>
   wallet_id: 1
 
 expense_10:

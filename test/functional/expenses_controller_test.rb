@@ -70,6 +70,18 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'tbody tr:first-child td:first-child', 'First'
   end
 
+  test "expenses in array should be in proper order" do
+    get :index
+    assert_equal expenses(:expense_11), assigns(:expenses)[0]
+    assert_equal expenses(:expense_9), assigns(:expenses)[1]
+  end
+
+  test "expenses in table on page should be in proper order" do
+    get :index
+    assert_select 'tbody tr:nth-child(1) td:first-child', expenses(:expense_11).name
+    assert_select 'tbody tr:nth-child(2) td:first-child', expenses(:expense_9).name
+  end
+
   test "table should contain delete and edit buttons" do
     get :index
     assert_select 'tbody tr td a', I18n.t('edit')
