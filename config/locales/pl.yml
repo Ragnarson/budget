@@ -285,3 +285,9 @@ pl:
   row_num: Lp
   member: użytkownik
   actions: Opcje
+  home:
+    welcome: Witaj w aplikacji do zarządzania budżetem
+    login: Zaloguj się za pośrednictwem konta Google
+    specify:
+      income: Nie masz żadnych przychodów.
+      budget: Nie masz żadnych budżetów.

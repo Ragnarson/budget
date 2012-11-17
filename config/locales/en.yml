@@ -265,3 +265,9 @@ en:
   member: member
   row_num: No
   actions: Actions
+  home:
+    welcome: Welcome to the Budget Application
+    login: Login via Google account
+    specify:
+      income: You don't have any incomes, please specify one
+      budget: Please define your first budget

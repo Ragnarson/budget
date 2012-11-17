@@ -19,8 +19,8 @@ class HomeControllerTest < ActionController::TestCase
 
   test 'should contain hello message and login link' do
     get :index
-    assert_select 'h4', 'Welcome to the Budget Application'
-    assert_select 'a', 'Login via Google account'
+    assert_select 'h4', I18n.t('home.welcome')
+    assert_select 'a', I18n.t('home.login')
   end
 
   test 'should not contain login, incomes, new expense, budgets and members link' do

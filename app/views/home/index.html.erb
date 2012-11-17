@@ -1,21 +1,21 @@
 <% unless user_signed_in? %>
   <div class="pagination-centered hero-unit">
-    <h4>Welcome to the Budget Application</h4>
+    <h4><%= t('home.welcome') %></h4>
     <div>
-      <%= link_to "Login via Google account", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-inverse btn-medium" %>
+      <%= link_to t('home.login'), user_omniauth_authorize_path(:google_oauth2), class: "btn btn-inverse btn-medium" %>
     </div>
   </div>
 <% else %>
   <% if current_user.incomes.empty? %>
     <p class="pagination-centered">
-      You don't have any incomes, please specify one
-      <%= link_to "New income", new_income_path, class: "btn btn-primary btn-small" %>
+      <%= t('home.specify.income') %>
+      <%= link_to t('add_income'), new_income_path, class: "btn btn-primary btn-small" %>
     </p>
   <% end %>
   <% if current_user.wallets.empty? %>
     <p class="pagination-centered">
-      Please define your first budget
-      <%= link_to "New budget", new_budget_path, class: "btn btn-primary btn-small" %>
+      <%= t('home.specify.budget') %>
+      <%= link_to t('add_budget'), new_budget_path, class: "btn btn-primary btn-small" %>
     </p>
   <% else %>
     <%= render 'expenses/form' %>
