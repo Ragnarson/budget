@@ -1,6 +1,9 @@
 require 'test_helper'
+require_relative 'layout_tests'
 
 class WalletsControllerTest < ActionController::TestCase
+  include LayoutTests
+
   def setup
     sign_in users(:user_with_wallet_1)
   end

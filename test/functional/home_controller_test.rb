@@ -1,6 +1,9 @@
 require 'test_helper'
+require_relative 'layout_tests'
 
 class HomeControllerTest < ActionController::TestCase
+  include LayoutTests
+
   def after
     DatabaseCleaner.clean
   end
@@ -32,16 +35,6 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'a', text: I18n.t('header.members'), count: 0
   end
 
-  test 'when authenticated should contain login, incomes, new expense, budgets and members links' do
-    sign_in users(:user_with_wallet_1)
-    get :index
-    assert_select 'a', 'user_with_wallet_1@budget.shellyapp.com'
-    assert_select 'a', I18n.t('header.incomes')
-    assert_select 'a', I18n.t('header.expenses')
-    assert_select 'a', I18n.t('header.budgets')
-    assert_select 'a', I18n.t('header.members')
-  end
-
   test "add new expense form should not be visible on home page for guess" do
     get :index
     assert_select 'input#expense_name', count: 0
@@ -58,14 +51,6 @@ class HomeControllerTest < ActionController::TestCase
       assert_select 'input#expense_amount'
       assert_select 'input#expense_execution_date'
       assert_select 'select#expense_wallet_id'
-    end
-  end 
-
-  test 'should be message with actual balance' do
-    sign_in users(:user_with_wallet_1)
-    get :index
-    assert_select 'ul.pull-right' do
-      assert_select 'a', "#{I18n.t('header.balance')}: #{number_to_currency(0)}"
     end
   end
 

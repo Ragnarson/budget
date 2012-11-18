@@ -1,6 +1,9 @@
 require_relative '../test_helper'
+require_relative 'layout_tests'
 
 class IncomesControllerTest < ActionController::TestCase
+  include LayoutTests
+
   def setup
     sign_in users(:user_without_wallet)
   end
