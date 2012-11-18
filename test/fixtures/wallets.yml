@@ -1,17 +1,14 @@
 wallet_1:
-  id: 1
   name: Test
   amount: 10000
-  user_id: 1
+  user: user_with_wallet_1
 
 wallet_2:
-  id: 2
   name: Food
   amount: 15000
-  user_id: 2
+  user: user_without_expenses
 
 wallet_3:
-  id: 3
   name: Cars
   amount: 10000000
-  user_id: 4
+  user: user_with_wallet_2

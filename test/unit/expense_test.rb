@@ -11,7 +11,7 @@ class ExpenseTest < ActiveSupport::TestCase
   end
 
   def assert_valid(args)
-    assert_equal Expense.new(args).valid?, true
+    assert_equal wallets(:wallet_1).expenses.build(args).valid?, true
   end
 
   public
@@ -56,11 +56,11 @@ class ExpenseTest < ActiveSupport::TestCase
   end
 
   test "should recognize valid inputs" do
-    assert_valid(name: 'My new SSD', amount: 1, wallet_id: 1, execution_date: '2011-11-11')
+    assert_valid(name: 'My new SSD', amount: 1, execution_date: '2011-11-11')
   end
 
   test "should recognize valid inputs (with valid fraction in amount)" do
-    assert_valid(name: 'My new SSD', amount: 10.55, wallet_id: 1, execution_date: '2011-11-11')
+    assert_valid(name: 'My new SSD', amount: 10.55, execution_date: '2011-11-11')
   end
 
   test "should recognize empty wallet_id" do
@@ -88,6 +88,6 @@ class ExpenseTest < ActiveSupport::TestCase
   end
 
   test "should save valid expense to database" do
-    assert_equal Expense.new(name: 'Milk', amount: 3, wallet_id: 1, execution_date: '2012-01-12').save, true
+    assert_equal wallets(:wallet_1).expenses.build(name: 'Milk', amount: 3, execution_date: '2012-01-12').save, true
   end
 end
