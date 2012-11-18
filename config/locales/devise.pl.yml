@@ -1,0 +1,60 @@
+# Additional translations at http://github.com/plataformatec/devise/wiki/I18n
+
+pl:
+  errors:
+    messages:
+      expired: 'stracił ważność, wyślij zapytanie o nowy'
+      not_found: 'nie znaleziono'
+      already_confirmed: 'już został aktywowany, możesz się zalogować'
+      not_locked: 'nie był zablokowany'
+      not_saved:
+        one: '%{resource} nie został zapisany z powodu błędu:'
+        other: '%{resource} nie został zapisany z powodu następujących błędów:'
+
+  devise:
+    login: 'Zaloguj'
+    remember_me: 'Zapamiętaj mnie'
+    login_title: 'Logowanie'
+    failure:
+      already_authenticated: 'Jesteś już zalogowany.'
+      unauthenticated: 'Zaloguj lub zarejestruj się, aby kontynuować.'
+      unconfirmed: 'Nie aktywowałeś jeszcze swojego konta - sprawdź swój e-mail.'
+      locked: 'Twoje konto jest zablokowane.'
+      invalid: 'Niepoprawny adres e-mail lub hasło.'
+      invalid_token: 'Niepoprawny token.'
+      timeout: 'Sesja wygasła - zaloguj się ponownie, aby kontynuować.'
+      inactive: 'Konto nie zostało jeszcze aktywowane.'
+    sessions:
+      signed_in: 'Witaj ponownie!'
+      signed_out: 'Wylogowałeś się. Zapraszamy ponownie!'
+    passwords:
+      send_instructions: 'Za chwilę wyślemy instrukcję zmiany hasła na Twój adres e-mail.'
+      updated: 'Zmieniłeś swoje hasło. Zostałeś automatycznie zalogowany.'
+      updated_not_active: 'Zmieniłeś swoje hasło.'
+      send_paranoid_instructions: 'Jeśli wpisałeś poprawny e-mail, za chwilę wyślemy instrukcję zmiany hasła na Twój adres e-mail.'
+    confirmations:
+      send_instructions: 'Za chwilę wyślemy instrukcję aktywowania konta na Twój adres e-mail.'
+      send_paranoid_instructions: 'Jeśli wpisałeś poprawny e-mail, za chwilę wyślemy instrukcję aktywowania konta na Twój adres e-mail.'
+      confirmed: 'Aktywowaliśmy Twoje konto. Zostałeś automatycznie zalogowany.'
+    registrations:
+      signed_up: 'Witaj! Zarejestrowałeś się pomyślnie.'
+      signed_up_but_unconfirmed: 'E-mail z linkiem aktywacyjnym został wysłany na Twój adres e-mail. Sprawdź e-mail, aby dokończyć rejestrację.'
+      signed_up_but_inactive: 'Zarejestrowałeś się pomyślnie. Niemniej jednak nie zostałeś zalogowany, ponieważ Twoje konto nie zostało jeszcze aktywowane.'
+      signed_up_but_locked: 'Zarejestrowałeś się pomyślnie. Niemniej jednak nie zostałeś zalogowany, ponieważ Twoje konto zostało zablokowane.'
+      updated: 'Zaktualizowałeś swoje dane.'
+      update_needs_confirmation: 'Aby potwierdzić zmiany, musimy zweryfikować Twój nowy adres e-mail. Za chwilę wyślemy instrukcję na nowy adres.'
+      destroyed: 'Usunąłeś swoje konto.'
+    unlocks:
+      send_instructions: 'Za chwilę wyślemy instrukcję odblokowania konta na Twój adres e-mail.'
+      unlocked: 'Odblokowaliśmy Twoje konto. Jesteś już zalogowany.'
+      send_paranoid_instructions: 'Jeśli Twoje konto istnieje w naszej bazie, otrzymasz zaraz e-mail z instrukcją jak odblokować swoje konto.'
+    omniauth_callbacks:
+      success: 'Zalogowałeś się przez %{kind}.'
+      failure: 'Logowanie przez konto %{kind} zakończyło się błędem: "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instrukcja aktywacji konta'
+      reset_password_instructions:
+        subject: 'Instrukcja ustawienia nowego hasła'
+      unlock_instructions:
+        subject: 'Instrukcja odblokowania konta'

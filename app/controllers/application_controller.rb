@@ -3,16 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale, :get_actual_balance
 
   def after_sign_in_path_for(resource)
-    msg = t('flash.welcome', name: current_user.username.titleize)
-    if current_user.wallets.empty?
-      msg << t('flash.first_budget')
-      path = new_budget_path
-    else
-      msg << t('flash.add_expense')
-      path = new_expense_path
-    end
-    flash[:notice] = msg
-    path
+    root_path
   end
 
   private
