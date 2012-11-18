@@ -17,18 +17,22 @@
 //= require_tree .
 //= require_self
 
-function set_date_picker(){
+function set_date_picker() {
     $('input.date_picker').datepicker({
         'format': 'dd/mm/yyyy',
         'autoclose': true
     });
 }
 
-$(document).ready(function () {
-    set_date_picker()
+function clear_input_currency() {
     $('input.currency').click(function() {
         if($(this).val() == '0,00' || $(this).val() == '0.00') {
             $(this).val('')
         }
     });
+}
+
+$(document).ready(function () {
+    set_date_picker();
+    clear_input_currency();
 });

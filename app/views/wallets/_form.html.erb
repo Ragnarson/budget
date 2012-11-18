@@ -1,17 +1,17 @@
-<%= simple_form_for @wallet, url: create_budget_path, html: {class: "form-horizontal"} do |f| %>
-    <%= f.input :name %>
-    <%= f.input :amount, as: :currency, wrapper: 'append', wrapper_html: {id: 'budget_amount'} %>
+<%= simple_form_for @wallet, url: create_budget_path, html: { class: "form-horizontal" } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :amount, as: :currency, wrapper: 'append', wrapper_html: { id: 'budget_amount' } %>
 
-	  <h4 id="total_header">Total amount: <span id="total_amount"></span></h4>
-	  <div id="budget_plan">
-	    <%= f.simple_fields_for :expenses do |builder| %>
-	      <%= render "expenses/expenses_fields", f: builder %>
-	    <% end %>
-	  </div>
+  <h4 id="total_header"><%= t('total_amount') %>: <span id="total_amount"></span></h4>
+  <div id="budget_plan">
+    <%= f.simple_fields_for :expenses do |builder| %>
+      <%= render "expenses/expenses_fields", f: builder %>
+    <% end %>
+  </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, class: 'btn btn-primary' %>
-      <%= link_to_add_fields t('plan_budget'), f, :expenses, 'plan_budget_link' %>
-      <%= link_to_add_fields t('add_expense'), f, :expenses, 'add_expense_link' %>
-    </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to_add_fields t('plan_budget'), f, :expenses, 'plan_budget_link' %>
+    <%= link_to_add_fields t('add_expense'), f, :expenses, 'add_expense_link' %>
+  </div>
 <% end %>

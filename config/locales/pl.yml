@@ -276,6 +276,7 @@ pl:
   add_income: dodaj przychód
   add_member: dodaj użytkownika
   plan_budget: planuj budżet
+  total_amount: Suma wydatków
   no_wallets: Brak zdefiniowanego budżetu
   delete: usuń
   edit: edytuj

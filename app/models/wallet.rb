@@ -8,12 +8,12 @@ class Wallet < ActiveRecord::Base
   accepts_nested_attributes_for :expenses
 
   validates_presence_of :name
-  validates :amount, numericality: {decimal: true}, allow_blank: true
+  validates :amount, numericality: { decimal: true }, allow_blank: true
 
   private
   def initialize_amounts
     @sum = 0
     self.expenses.each { |e| @sum+=e.amount }
-    self.amount = @sum
+    self.amount = @sum if @sum > 0
   end
 end
