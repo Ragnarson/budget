@@ -12,10 +12,10 @@ module LayoutTests
   end
 
   test 'should be message with actual balance' do
-    sign_in users(:user_with_wallet_1)
+    sign_in users(:user_with_wallet_2)
     get :index
     assert_select 'ul.pull-right' do
-      assert_select 'a', "#{I18n.t('header.balance')}: #{number_to_currency(0)}"
+      assert_select 'a', "#{I18n.t('header.balance')}: #{number_to_currency(800)}"
     end
   end
 

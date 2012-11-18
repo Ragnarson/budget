@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :set_locale
+  before_filter :set_locale, :get_actual_balance
 
   def after_sign_in_path_for(resource)
     msg = t('flash.welcome', name: current_user.username.titleize)
@@ -24,5 +24,9 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     {:locale => I18n.locale}
+  end
+
+  def get_actual_balance
+    @actual_balance = Balance.actual_balance(current_user.id) unless !user_signed_in?
   end
 end

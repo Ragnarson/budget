@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
   def incomes_sum
     self.incomes.map(&:amount).inject(0, &:+)
   end
+
+  def expenses_sum
+    self.expenses.map(&:amount).inject(0, &:+)
+  end
 end
