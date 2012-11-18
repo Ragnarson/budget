@@ -22,14 +22,13 @@ function set_date_picker(){
         'format': 'dd/mm/yyyy',
         'autoclose': true
     });
-
-    $('input.currency').click(function() {
-        if($(this).val() == '0.0') {
-            $(this).val('')
-        }
-    });
 }
 
 $(document).ready(function () {
     set_date_picker()
+    $('input.currency').click(function() {
+        if($(this).val() == '0,00' || $(this).val() == '0.00') {
+            $(this).val('')
+        }
+    });
 });
