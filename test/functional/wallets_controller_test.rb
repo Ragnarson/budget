@@ -28,15 +28,15 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "should create budget and redirect to new with notice" do
-    post :create, :wallet => {:name => 'Some title'}
+    post :create, wallet: { name: 'Some title' }
     wallet = Wallet.new(@request.params[:wallet])
     assert_redirected_to :budgets
     assert_equal I18n.t('flash.wallet_success', name: wallet.name), flash[:notice]
   end
 
   test "should show error when name is empty" do
-    post :create, :wallet => {:name => ''}
-    assert_tag :tag => 'span', :content => I18n.t('errors.messages.blank')
+    post :create, wallet: { name: '' }
+    assert_tag tag: 'span', content: I18n.t('errors.messages.blank')
     assert_template :new
   end
 
@@ -54,6 +54,29 @@ class WalletsControllerTest < ActionController::TestCase
   test "if wallets are present should show table with wallets list" do
     post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
     get :index
-    assert_tag :tag => 'table', :attributes => { :class => 'table table-striped'}
+    assert_tag tag: 'table', attributes: { class: 'table table-striped' }
   end
+
+  test "after create wallet, amount should be equal 500" do
+    post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
+    wallet = Wallet.new(@request.params[:wallet])
+    assert_equal wallet.amount, 500
+  end
+
+  test "after create wallet, amount should be not equal 200" do
+    post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
+    wallet = Wallet.new(@request.params[:wallet])
+    assert_not_equal wallet.amount, 200
+  end
+
+  test "if wallet with 2 expenses was successfuly created, sum of amount should be 40" do
+    post :create, wallet: { name: 'Budget name', user_id: 1, expenses_attributes: { 0=> { name: 'food', amount: 34, execution_date: '2012-11-12' }, 1=> { name: 'food2', amount: 6, execution_date: '2012-11-12' } } }
+    wallet = Wallet.new(@request.params[:wallet])
+    @sum = 0
+    wallet.expenses.each do |e|
+      @sum+=e.amount
+    end
+    assert_equal @sum, 40
+  end
+
 end
