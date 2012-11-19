@@ -29,9 +29,8 @@ class WalletsControllerTest < ActionController::TestCase
 
   test "should create budget and redirect to new with notice" do
     post :create, wallet: { name: 'Some title' }
-    wallet = Wallet.new(@request.params[:wallet])
     assert_redirected_to :wallets
-    assert_equal I18n.t('flash.wallet_success', name: wallet.name), flash[:notice]
+    assert_equal I18n.t('flash.wallet_success', name: 'Some title'), flash[:notice]
   end
 
   test "should show error when name is empty" do
@@ -52,50 +51,41 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "if wallets are present should show table with wallets list" do
-    post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
+    post :create, wallet: { name: 'Budget name', amount: 500 }
     get :index
     assert_tag tag: 'table', attributes: { class: 'table table-striped' }
   end
 
-  test "after create wallet, amount should be equal 500" do
-    post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
-    wallet = Wallet.new(@request.params[:wallet])
-    assert_equal wallet.amount, 500
+  test "if wallet was created, amount should be visible in table on index page" do
+    post :create, wallet: { name: 'Budget name', amount: 10 }
+    get :index
+    assert_select 'tbody tr:last-child td:nth-child(2)', number_to_currency(10)
   end
 
-  test "after create wallet, amount should be not equal 200" do
-    post :create, wallet: { name: 'Budget name', amount: 500, user_id: 1 }
-    wallet = Wallet.new(@request.params[:wallet])
-    assert_not_equal wallet.amount, 200
-  end
-
-  test "if wallet with 2 expenses was successfuly created, sum of amount should be 40" do
-    post :create, wallet: { name: 'Budget name', user_id: 1, expenses_attributes: { 0=> { name: 'food', amount: 34, execution_date: '2012-11-12' }, 1=> { name: 'food2', amount: 6, execution_date: '2012-11-12' } } }
-    wallet = Wallet.new(@request.params[:wallet])
-    @sum = 0
-    wallet.expenses.each do |e|
-      @sum+=e.amount
-    end
-    assert_equal @sum, 40
+  test "if wallet with expenses were created, wallet amount should be equal to the sum of amounts in expenses" do
+    post :create, wallet: { name: 'Budget name', amount: 300, expenses_attributes: { 0=> { name: 'food', amount: 34, execution_date: '2012-11-12' }, 1=> { name: 'food2', amount: 6, execution_date: '2012-11-12' } } }
+    get :index
+    assert_select 'tbody tr:last-child td:nth-child(2)', number_to_currency(40)
   end
 
   test "should not update wallet if name is empty" do
-    put :update, id: wallets(:wallet_1), wallet: {user_id: 1, amount: 200, name: ''}
+    put :update, id: wallets(:wallet_1), wallet: { amount: 200, name: '' }
     assert_template :edit
-    assert_tag :tag => 'span', :content => I18n.t('errors.messages.blank')
+    assert_tag tag: 'span', content: I18n.t('errors.messages.blank')
   end
 
   test "should not update other users wallet" do
-    put :update, id: wallets(:wallet_3), wallet: {user_id: 1, amount: 200, name: 'something'}
+    put :update, id: wallets(:wallet_3), wallet: { user_id: users(:user_with_wallet_1), amount: 200, name: 'something' }
     assert_redirected_to :wallets
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.wallet')), flash[:notice]
   end
 
   test "should update user wallet" do
-    put :update, id: wallets(:wallet_1), wallet: {user_id: 1, amount: 200, name: 'something'}
+    put :update, id: wallets(:wallet_1), wallet: { amount: 200, name: 'something' }
     assert_redirected_to :wallets
     assert_equal I18n.t('flash.update_one', model: I18n.t('activerecord.models.wallet')), flash[:notice]
   end
+
   test "should destroy wallet and redirect to wallets" do
     assert_difference('Wallet.count', -1) do
       delete :destroy, id: wallets(:wallet_1).id

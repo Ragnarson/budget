@@ -1,5 +1,5 @@
 class Wallet < ActiveRecord::Base
-  attr_accessible :name, :amount, :user_id, :expenses_attributes
+  attr_accessible :name, :amount, :expenses_attributes
   before_create :initialize_amounts
 
   has_many :expenses, inverse_of: :wallet
@@ -7,7 +7,7 @@ class Wallet < ActiveRecord::Base
 
   accepts_nested_attributes_for :expenses
 
-  validates_presence_of :name
+  validates_presence_of :name, :user
   validates :amount, numericality: { decimal: true }, allow_blank: true
 
   private
