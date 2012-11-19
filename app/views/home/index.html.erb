@@ -15,7 +15,7 @@
   <% if current_user.wallets.empty? %>
     <p class="pagination-centered">
       <%= t('home.specify.budget') %>
-      <%= link_to t('add_budget'), new_budget_path, class: "btn btn-primary btn-small" %>
+      <%= link_to t('add_budget'), new_wallet_path, class: "btn btn-primary btn-small" %>
     </p>
   <% else %>
     <%= render 'expenses/form' %>

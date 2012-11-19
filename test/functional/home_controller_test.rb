@@ -58,4 +58,16 @@ class HomeControllerTest < ActionController::TestCase
     get :index
     assert_select 'a', text: I18n.t('header.balance'), count: 0
   end
+
+  test 'should be link to create new budget' do
+    sign_in users(:user_without_wallet)
+    get :index
+    assert_select 'a', text: I18n.t('add_budget')
+  end
+
+  test 'should be link to create new income' do
+    sign_in users(:user_without_income)
+    get :index
+    assert_select 'a', text: I18n.t('add_income')
+  end
 end
