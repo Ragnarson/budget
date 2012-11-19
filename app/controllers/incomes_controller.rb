@@ -2,7 +2,6 @@ class IncomesController < ApplicationController
 
   def new
     @income = Income.new
-    @income.tax = 23
   end
 
   def index

@@ -12,12 +12,12 @@ class IncomesControllerTest < ActionController::TestCase
     DatabaseCleaner.clean
   end
 
-  test "should get new"do
+  test "should get new" do
     get :new 
     assert_response :success
     assert_not_nil assigns(:income)
   end
-  
+
   test "income with name 'First' should be on the top of table" do
     sign_in users(:user_with_wallet_1)
     get :index
@@ -62,6 +62,7 @@ class IncomesControllerTest < ActionController::TestCase
     assert_select 'form' do
       assert_select 'input#income_source'
       assert_select 'input#income_amount'
+      assert_select 'input#income_tax'
       assert_select 'input[TYPE=submit]'
     end
   end
@@ -123,7 +124,7 @@ class IncomesControllerTest < ActionController::TestCase
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.income')), flash[:notice]
     assert_redirected_to :incomes
   end
- 
+
   test "should update income and redirect to income index" do
     sign_in users(:user_with_wallet_1)
     put :update, id: incomes(:income_2), income: {source: 'Prize'}
