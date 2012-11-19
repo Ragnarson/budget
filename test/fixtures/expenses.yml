@@ -69,3 +69,21 @@ expense_12:
   amount: 200
   execution_date: <%= 2.days.ago %>
   wallet: wallet_3
+
+expense_13:
+  name: test
+  amount: 200
+  execution_date: <%= 2.days.ago %>
+  wallet: wallet_6
+
+expense_14:
+  name: test
+  amount: 200
+  execution_date: <%= 2.days.ago %>
+  wallet: wallet_5
+
+expense_14:
+  name: test
+  amount: 200
+  execution_date: <%= 2.days.ago %>
+  wallet: wallet_5

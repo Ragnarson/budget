@@ -12,3 +12,18 @@ wallet_3:
   name: Cars
   amount: 10000000
   user: user_with_wallet_2
+
+wallet_4:
+  name: Empty
+  amount: 500
+  user: user_with_wallet_3
+
+wallet_5:
+  name: Books
+  amount: 300
+  user: user_with_wallet_3
+
+wallet_6:
+  name: Home
+  amount: 1500
+  user: user_with_wallet_3

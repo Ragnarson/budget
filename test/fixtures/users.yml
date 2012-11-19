@@ -18,3 +18,7 @@ user_with_wallet_2:
 user_without_income:
   email: user_without_income@budget.shellyapp.com
   encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+
+user_with_wallet_3:
+  email: user_with_wallet_3@budget.shellyapp.com
+  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
