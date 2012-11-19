@@ -34,3 +34,5 @@ group :development, :test do
   gem 'turn'
   gem 'minitest'
 end
+
+gem 'tconsole'
