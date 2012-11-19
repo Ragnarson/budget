@@ -19,7 +19,7 @@ gem 'less-rails'
 gem 'jquery-rails'
 
 gem 'twitter-bootstrap-rails'
-gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-datepicker-rails', '= 0.6.24'
 gem 'bootstrap-will_paginate'
 
 gem 'devise'

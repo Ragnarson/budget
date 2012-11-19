@@ -31,7 +31,7 @@ GEM
     ansi (1.4.3)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-datepicker-rails (0.6.28)
+    bootstrap-datepicker-rails (0.6.24)
       railties (>= 3.0)
     bootstrap-will_paginate (0.0.9)
       will_paginate
@@ -177,7 +177,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-datepicker-rails
+  bootstrap-datepicker-rails (= 0.6.24)
   bootstrap-will_paginate
   coffee-rails (~> 3.2.1)
   database_cleaner
