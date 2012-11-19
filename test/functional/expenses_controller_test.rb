@@ -137,7 +137,7 @@ class ExpensesControllerTest < ActionController::TestCase
   test "should redirect to new budget if there are not any wallets in database" do
     sign_in users(:user_without_wallet)
     get :new
-    assert_redirected_to :new_budget
+    assert_redirected_to :new_wallet
   end
 
   test "should create expense and redirect to new with notice on valid inputs" do

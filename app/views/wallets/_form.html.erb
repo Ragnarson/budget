@@ -1,4 +1,4 @@
-<%= simple_form_for @wallet, url: create_budget_path, html: { class: "form-horizontal" } do |f| %>
+<%= simple_form_for @wallet, html: { class: "form-horizontal" } do |f| %>
   <%= f.input :name %>
   <%= f.input :amount, as: :currency, wrapper: 'append', wrapper_html: { id: 'budget_amount' } %>
 

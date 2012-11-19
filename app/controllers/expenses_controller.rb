@@ -7,8 +7,9 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    redirect_to new_budget_path, notice: t('flash.add_budget') if current_user.wallets.empty?
+    redirect_to new_wallet_path, notice: t('flash.add_budget') if current_user.wallets.empty?
     @expense = Expense.new
+    @expense.execution_date = Date.today.strftime("%d/%m/%Y")
   end
 
   def create

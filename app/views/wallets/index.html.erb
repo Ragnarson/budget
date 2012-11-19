@@ -4,6 +4,7 @@
     <tr>
       <th><%= t('activerecord.attributes.wallet.name') %></th>
       <th><%= t('activerecord.attributes.wallet.amount') %></th>
+      <th><%= t('actions') %></th>
     </tr>
     </thead>
     <tbody>
@@ -11,12 +12,16 @@
       <tr>
         <td><%= wallet.name %></td>
         <td><%= number_to_currency wallet.amount %></td>
+        <td>
+          <%= link_to t('edit'), edit_wallet_path(wallet), class: "btn btn-primary" %>
+          <%= link_to t('delete'), wallet_path(wallet), method: :delete, class: "btn btn-danger", data: {confirm: t('confirm_delete')} %>
+        </td>
       </tr>
     <% end %>
     </tbody>
   </table>
 <% end %>
 <div class="form-actions">
-  <%= link_to t('add_budget'), new_budget_path, :class => "btn btn-primary" %>
+  <%= link_to t('add_budget'), new_wallet_path, :class => "btn btn-primary" %>
 </div>  
 

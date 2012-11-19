@@ -4,10 +4,7 @@ Budget::Application.routes.draw do
 
     devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
-    match '/budgets' => 'wallets#index', :as => :budgets
-    match '/new_budget' => 'wallets#new', :as => :new_budget
-    match '/create_budget' => 'wallets#create', :as => :create_budget, :via => :post
-
+    resources :wallets, except: :show
     resources :expenses, except: :show
 
     match '/new_income' => 'incomes#new', :as => :new_income

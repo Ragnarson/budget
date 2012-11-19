@@ -32,7 +32,7 @@ pl:
     - piątek
     - sobota
     formats:
-      default: ! '%d-%m-%Y'
+      default: ! '%d.%m.%Y'
       long: ! '%B %d, %Y'
       short: ! '%d %b'
     month_names:

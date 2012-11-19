@@ -1,0 +1,8 @@
+<%= simple_form_for @wallet, html: { class: "form-horizontal" } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :amount, as: :currency, wrapper: 'append' %>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

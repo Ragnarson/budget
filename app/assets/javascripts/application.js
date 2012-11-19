@@ -19,7 +19,7 @@
 
 function set_date_picker() {
     $('input.date_picker').datepicker({
-        'format': 'dd/mm/yyyy',
+        'format': 'dd.mm.yyyy',
         'autoclose': true
     });
 }

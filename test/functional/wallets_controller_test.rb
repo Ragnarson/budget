@@ -30,7 +30,7 @@ class WalletsControllerTest < ActionController::TestCase
   test "should create budget and redirect to new with notice" do
     post :create, wallet: { name: 'Some title' }
     wallet = Wallet.new(@request.params[:wallet])
-    assert_redirected_to :budgets
+    assert_redirected_to :wallets
     assert_equal I18n.t('flash.wallet_success', name: wallet.name), flash[:notice]
   end
 
@@ -48,7 +48,7 @@ class WalletsControllerTest < ActionController::TestCase
   test "if no wallets are present should redirect to new budget page" do
     sign_in users(:user_without_wallet)
     get :index
-    assert_redirected_to :new_budget
+    assert_redirected_to :new_wallet
   end
 
   test "if wallets are present should show table with wallets list" do
@@ -77,6 +77,48 @@ class WalletsControllerTest < ActionController::TestCase
       @sum+=e.amount
     end
     assert_equal @sum, 40
+  end
+
+  test "should not update wallet if name is empty" do
+    put :update, id: wallets(:wallet_1), wallet: {user_id: 1, amount: 200, name: ''}
+    assert_template :edit
+    assert_tag :tag => 'span', :content => I18n.t('errors.messages.blank')
+  end
+
+  test "should not update other users wallet" do
+    put :update, id: wallets(:wallet_3), wallet: {user_id: 1, amount: 200, name: 'something'}
+    assert_redirected_to :wallets
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.wallet')), flash[:notice]
+  end
+
+  test "should update user wallet" do
+    put :update, id: wallets(:wallet_1), wallet: {user_id: 1, amount: 200, name: 'something'}
+    assert_redirected_to :wallets
+    assert_equal I18n.t('flash.update_one', model: I18n.t('activerecord.models.wallet')), flash[:notice]
+  end
+  test "should destroy wallet and redirect to wallets" do
+    assert_difference('Wallet.count', -1) do
+      delete :destroy, id: wallets(:wallet_1).id
+    end
+    assert_equal  I18n.t('flash.delete_one', model: I18n.t('activerecord.models.wallet')), flash[:notice]
+    assert_redirected_to :wallets
+  end
+
+  test "should not destroy expense with belongs to another user" do
+    assert_no_difference('Wallet.count') do
+      delete :destroy, id: wallets(:wallet_3).id
+    end
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.wallet')), flash[:notice]
+    assert_redirected_to :wallets
+  end
+
+  test "should not destroy expense does not exist" do
+    wallets(:wallet_1).destroy
+    assert_no_difference('Wallet.count') do
+      delete :destroy, id: 100
+    end
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.wallet')), flash[:notice]
+    assert_redirected_to :wallets
   end
 
 end
