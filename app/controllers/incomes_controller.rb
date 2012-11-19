@@ -20,6 +20,19 @@ class IncomesController < ApplicationController
     end
   end
 
+  def edit
+    @income = current_user.incomes.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to incomes_path, notice: t('flash.no_record', model: t('activerecord.models.income'))
+  end
+
+  def update
+    current_user.incomes.find(params[:id]).update_attributes(params[:income])
+    redirect_to incomes_path, notice: t('flash.update_one', model: t('activerecord.models.income'))
+  rescue ActiveRecord::RecordNotFound
+    redirect_to incomes_path, notice: t('flash.no_record', model: t('activerecord.models.income'))
+  end
+
   def destroy
     current_user.incomes.find(params[:id]).destroy
     redirect_to incomes_path, notice: t('flash.delete_one', model: t('activerecord.models.income'))

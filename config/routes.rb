@@ -6,7 +6,7 @@ Budget::Application.routes.draw do
 
     resources :wallets, except: :show
     resources :expenses, except: :show
-    resources :incomes, except: [:show, :update, :edit]
+    resources :incomes, except: :show
 
     match '/new_family_member' => 'users#new', :as => :new_user
     match '/create_family_member' => 'users#create', :as => :create_user, :via => :post

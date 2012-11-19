@@ -33,9 +33,10 @@ class IncomesControllerTest < ActionController::TestCase
     assert_select 'thead th', I18n.t('actions')
   end
 
-  test "table should contain delete button" do
+  test "table should contain delete and edit buttons" do
     sign_in users(:user_with_wallet_1)
     get :index
+    assert_select 'tbody tr td a', I18n.t('edit')
     assert_select 'tbody tr td a', I18n.t('delete')
   end
 
@@ -119,6 +120,26 @@ class IncomesControllerTest < ActionController::TestCase
     assert_no_difference('Income.count') do
       delete :destroy, id: 1
     end
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.income')), flash[:notice]
+    assert_redirected_to :incomes
+  end
+ 
+  test "should update income and redirect to income index" do
+    sign_in users(:user_with_wallet_1)
+    put :update, id: incomes(:income_2), income: {source: 'Prize'}
+    assert_equal I18n.t('flash.update_one', model: I18n.t('activerecord.models.income')), flash[:notice]
+    assert_redirected_to :incomes
+  end
+
+  test "should not update income with belongs to another user" do
+    put :update, id: incomes(:income_2), income: {name: 'New car'}
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.income')), flash[:notice]
+    assert_redirected_to :incomes
+  end
+
+  test "should not update income that not exist" do
+    incomes(:income_1).destroy
+    put :update, id: 1, income: {amount: 20000}
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.income')), flash[:notice]
     assert_redirected_to :incomes
   end
