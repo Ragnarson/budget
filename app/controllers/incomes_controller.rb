@@ -19,4 +19,11 @@ class IncomesController < ApplicationController
       render action: "new"
     end
   end
+
+  def destroy
+    current_user.incomes.find(params[:id]).destroy
+    redirect_to incomes_path, notice: t('flash.delete_one', model: t('activerecord.models.income'))
+  rescue ActiveRecord::RecordNotFound
+    redirect_to incomes_path, notice: t('flash.no_record', model: t('activerecord.models.income'))
+  end
 end

@@ -26,7 +26,7 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'a', I18n.t('home.login')
   end
 
-  test 'should not contain login, incomes, new expense, budgets and members link' do
+  test 'should not contain login, incomes, expenses, budgets and members link' do
     get :index
     assert_select 'a', text: 'user_with_wallet_1@budget.shellyapp.com', count: 0
     assert_select 'a', text: I18n.t('header.incomes'), count: 0

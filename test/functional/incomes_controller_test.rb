@@ -18,6 +18,27 @@ class IncomesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:income)
   end
   
+  test "income with name 'First' should be on the top of table" do
+    sign_in users(:user_with_wallet_1)
+    get :index
+    assert_select 'tbody tr:first-child td:first-child', users(:user_with_wallet_1).incomes.last.source
+  end
+
+  test "table should contain information about source, amount, tax and also action buttons" do
+    sign_in users(:user_with_wallet_1)
+    get :index
+    assert_select 'thead th', I18n.t('activerecord.attributes.income.source')
+    assert_select 'thead th', I18n.t('activerecord.attributes.income.amount')
+    assert_select 'thead th', I18n.t('activerecord.attributes.income.tax')
+    assert_select 'thead th', I18n.t('actions')
+  end
+
+  test "table should contain delete button" do
+    sign_in users(:user_with_wallet_1)
+    get :index
+    assert_select 'tbody tr td a', I18n.t('delete')
+  end
+
   test "should contain pagination" do
     sign_in users(:user_with_wallet_1)
     get :index
@@ -74,5 +95,31 @@ class IncomesControllerTest < ActionController::TestCase
     if assert_equal assigns(:incomes).length, 0
       assert_equal assigns(:total), 0
     end
+  end
+
+  test "should destroy income and redirect to income index" do
+    sign_in users(:user_with_wallet_1)
+    assert_difference('Income.count', -1) do
+      delete :destroy, id: incomes(:income_2).id
+    end
+    assert_equal  I18n.t('flash.delete_one', model: I18n.t('activerecord.models.income')), flash[:notice]
+    assert_redirected_to :incomes
+  end
+
+  test "should not destroy income with belongs to another user" do
+    assert_no_difference('Income.count') do
+      delete :destroy, id: incomes(:income_1).id
+    end
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.income')), flash[:notice]
+    assert_redirected_to :incomes
+  end
+
+  test "should not destroy income does not exist" do
+    incomes(:income_2).destroy
+    assert_no_difference('Income.count') do
+      delete :destroy, id: 1
+    end
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.income')), flash[:notice]
+    assert_redirected_to :incomes
   end
 end

@@ -1,7 +1,7 @@
 module LayoutTests
   extend ActiveSupport::Testing::Declarative
 
-  test 'when authenticated should contain login, incomes, new expense, budgets and members links' do
+  test 'when authenticated should contain login, incomes, expenses, budgets and members links' do
     sign_in users(:user_with_wallet_1)
     get :index
     assert_select 'a', 'user_with_wallet_1@budget.shellyapp.com'
