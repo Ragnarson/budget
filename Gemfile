@@ -33,6 +33,5 @@ gem 'shelly-dependencies', :group => :production
 group :development, :test do
   gem 'turn'
   gem 'minitest'
+  gem 'tconsole'
 end
-
-gem 'tconsole'
