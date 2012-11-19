@@ -1,24 +1,27 @@
 <% if @incomes.empty? %>
-	<p>No income</p>
+  <p>No income</p>
 <% else %>
-	<table class="table table-striped">
-		<thead>
-		  <tr>
-		    <th><%= t('activerecord.attributes.income.source') %></th>
-		    <th><%= t('activerecord.attributes.income.amount') %></th>
-		    <th><%= t('activerecord.attributes.income.tax') %></th>
-		  </tr>
-		</thead>
-		<tbody>
-		  <% @incomes.each do |income| %>
-		    <tr>
-		      <td><%= income.source %></td>
-		      <td><%= number_to_currency income.amount %> </td>
-		      <td><%= income.tax  %>%</td>
-		    </tr>
-		  <% end %>
-		</tbody>
-	</table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t('activerecord.attributes.income.source') %></th>
+        <th><%= t('activerecord.attributes.income.amount') %></th>
+        <th><%= t('activerecord.attributes.income.tax') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @incomes.each do |income| %>
+        <tr>
+          <td><%= income.source %></td>
+          <td><%= number_to_currency income.amount %> </td>
+          <td><%= income.tax  %>%</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="hidden-phone">
+    <%= will_paginate @expenses %>
+  </div>
   <p>
 	  <%= t('total_income') %>: <%= number_to_currency @total %>
   </p>

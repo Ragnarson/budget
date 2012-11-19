@@ -1,4 +1,4 @@
-<%= simple_form_for @income, url: create_income_path, html: { class: "form-horizontal" } do |f| %>
+<%= simple_form_for @income, html: { class: "form-horizontal" } do |f| %>
   <%= f.input :source %>
   <%= f.input :amount, as: :currency, wrapper: 'append' %>
   <%= f.input :tax, collection: [['23%', 23], [ '18%', 18]], as: :radio_buttons %>
