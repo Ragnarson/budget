@@ -18,6 +18,23 @@ class IncomesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:income)
   end
   
+  test "should contain pagination" do
+    sign_in users(:user_with_wallet_1)
+    get :index
+    assert_select 'div.pagination'
+  end
+
+  test "should contain pagination with two pages" do
+    sign_in users(:user_with_wallet_1)
+    get :index
+    assert_select 'div.pagination li', count: 4
+  end
+
+  test "should not contain pagination" do
+    get :index
+    assert_select 'div.pagination', count: 0
+  end
+
   test "should generate proper form on new income page" do
     get :new
     assert_select 'form' do
@@ -31,7 +48,7 @@ class IncomesControllerTest < ActionController::TestCase
     assert_difference('Income.count') do
       post :create, income: { source: 'source', amount: 200, tax: 23, user_id: 1 }
     end
-    assert_redirected_to all_incomes_path
+    assert_redirected_to incomes_path
     assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.income')), flash[:notice]
   end
 
@@ -42,7 +59,7 @@ class IncomesControllerTest < ActionController::TestCase
 
   test "should redirect to new income and notify about creation if source and amount are valid" do
     post :create, income: { source: 'source', amount: 200 }
-    assert_redirected_to all_incomes_path
+    assert_redirected_to incomes_path
     assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.income')), flash[:notice]
   end
 
@@ -52,11 +69,6 @@ class IncomesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:incomes)
   end
 
-  test "should create an array" do
-    get :index
-    assert assigns(:incomes).instance_of?(Array)
-  end
-  
   test "total sum should be zero if array is empty" do
     get :index
     if assert_equal assigns(:incomes).length, 0
