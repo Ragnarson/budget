@@ -1,6 +1,17 @@
 language: ruby
 rvm: 1.9.3
+notifications:
+  email:
+    - michalk@ragnarson.com
+    - gotar@ragnarson.com
+    - karolina.anna.kruk@gmail.com
+    - marcin.brzezinski.inf@gmail.com
+    - dawidmilewski89@gmail.com
+    - seba.wesol@gmail.com
+    - smt116@gmail.com
+    - rafath@zaraz.pl
+    - m.borosiewicz@gmail.com
 before_script:
-   - "cp config/database.yml.travis config/database.yml"
-   - "psql -c 'create database budget_test;' -U postgres"
-   - "RAILS_ENV=test bundle exec rake db:migrate"
+  - "cp config/database.yml.travis config/database.yml"
+  - "psql -c 'create database budget_test;' -U postgres"
+  - "RAILS_ENV=test bundle exec rake db:migrate"
