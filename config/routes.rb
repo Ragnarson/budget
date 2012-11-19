@@ -14,6 +14,8 @@ Budget::Application.routes.draw do
 
     match '/about' => 'home#about'
 
+    match '/balance' => 'balance#index', :as => :actual_balance
+
     resources :users do
       collection do
         get :index

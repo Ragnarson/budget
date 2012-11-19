@@ -292,3 +292,4 @@ pl:
     specify:
       income: Nie masz żadnych przychodów.
       budget: Nie masz żadnych budżetów.
+  info_about_balance: Informacje o stanie konta
