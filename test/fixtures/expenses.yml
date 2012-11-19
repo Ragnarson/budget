@@ -82,7 +82,7 @@ expense_14:
   execution_date: <%= 2.days.ago %>
   wallet: wallet_5
 
-expense_14:
+expense_15:
   name: test
   amount: 200
   execution_date: <%= 2.days.ago %>
