@@ -123,7 +123,7 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'div.form-actions a', I18n.t('add_expense')
   end
 
-  test "test form is visible on expense page" do
+  test "form should be visible on add new expense page" do
     get :new
     assert_select 'form' do
       assert_select 'input#expense_name'
@@ -132,6 +132,11 @@ class ExpensesControllerTest < ActionController::TestCase
       assert_select 'select#expense_wallet_id'
       assert_select 'input[TYPE=submit]'
     end
+  end
+
+  test "budget select list should contain name and amount of each budget" do
+    get :new
+    assert_select 'select#expense_wallet_id option:first-child', "#{wallets(:wallet_1).name} (#{number_to_currency wallets(:wallet_1).amount})"
   end
 
   test "should redirect to new budget if there are not any wallets in database" do
