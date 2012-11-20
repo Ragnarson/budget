@@ -134,6 +134,11 @@ class ExpensesControllerTest < ActionController::TestCase
     end
   end
 
+  test "date input should contain current date by default" do
+    get :new
+    assert_select 'input#expense_execution_date[value=?]', Date.today.strftime("%d.%m.%Y")
+  end
+
   test "budget select list should contain name and amount of each budget" do
     get :new
     assert_select 'select#expense_wallet_id option:first-child', "#{wallets(:wallet_1).name} (#{number_to_currency wallets(:wallet_1).amount})"

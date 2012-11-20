@@ -44,6 +44,12 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'select#expense_wallet_id', count: 0
   end 
 
+  test "date input should contain current date by default" do
+    sign_in users(:user_with_wallet_1)
+    get :index
+    assert_select 'input#expense_execution_date[value=?]', Date.today.strftime("%d.%m.%Y")
+  end
+
   test "add new expense form should be visible on home page if user is authenticated" do
     sign_in users(:user_with_wallet_1)
     get :index
