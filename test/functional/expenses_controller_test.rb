@@ -142,9 +142,9 @@ class ExpensesControllerTest < ActionController::TestCase
   test "budget select list should be in correct order based on expenses quantity" do
     sign_in users(:user_with_wallet_3)
     get :new
-    assert_select "select#expense_wallet_id option:nth-child(1)[value=\"#{wallets(:wallet_5).id}\"]"
-    assert_select "select#expense_wallet_id option:nth-child(2)[value=\"#{wallets(:wallet_6).id}\"]"
-    assert_select "select#expense_wallet_id option:nth-child(3)[value=\"#{wallets(:wallet_4).id}\"]"
+    assert_select "select#expense_wallet_id option:nth-child(1)[value=?]", wallets(:wallet_5).id
+    assert_select "select#expense_wallet_id option:nth-child(2)[value=?]", wallets(:wallet_6).id
+    assert_select "select#expense_wallet_id option:nth-child(3)[value=?]", wallets(:wallet_4).id
   end
 
   test "should redirect to new budget if there are not any wallets in database" do

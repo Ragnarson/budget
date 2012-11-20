@@ -10,6 +10,10 @@ class Wallet < ActiveRecord::Base
   validates_presence_of :name, :user
   validates :amount, numericality: { decimal: true }, allow_blank: true
 
+  def expenses_number
+    expenses.size
+  end
+
   private
   def initialize_amounts
     @sum = 0
