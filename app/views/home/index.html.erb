@@ -1,9 +1,10 @@
 <% unless user_signed_in? %>
-  <div class="pagination-centered hero-unit">
+  <div class="pagination-centered">
+    <hr />
     <h4><%= t('home.welcome') %></h4>
-    <div>
-      <%= link_to t('home.login'), user_omniauth_authorize_path(:google_oauth2), class: "btn btn-inverse btn-medium" %>
-    </div>
+    <p><%= t('home.information') %></p>
+    <%= link_to t('home.login'), user_omniauth_authorize_path(:google_oauth2), class: "btn btn-large btn-success" %>
+    <hr />
   </div>
 <% else %>
   <% if current_user.incomes.empty? %>

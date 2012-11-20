@@ -32,9 +32,10 @@ class HomeControllerTest < ActionController::TestCase
     assert_template :about
   end
 
-  test 'should contain hello message and login link' do
+  test 'should contain hello message, basic information and login link' do
     get :index
     assert_select 'h4', I18n.t('home.welcome')
+    assert_select 'p', I18n.t('home.information')
     assert_select 'a', I18n.t('home.login')
   end
 

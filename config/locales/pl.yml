@@ -288,7 +288,8 @@ pl:
   member: użytkownik
   actions: Opcje
   home:
-    welcome: Witaj w aplikacji do zarządzania budżetem
+    welcome: Aplikacja do zarządzania domowym budżetem
+    information: Kontroluj swóje finanse po przez łatwe zarządzanie domowym budżetem. Możesz dodawać nowe kategorie, wydatki oraz przychody. W prosty sposób możemy zaplanować daną kategorię po przez dodanie przyszłych wydatków. Istnieje możliwość zaproszenia innych osób (np. członków rodziny), tak żeby wszyscy mieli dostęp do zarządzania budżetem.
     login: Zaloguj się za pośrednictwem konta Google
     specify:
       income: Nie masz żadnych przychodów.
