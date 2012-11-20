@@ -60,12 +60,12 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'tr.warning'
   end
 
-  test "table should contain information about name, amount, date and also action buttons" do
+  test "table should contain information about name, amount, date and also action buttons with proper visibility" do
     get :index
     assert_select 'thead th', I18n.t('activerecord.attributes.expense.name')
     assert_select 'thead th', I18n.t('activerecord.attributes.expense.amount')
     assert_select 'thead th', I18n.t('activerecord.attributes.expense.execution_date')
-    assert_select 'thead th', I18n.t('actions')
+    assert_select 'thead th.hidden-phone', I18n.t('actions')
   end
 
   test "expense with name 'First' should be on the top of table" do
@@ -85,10 +85,10 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'tbody tr:nth-child(2) td:first-child', expenses(:expense_9).name
   end
 
-  test "table should contain delete and edit buttons" do
+  test "table should contain delete and edit buttons when not using mobile phone" do
     get :index
-    assert_select 'tbody tr td a', I18n.t('edit')
-    assert_select 'tbody tr td a', I18n.t('delete')
+    assert_select 'tbody tr td a.hidden-phone', I18n.t('edit')
+    assert_select 'tbody tr td a.hidden-phone', I18n.t('delete')
   end
 
   test "should contain pagination" do
