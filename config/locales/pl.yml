@@ -261,6 +261,7 @@ pl:
         source: Źródło przychodu
         amount: Kwota
         tax: Podatek
+        net: Netto
   header:
     incomes: Przychody
     expenses: Wydatki

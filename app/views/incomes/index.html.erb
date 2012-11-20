@@ -7,6 +7,7 @@
         <th><%= t('activerecord.attributes.income.source') %></th>
         <th><%= t('activerecord.attributes.income.amount') %></th>
         <th><%= t('activerecord.attributes.income.tax') %></th>
+				<th><%= t('activerecord.attributes.income.net')%></th>
         <th><%= t('actions') %></th>
       </tr>
     </thead>
@@ -15,7 +16,12 @@
         <tr>
           <td><%= income.source %></td>
           <td><%= number_to_currency income.amount %> </td>
-          <td><%= income.tax  %>%</td>
+          <td>
+						<% if income.tax %>
+						  <%= income.tax  %>%
+						<% end %>
+					</td>
+					<td><%= number_to_currency income.net %></td>
           <td>
             <%= link_to t('edit'), edit_income_path(income), class: "btn btn-primary" %>
             <%= link_to t('delete'), income_path(income), method: :delete, class: "btn btn-danger", data: {confirm: t('confirm_delete')} %>

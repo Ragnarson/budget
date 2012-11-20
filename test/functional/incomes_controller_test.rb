@@ -24,12 +24,13 @@ class IncomesControllerTest < ActionController::TestCase
     assert_select 'tbody tr:first-child td:first-child', users(:user_with_wallet_1).incomes.last.source
   end
 
-  test "table should contain information about source, amount, tax and also action buttons" do
+  test "table should contain information about source, amount, tax, net profit and also action buttons" do
     sign_in users(:user_with_wallet_1)
     get :index
     assert_select 'thead th', I18n.t('activerecord.attributes.income.source')
     assert_select 'thead th', I18n.t('activerecord.attributes.income.amount')
     assert_select 'thead th', I18n.t('activerecord.attributes.income.tax')
+    assert_select 'thead th', I18n.t('activerecord.attributes.income.net')
     assert_select 'thead th', I18n.t('actions')
   end
 

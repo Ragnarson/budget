@@ -241,6 +241,7 @@ en:
         source: Source of income
         amount: Amount
         tax: Tax rate
+        net: Net profit
   header:
     incomes: Income
     expenses: Expenses
