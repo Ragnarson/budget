@@ -19,4 +19,12 @@ module LayoutTests
     end
   end
 
+  test 'footer should contain addthis buttons' do
+    get :index
+    assert_select 'a.addthis_button_facebook_like'
+    assert_select 'a.addthis_button_tweet'
+    assert_select 'a.addthis_button_pinterest_pinit'
+    assert_select 'a.addthis_counter'
+  end
+
 end
