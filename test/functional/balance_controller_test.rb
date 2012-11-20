@@ -12,18 +12,6 @@ class BalanceControllerTest < ActionController::TestCase
     DatabaseCleaner.clean
   end
 
-  %w(index).each do |action|
-    test "when authenticated should contain login, incomes, expenses, budgets and members links for #{action}" do
-      test_that_menu_is_present_on(action)
-    end
-    test "should be message with actual balance for #{action}" do
-      test_that_should_contain_message_with_actual_balance_on(action)
-    end
-    test "should contain footer and this button for #{action}" do
-      test_that_footer_should_contain_add_this_buttons(action)
-    end
-  end
-
   test 'should be message with actual balance on balance view' do
     get :index
     assert_select 'p', "#{I18n.t('header.balance')}: #{number_to_currency(800)}"

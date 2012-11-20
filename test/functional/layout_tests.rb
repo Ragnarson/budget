@@ -1,10 +1,9 @@
 module LayoutTests
   extend ActiveSupport::Testing::Declarative
 
-  private
-  def test_that_menu_is_present_on(action)
+  test 'when authenticated should contain login, incomes, expenses, budgets and members links' do
     sign_in users(:user_with_wallet_1)
-    get action
+    get :index
     assert_select 'a', 'user_with_wallet_1@budget.shellyapp.com'
     assert_select 'a', I18n.t('header.incomes')
     assert_select 'a', I18n.t('header.expenses')
@@ -12,16 +11,16 @@ module LayoutTests
     assert_select 'a', I18n.t('header.members')
   end
 
-  def test_that_should_contain_message_with_actual_balance_on(action)
+  test 'should be message with actual balance' do
     sign_in users(:user_with_wallet_2)
-    get action
+    get :index
     assert_select 'ul.pull-right' do
       assert_select 'a', "#{I18n.t('header.balance')}: #{number_to_currency(800)}"
     end
   end
 
-  def test_that_footer_should_contain_add_this_buttons(action)
-    get action
+  test 'footer should contain addthis buttons' do
+    get :index
     assert_select 'a.addthis_button_facebook_like'
     assert_select 'a.addthis_button_tweet'
     assert_select 'a.addthis_button_pinterest_pinit'

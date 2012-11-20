@@ -12,16 +12,13 @@ class ExpensesControllerTest < ActionController::TestCase
     DatabaseCleaner.clean
   end
 
-  %w(index new).each do |action|
-    test "when authenticated should contain login, incomes, expenses, budgets and members links for #{action}" do
-      test_that_menu_is_present_on(action)
-    end
-    test "should be message with actual balance for #{action}" do
-      test_that_should_contain_message_with_actual_balance_on(action)
-    end
-    test "should contain footer and this button for #{action}" do
-      test_that_footer_should_contain_add_this_buttons(action)
-    end
+  private
+  def assert_invalid(args)
+    assert_equal Expense.new(args).valid?, false
+  end
+
+  def assert_valid(args)
+    assert_equal Expense.new(args).valid?, true
   end
 
   public
@@ -211,14 +208,5 @@ class ExpensesControllerTest < ActionController::TestCase
     put :update, id: 1, expense: {name: 'New car'}
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
-  end
-
-  private
-  def assert_invalid(args)
-    assert_equal Expense.new(args).valid?, false
-  end
-
-  def assert_valid(args)
-    assert_equal Expense.new(args).valid?, true
   end
 end
