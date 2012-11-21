@@ -1,9 +1,9 @@
+<div class="form-actions visible-phone">
+  <%= link_to t('add_income'), new_income_path, class: "btn btn-primary" %>
+</div>
 <% if @incomes.empty? %>
-  <p>No income</p>
+  <p><%= t('specify.income') %></p>
 <% else %>
-  <div class="form-actions visible-phone">
-    <%= link_to t('add_income'), new_income_path, class: "btn btn-primary" %>
-  </div>  
   <table class="table table-striped">
     <thead>
       <tr>

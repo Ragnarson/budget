@@ -9,14 +9,14 @@
 <% else %>
   <% if current_user.incomes.empty? %>
     <p>
-      <%= t('home.specify.income') %>
+      <%= t('specify.income') %>
       <%= link_to t('add_income'), new_income_path, class: "btn btn-primary btn-small" %>
     </p>
     <hr />
   <% end %>
   <% if current_user.wallets.empty? %>
     <p>
-      <%= t('home.specify.budget') %>
+      <%= t('specify.budget') %>
       <%= link_to t('add_budget'), new_wallet_path, class: "btn btn-primary btn-small" %>
     </p>
     <hr />

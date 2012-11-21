@@ -55,7 +55,7 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "should get index with information about no expenses on third page" do
     get :index, :page => 3
-    assert_select 'p', 'No expenses'
+    assert_select 'p', I18n.t('specify.expense')
   end
 
   test "first tr should have 'warning' class, because it contain future expense" do
@@ -118,7 +118,7 @@ class ExpensesControllerTest < ActionController::TestCase
   test "should get index with information about no expenses" do
     sign_in users(:user_without_expenses)
     get :index
-    assert_select 'p', 'No expenses'
+    assert_select 'p', I18n.t('specify.expense')
   end
 
   test "should contain link to adding new expense" do

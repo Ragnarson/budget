@@ -271,7 +271,8 @@ en:
     welcome: Welcome to the Budget Application
     information: Control of your finances by easily managing the household budget. You can add new categories, expenses and income. In a simple way we can plan a category by adding the future expenses. You can invite other people (eg, family members), so that all have access to the management of the budget.
     login: Login via Google account
-    specify:
-      income: You don't have any incomes, please specify one
-      budget: Please define your first budget
+  specify:
+    income: You do not have any incomes, please specify one.
+    budget: Please define your first budget.
+    expense: You do not have any expenses.
   info_about_balance: Information about balance
