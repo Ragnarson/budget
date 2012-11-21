@@ -8,16 +8,18 @@
   </div>
 <% else %>
   <% if current_user.incomes.empty? %>
-    <p class="pagination-centered">
+    <p>
       <%= t('home.specify.income') %>
       <%= link_to t('add_income'), new_income_path, class: "btn btn-primary btn-small" %>
     </p>
+    <hr />
   <% end %>
   <% if current_user.wallets.empty? %>
-    <p class="pagination-centered">
+    <p>
       <%= t('home.specify.budget') %>
       <%= link_to t('add_budget'), new_wallet_path, class: "btn btn-primary btn-small" %>
     </p>
+    <hr />
   <% else %>
     <%= render 'expenses/form' %>
   <% end %>
