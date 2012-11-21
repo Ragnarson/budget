@@ -62,6 +62,12 @@ class WalletsControllerTest < ActionController::TestCase
     assert_redirected_to :new_wallet
   end
 
+  test "if first wallet was created should redirect to new expense page" do
+    sign_in users(:user_without_wallet)
+    post :create, wallet: { name: 'First wallet', amount: 23 }
+    assert_redirected_to :new_expense
+  end
+
   test "if wallets are present should show table with wallets list" do
     post :create, wallet: { name: 'Budget name', amount: 500 }
     get :index
