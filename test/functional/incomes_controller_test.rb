@@ -1,4 +1,4 @@
-require_relative '../test_helper'
+require 'test_helper'
 require_relative 'layout_tests'
 
 class IncomesControllerTest < ActionController::TestCase
@@ -103,13 +103,6 @@ class IncomesControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:incomes)
-  end
-
-  test "total sum should be zero if array is empty" do
-    get :index
-    if assert_equal assigns(:incomes).length, 0
-      assert_equal assigns(:total), 0
-    end
   end
 
   test "should destroy income and redirect to income index" do

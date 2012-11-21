@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     self.incomes.map(&:amount).inject(0, &:+)
   end
 
+  def net_profits_sum
+    self.incomes.map(&:net).inject(0, &:+)
+  end
+
   def expenses_sum
     self.expenses.map(&:amount).inject(0, &:+)
   end

@@ -7,6 +7,7 @@ class IncomesController < ApplicationController
   def index
     @incomes = current_user.incomes.order('id DESC').paginate(page: params[:page], per_page: 10)
     @total = current_user.incomes_sum
+    @total_net = current_user.net_profits_sum
   end
 
   def create

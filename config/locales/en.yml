@@ -264,6 +264,7 @@ en:
   save: save
   confirm_delete: 'Are you sure?'
   total_income: Total income
+  total_net_profit: Total net profit
   member: member
   row_num: No
   actions: Actions

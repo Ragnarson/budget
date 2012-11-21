@@ -284,6 +284,7 @@ pl:
   save: zapisz
   confirm_delete: 'Czy na pewno chcesz usunąć?'
   total_income: Suma przychodów
+  total_net_profit: Suma wydatków netto
   row_num: Lp
   member: użytkownik
   actions: Opcje
