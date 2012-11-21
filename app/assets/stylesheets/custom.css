@@ -37,6 +37,9 @@ ul.income_options li {
   vertical-align: top;
   padding-top: 4px;
 }
+footer .addthis_default_style {
+    margin-top: 10px;
+}
 .footer-links {
   float: left;
   margin: 10px 0;

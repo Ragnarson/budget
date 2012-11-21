@@ -17,22 +17,19 @@
 //= require_tree .
 //= require_self
 
-function set_date_picker() {
-    $('input.date_picker').datepicker({
-        'format': 'dd.mm.yyyy',
-        'autoclose': true
-    });
-}
+$(document).ready(function () {
 
-function clear_input_currency() {
-    $('input.currency').click(function() {
+    $('body').on("focus", "input.date_picker",function() {
+        $(this).datepicker({
+            'format': 'dd.mm.yyyy',
+            'autoclose': true
+        });
+    });
+
+    $('body').on("click", "input.currency", function() {
         if($(this).val() == '0,00' || $(this).val() == '0.00') {
-            $(this).val('')
+            $(this).val('');
         }
     });
-}
 
-$(document).ready(function () {
-    set_date_picker();
-    clear_input_currency();
 });
