@@ -2,88 +2,88 @@ expense_1:
   name: Test
   amount: 10000
   execution_date: <%= 131.days.ago %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_2:
   name: Test
   amount: 10000
   execution_date: <%= 12.days.ago %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_3:
   name: Test
   amount: 10000
   execution_date: <%= 13.days.from_now %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_4:
   name: Test
   amount: 10000
   execution_date: <%= 10.days.ago %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_5:
   name: Test
   amount: 10000
   execution_date: <%= 13.days.from_now %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_6:
   name: Test
   amount: 10000
   execution_date: <%= 17.days.ago %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_7:
   name: Test
   amount: 10000
   execution_date: <%= 13.days.ago %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_8:
   name: Test
   amount: 10000
   execution_date: <%= 2.days.ago %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_9:
   name: Second
   amount: 10000
   execution_date: <%= 101.days.from_now %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_10:
   name: Test
   amount: 10000
   execution_date: <%= 1.days.ago %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_11:
   name: First
   amount: 10000
   execution_date: <%= 103.days.from_now %>
-  wallet: wallet_1
+  wallet: test_10000_dollars
 
 expense_12:
   name: test
   amount: 200
   execution_date: <%= 2.days.ago %>
-  wallet: wallet_3
+  wallet: cars_10000000_dollars
 
 expense_13:
   name: test
   amount: 200
   execution_date: <%= 2.days.ago %>
-  wallet: wallet_6
+  wallet: home_1500_dollars
 
 expense_14:
   name: test
   amount: 200
   execution_date: <%= 2.days.ago %>
-  wallet: wallet_5
+  wallet: books_300_dollars
 
 expense_15:
   name: test
   amount: 200
   execution_date: <%= 2.days.ago %>
-  wallet: wallet_5
+  wallet: books_300_dollars

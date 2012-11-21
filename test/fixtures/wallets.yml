@@ -1,29 +1,29 @@
-wallet_1:
+test_10000_dollars:
   name: Test
   amount: 10000
   user: user_with_wallet_1
 
-wallet_2:
+food_15000_dollars:
   name: Food
   amount: 15000
   user: user_without_expenses
 
-wallet_3:
+cars_10000000_dollars:
   name: Cars
   amount: 10000000
   user: user_with_wallet_2
 
-wallet_4:
+empty_500_dollars:
   name: Empty
   amount: 500
   user: user_with_wallet_3
 
-wallet_5:
+books_300_dollars:
   name: Books
   amount: 300
   user: user_with_wallet_3
 
-wallet_6:
+home_1500_dollars:
   name: Home
   amount: 1500
   user: user_with_wallet_3

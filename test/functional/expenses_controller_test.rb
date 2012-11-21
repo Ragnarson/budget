@@ -144,15 +144,15 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "wallet select list should contain name and amount of each wallet" do
     get :new
-    assert_select 'select#expense_wallet_id option:first-child', "#{wallets(:wallet_1).name} (#{number_to_currency wallets(:wallet_1).amount})"
+    assert_select 'select#expense_wallet_id option:first-child', "#{wallets(:test_10000_dollars).name} (#{number_to_currency wallets(:test_10000_dollars).amount})"
   end
 
   test "wallet select list should be in correct order based on expenses quantity" do
     sign_in users(:user_with_wallet_3)
     get :new
-    assert_select "select#expense_wallet_id option:nth-child(1)[value=?]", wallets(:wallet_5).id
-    assert_select "select#expense_wallet_id option:nth-child(2)[value=?]", wallets(:wallet_6).id
-    assert_select "select#expense_wallet_id option:nth-child(3)[value=?]", wallets(:wallet_4).id
+    assert_select "select#expense_wallet_id option:nth-child(1)[value=?]", wallets(:books_300_dollars).id
+    assert_select "select#expense_wallet_id option:nth-child(2)[value=?]", wallets(:home_1500_dollars).id
+    assert_select "select#expense_wallet_id option:nth-child(3)[value=?]", wallets(:empty_500_dollars).id
   end
 
   test "should redirect to new wallet if there are not any wallets in database" do
@@ -162,7 +162,7 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   test "should create expense and redirect to new with notice on valid inputs" do
-    post :create, expense: { name: 'My new SSD', amount: 500, wallet_id: wallets(:wallet_1).id, execution_date: '2012-11-25' }
+    post :create, expense: { name: 'My new SSD', amount: 500, wallet_id: wallets(:test_10000_dollars).id, execution_date: '2012-11-25' }
     assert_valid(@request.params[:expense])
     assert_redirected_to :new_expense
     assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.expense')), flash[:notice]

@@ -87,26 +87,26 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "should not update wallet if name is empty" do
-    put :update, id: wallets(:wallet_1), wallet: { amount: 200, name: '' }
+    put :update, id: wallets(:test_10000_dollars), wallet: { amount: 200, name: '' }
     assert_template :edit
     assert_tag tag: 'span', content: I18n.t('errors.messages.blank')
   end
 
   test "should not update other users wallet" do
-    put :update, id: wallets(:wallet_3), wallet: { user_id: users(:user_with_wallet_1), amount: 200, name: 'something' }
+    put :update, id: wallets(:cars_10000000_dollars), wallet: { user_id: users(:user_with_wallet_1), amount: 200, name: 'something' }
     assert_redirected_to :wallets
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.wallet')), flash[:notice]
   end
 
   test "should update user wallet" do
-    put :update, id: wallets(:wallet_1), wallet: { amount: 200, name: 'something' }
+    put :update, id: wallets(:test_10000_dollars), wallet: { amount: 200, name: 'something' }
     assert_redirected_to :wallets
     assert_equal I18n.t('flash.update_one', model: I18n.t('activerecord.models.wallet')), flash[:notice]
   end
 
   test "should destroy wallet and redirect to wallets" do
     assert_difference('Wallet.count', -1) do
-      delete :destroy, id: wallets(:wallet_1).id
+      delete :destroy, id: wallets(:test_10000_dollars).id
     end
     assert_equal  I18n.t('flash.delete_one', model: I18n.t('activerecord.models.wallet')), flash[:notice]
     assert_redirected_to :wallets
@@ -114,14 +114,14 @@ class WalletsControllerTest < ActionController::TestCase
 
   test "should not destroy expense with belongs to another user" do
     assert_no_difference('Wallet.count') do
-      delete :destroy, id: wallets(:wallet_3).id
+      delete :destroy, id: wallets(:cars_10000000_dollars).id
     end
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.wallet')), flash[:notice]
     assert_redirected_to :wallets
   end
 
   test "should not destroy expense does not exist" do
-    wallets(:wallet_1).destroy
+    wallets(:test_10000_dollars).destroy
     assert_no_difference('Wallet.count') do
       delete :destroy, id: 100
     end

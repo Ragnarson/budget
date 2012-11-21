@@ -7,11 +7,11 @@ class ExpenseTest < ActiveSupport::TestCase
 
   private
   def assert_invalid(args)
-    assert(wallets(:wallet_1).expenses.build(args).invalid?)
+    assert(wallets(:test_10000_dollars).expenses.build(args).invalid?)
   end
 
   def assert_valid(args)
-    assert(wallets(:wallet_1).expenses.build(args).valid?)
+    assert(wallets(:test_10000_dollars).expenses.build(args).valid?)
   end
 
   public
@@ -88,6 +88,6 @@ class ExpenseTest < ActiveSupport::TestCase
   end
 
   test "should save valid expense to database" do
-    assert_equal wallets(:wallet_1).expenses.build(name: 'Milk', amount: 3, execution_date: '2012-01-12').save, true
+    assert_equal wallets(:test_10000_dollars).expenses.build(name: 'Milk', amount: 3, execution_date: '2012-01-12').save, true
   end
 end
