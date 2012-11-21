@@ -14,7 +14,11 @@ class WalletsController < ApplicationController
     @wallet = Wallet.new(params[:wallet])
     @wallet.user = current_user
     if @wallet.save
-      redirect_to wallets_path, notice: t('flash.wallet_success', name: @wallet.name)
+      if current_user.wallets.count == 1
+        redirect_to new_expense_path
+      else
+        redirect_to wallets_path, notice: t('flash.wallet_success', name: @wallet.name)
+      end
     else
       render action: 'new'
     end
