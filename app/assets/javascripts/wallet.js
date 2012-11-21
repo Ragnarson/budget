@@ -7,8 +7,9 @@ function add_fields(link, association, content) {
 function set_budget_amount() {
     var sum = 0.0;
     $('.expense_amount input.currency').each(function() {
-        if($(this).val()>0)
-            sum += parseFloat($(this).val().replace(',','.'));
+        var input_value = parseFloat($(this).val().replace(',','.'));
+        if(input_value > 0)
+            sum += input_value;
     });
     $('#total_amount').text(sum.toFixed(2));
 }
