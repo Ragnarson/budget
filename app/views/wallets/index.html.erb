@@ -1,4 +1,7 @@
 <% unless @wallets.blank? %>
+  <div class="form-actions visible-phone">
+    <%= link_to t('add_budget'), new_wallet_path, :class => "btn btn-primary" %>
+  </div>  
   <table class="table table-striped">
     <thead>
     <tr>
@@ -21,7 +24,7 @@
     </tbody>
   </table>
 <% end %>
-<div class="form-actions">
+<div class="form-actions hidden-phone">
   <%= link_to t('add_budget'), new_wallet_path, :class => "btn btn-primary" %>
 </div>  
 

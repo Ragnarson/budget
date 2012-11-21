@@ -1,6 +1,9 @@
 <% if @expenses.blank? %>
   <p>No expenses</p>
 <% else %>
+  <div class="form-actions visible-phone">
+    <%= link_to t('add_expense'), new_expense_path, class: "btn btn-primary" %>
+  </div>
   <table class="table table-striped">
     <thead>
     <tr>
@@ -27,6 +30,6 @@
     <%= will_paginate @expenses %>
   </div>
 <% end %>
-<div class="form-actions">
+<div class="form-actions hidden-phone">
   <%= link_to t('add_expense'), new_expense_path, class: "btn btn-primary" %>
 </div>
