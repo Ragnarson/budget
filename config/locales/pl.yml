@@ -157,12 +157,12 @@ pl:
     success_few: "%{model} zostały poprawnie zapisane"
     fail_few: "%{model} nie zostały zapisane"
     update_one: "%{model} został poprawnie zapisany"
-    wallet_success: "Budżet '%{name}' został poprawnie zapisany"
-    no_wallets: Nie masz żadnych zdefiniowanych budżetów, dodaj nowy budżet
+    wallet_success: "Portfel '%{name}' został poprawnie zapisany"
+    no_wallets: Nie masz żadnych zdefiniowanych portfeli, dodaj nowy portfel
     no_members: "Nie masz dodanych użytkowników"
-    add_budget: Proszę zdefiniować pierwszy budżet
+    add_wallet: Proszę zdefiniować pierwszy portfel
     no_record: "Taki  %{model} nie istnieje"
-    first_budget: Proszę zdefiniować budżet
+    first_wallet: Proszę zdefiniować portfel
     add_expense: Dodaj pierwsze wydatki
     welcome: "Witaj %{name}! "
   helpers:
@@ -244,7 +244,7 @@ pl:
     models:
       user: użytkownik
       expense: wydatek
-      wallet: budżet
+      wallet: portfel
       income: przychód
     attributes:
       user:
@@ -253,9 +253,9 @@ pl:
         name: Nazwa wydatku
         amount: Kwota
         execution_date: Data
-        wallet: Budżet
+        wallet: Portfel
       wallet:
-        name: Nazwa budżetu
+        name: Nazwa portfela
         amount: Kwota
       income:
         source: Źródło przychodu
@@ -265,20 +265,20 @@ pl:
   header:
     incomes: Przychody
     expenses: Wydatki
-    budgets: Budżety
+    wallets: Portfele
     members: Zaproszenia
     about: O projekcie
     balance: bilans
     edit_profile: Edytuj profil
     logout: Wyloguj się
   ago: temu
-  add_budget: dodaj budżet
+  add_wallet: dodaj portfel
   add_expense: dodaj wydatek
   add_income: dodaj przychód
   add_member: dodaj użytkownika
-  plan_budget: planuj budżet
+  plan_wallet: zaplanuj portfel
   total_amount: Suma wydatków
-  no_wallets: Brak zdefiniowanego budżetu
+  no_wallets: Brak zdefiniowanego portfela
   delete: usuń
   edit: edytuj
   save: zapisz
@@ -289,11 +289,11 @@ pl:
   member: użytkownik
   actions: Opcje
   home:
-    welcome: Aplikacja do zarządzania domowym budżetem
-    information: Kontroluj swóje finanse po przez łatwe zarządzanie domowym budżetem. Możesz dodawać nowe kategorie, wydatki oraz przychody. W prosty sposób możemy zaplanować daną kategorię po przez dodanie przyszłych wydatków. Istnieje możliwość zaproszenia innych osób (np. członków rodziny), tak żeby wszyscy mieli dostęp do zarządzania budżetem.
+    welcome: Aplikacja do zarządzania domowym portfelem
+    information: Kontroluj swoje finanse poprzez łatwe zarządzanie domowym portfelem. Możesz dodawać nowe kategorie, wydatki oraz przychody. W prosty sposób możemy zaplanować daną kategorię poprzez dodanie przyszłych wydatków. Istnieje możliwość zaproszenia innych osób (np. członków rodziny), tak żeby wszyscy mieli dostęp do zarządzania portfelem.
     login: Zaloguj się za pośrednictwem konta Google
   specify:
     income: Nie masz żadnych przychodów.
-    budget: Nie masz żadnych budżetów.
+    wallet: Nie masz żadnych portfeli.
     expense: Nie masz żadnych wydatków.
   info_about_balance: Informacje o stanie konta

@@ -13,7 +13,7 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   %w(index new).each do |action|
-    test "when authenticated should contain login, incomes, expenses, budgets and members links for #{action}" do
+    test "when authenticated should contain login, incomes, expenses, wallets and members links for #{action}" do
       test_that_menu_is_present_on(action)
     end
     test "should be message with actual balance for #{action}" do
@@ -39,7 +39,7 @@ class WalletsControllerTest < ActionController::TestCase
     end
   end
 
-  test "should create budget and redirect to new with notice" do
+  test "should create wallet and redirect to new with notice" do
     post :create, wallet: { name: 'Some title' }
     assert_redirected_to :wallets
     assert_equal I18n.t('flash.wallet_success', name: 'Some title'), flash[:notice]
@@ -51,12 +51,12 @@ class WalletsControllerTest < ActionController::TestCase
     assert_template :new
   end
 
-  test "on form page should be placeholder for planning budget with expenses" do
+  test "on form page should be placeholder for planning wallet with expenses" do
     get :new
     assert_tag tag: 'div', attributes: { id: 'budget_plan' }
   end
 
-  test "if no wallets are present should redirect to new budget page" do
+  test "if no wallets are present should redirect to new wallet page" do
     sign_in users(:user_without_wallet)
     get :index
     assert_redirected_to :new_wallet

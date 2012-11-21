@@ -16,8 +16,8 @@
   <% end %>
   <% if current_user.wallets.empty? %>
     <p>
-      <%= t('specify.budget') %>
-      <%= link_to t('add_budget'), new_wallet_path, class: "btn btn-primary btn-small" %>
+      <%= t('specify.wallet') %>
+      <%= link_to t('add_wallet'), new_wallet_path, class: "btn btn-primary btn-small" %>
     </p>
     <hr />
   <% else %>

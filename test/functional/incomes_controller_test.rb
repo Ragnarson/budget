@@ -13,7 +13,7 @@ class IncomesControllerTest < ActionController::TestCase
   end
 
   %w(index new).each do |action|
-    test "when authenticated should contain login, incomes, expenses, budgets and members links for #{action}" do
+    test "when authenticated should contain login, incomes, expenses, wallets and members links for #{action}" do
       test_that_menu_is_present_on(action)
     end
     test "should be message with actual balance for #{action}" do

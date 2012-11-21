@@ -8,7 +8,7 @@ module LayoutTests
     assert_select 'a', 'user_with_wallet_1@budget.shellyapp.com'
     assert_select 'a', I18n.t('header.incomes')
     assert_select 'a', I18n.t('header.expenses')
-    assert_select 'a', I18n.t('header.budgets')
+    assert_select 'a', I18n.t('header.wallets')
     assert_select 'a', I18n.t('header.members')
   end
 

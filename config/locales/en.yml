@@ -139,12 +139,12 @@ en:
     success_few: << *success_one
     fail_few: << *fail_one
     update_one: "%{model} was successfully updated"
-    wallet_success: "Your new '%{name}' budget was added successfully"
-    no_wallets: You dont have any budgets. Please define new budget
+    wallet_success: "Your new '%{name}' wallet was added successfully"
+    no_wallets: You dont have any wallets. Please define new wallet
     no_members: "You didn't add any family member"
-    add_budget: First you have to add at least one budget
+    add_wallet: First you have to add at least one wallet
     no_record: "Couldn't find any %{model}"
-    first_budget: Please create your first budget
+    first_wallet: Please create your first wallet
     add_expense: Please add your expenses
     welcome: "Welcome %{name}! "
   helpers:
@@ -224,7 +224,7 @@ en:
     models:
       user: user
       expense: expense
-      wallet: budget
+      wallet: wallet
       income: income
     attributes:
       user:
@@ -233,9 +233,9 @@ en:
         name: Expense name
         amount: Amount
         execution_date: Date
-        wallet: Budget
+        wallet: Wallet
       wallet:
-        name: Budget name
+        name: Wallet name
         amount: Amount
       income:
         source: Source of income
@@ -245,20 +245,20 @@ en:
   header:
     incomes: Income
     expenses: Expenses
-    budgets: Budgets
+    wallets: Wallets
     members: Members
     about: About
     balance: Balance
     edit_profile: Edit profile
     logout: Logout
   ago: ago
-  add_budget: add budget
+  add_wallet: add wallet
   add_expense: add expense
   add_income: add income
   add_member: add family member
-  plan_budget: plan budget
+  plan_wallet: plan wallet
   total_amount: Total amount
-  no_wallets: No budgets
+  no_wallets: No wallets
   delete: delete
   edit: edit
   save: save
@@ -270,10 +270,10 @@ en:
   actions: Actions
   home:
     welcome: Welcome to the Budget Application
-    information: Control of your finances by easily managing the household budget. You can add new categories, expenses and income. In a simple way we can plan a category by adding the future expenses. You can invite other people (eg, family members), so that all have access to the management of the budget.
+    information: Control of your finances by easily managing the household wallet. You can add new categories, expenses and income. In a simple way we can plan a category by adding the future expenses. You can invite other people (eg, family members), so that all have access to the management of the wallet.
     login: Login via Google account
   specify:
     income: You do not have any incomes, please specify one.
-    budget: Please define your first budget.
+    wallet: Please define your first wallet.
     expense: You do not have any expenses.
   info_about_balance: Information about balance

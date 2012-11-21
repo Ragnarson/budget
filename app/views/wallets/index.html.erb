@@ -1,5 +1,5 @@
 <div class="form-actions visible-phone">
-  <%= link_to t('add_budget'), new_wallet_path, class: "btn btn-primary" %>
+  <%= link_to t('add_wallet'), new_wallet_path, class: "btn btn-primary" %>
 </div>
 <% unless @wallets.blank? %>
   <table class="table table-striped">
@@ -25,6 +25,6 @@
   </table>
 <% end %>
 <div class="form-actions hidden-phone">
-  <%= link_to t('add_budget'), new_wallet_path, class:  "btn btn-primary" %>
+  <%= link_to t('add_wallet'), new_wallet_path, class:  "btn btn-primary" %>
 </div>  
 

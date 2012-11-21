@@ -9,7 +9,7 @@ class HomeControllerTest < ActionController::TestCase
   end
 
   %w(index about).each do |action|
-    test "when authenticated should contain login, incomes, expenses, budgets and members links for #{action}" do
+    test "when authenticated should contain login, incomes, expenses, wallets and members links for #{action}" do
       test_that_menu_is_present_on(action)
     end
     test "should be message with actual balance for #{action}" do
@@ -39,12 +39,12 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'a', I18n.t('home.login')
   end
 
-  test 'should not contain login, incomes, expenses, budgets and members link' do
+  test 'should not contain login, incomes, expenses, wallets and members link' do
     get :index
     assert_select 'a', text: 'user_with_wallet_1@budget.shellyapp.com', count: 0
     assert_select 'a', text: I18n.t('header.incomes'), count: 0
     assert_select 'a', text: I18n.t('header.expenses'), count: 0
-    assert_select 'a', text: I18n.t('header.budgets'), count: 0
+    assert_select 'a', text: I18n.t('header.wallets'), count: 0
     assert_select 'a', text: I18n.t('header.members'), count: 0
   end
 
@@ -78,10 +78,10 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'a', text: I18n.t('header.balance'), count: 0
   end
 
-  test 'should be link to create new budget' do
+  test 'should be link to create new wallet' do
     sign_in users(:user_without_wallet)
     get :index
-    assert_select 'a', text: I18n.t('add_budget')
+    assert_select 'a', text: I18n.t('add_wallet')
   end
 
   test 'should be link to create new income' do

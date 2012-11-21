@@ -13,7 +13,7 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   %w(index new).each do |action|
-    test "when authenticated should contain login, incomes, expenses, budgets and members links for #{action}" do
+    test "when authenticated should contain login, incomes, expenses, wallets and members links for #{action}" do
       test_that_menu_is_present_on(action)
     end
     test "should be message with actual balance for #{action}" do
@@ -142,12 +142,12 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'input#expense_execution_date[value=?]', Date.today.strftime("%d.%m.%Y")
   end
 
-  test "budget select list should contain name and amount of each budget" do
+  test "wallet select list should contain name and amount of each wallet" do
     get :new
     assert_select 'select#expense_wallet_id option:first-child', "#{wallets(:wallet_1).name} (#{number_to_currency wallets(:wallet_1).amount})"
   end
 
-  test "budget select list should be in correct order based on expenses quantity" do
+  test "wallet select list should be in correct order based on expenses quantity" do
     sign_in users(:user_with_wallet_3)
     get :new
     assert_select "select#expense_wallet_id option:nth-child(1)[value=?]", wallets(:wallet_5).id
@@ -155,7 +155,7 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select "select#expense_wallet_id option:nth-child(3)[value=?]", wallets(:wallet_4).id
   end
 
-  test "should redirect to new budget if there are not any wallets in database" do
+  test "should redirect to new wallet if there are not any wallets in database" do
     sign_in users(:user_without_wallet)
     get :new
     assert_redirected_to :new_wallet
