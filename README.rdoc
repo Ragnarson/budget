@@ -26,3 +26,5 @@ Please follow those steps.
   postgres=# CREATE DATABASE budget WITH OWNER budget;
 Your database should already be configured. You're now ready to run application.
 
+== License
+The project is licensed under the "MIT license", for the exact terms please see the [LICENSE file](https://github.com/Ragnarson/budget/blob/master/LICENSE).
