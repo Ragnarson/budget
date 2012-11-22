@@ -1,6 +1,24 @@
 = Budget
 
-Budget system for planning how your income should be distributed among your expenses. Allows to share the account with other members of family which you can invite.
+Using this application you are able to control your finances by easily managing the household wallet. You can add new categories, expenses and income. In a simple way you can plan a category by adding the future expenses. You can invite other people (eg, family members), so that all have access to the management of the wallet.
+
+Application is created under an internship in a {Ragnarson}[http://ragnarson.com] company. Source code is provided under {MIT license}[https://github.com/Ragnarson/budget/blob/master/LICENSE].
+
+== Demo
+Demo application can be found at {budget.shellyapp.com}[http://budget.shellyapp.com]
+
+== Team
+==== Mentors
+* Michał Kwiatkowski (michalk@ragnarson.com)
+* Oskar Szrajera (gotar@ragnarson.com)
+==== Apprentices
+* Karolina Kruk (karolina.anna.kruk@gmail.com)
+* Marcin Brzeziński (marcin.brzezinski.inf@gmail.com)
+* Dawid Milewski (dawidmilewski89@gmail.com)
+* Sebastian Wesołowski (seba.wesol@gmail.com)
+* Maciej Małecki (smt116@gmail.com)
+* Rafath Khan (rafath@zaraz.pl)
+* Maciej Borosiewicz (m.borosiewicz@gmail.com)
 
 == Before you make a commit
 
@@ -27,4 +45,4 @@ Please follow those steps.
 Your database should already be configured. You're now ready to run application.
 
 == License
-The project is licensed under the "MIT license", for the exact terms please see the [LICENSE file](https://github.com/Ragnarson/budget/blob/master/LICENSE).
+The project is licensed under the "MIT license", for the exact terms please see the {license file}[https://github.com/Ragnarson/budget/blob/master/LICENSE].
