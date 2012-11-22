@@ -116,6 +116,8 @@ en:
       odd: must be odd
       record_invalid: ! 'Validation failed: %{errors}'
       taken: has already been taken
+      invalid_price: must be valid i.e 100.45
+      invalid_date: must be valid i.e DD.MM.YYYY
       too_long:
         one: is too long (maximum is 1 character)
         other: is too long (maximum is %{count} characters)
@@ -147,6 +149,7 @@ en:
     first_wallet: Please create your first wallet
     add_expense: Please add your expenses
     welcome: "Welcome %{name}! "
+    confirm_wallet_destroy: Read before confirm
   helpers:
     select:
       prompt: Please select
@@ -262,6 +265,8 @@ en:
   delete: delete
   edit: edit
   save: save
+  cancel: cancel
+  or: or
   confirm_delete: 'Are you sure?'
   total_income: Total income
   total_net_profit: Total net profit
@@ -277,3 +282,5 @@ en:
     wallet: Please define your first wallet.
     expense: You do not have any expenses.
   info_about_balance: Information about balance
+  delete_only_wallet: delete only wallet
+  delete_with_expenses: delete wallet with expenses

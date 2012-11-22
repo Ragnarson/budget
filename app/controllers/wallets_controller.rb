@@ -45,9 +45,25 @@ class WalletsController < ApplicationController
   end
 
   def destroy
-    current_user.wallets.find(params[:id]).destroy
-    redirect_to wallets_path, notice: t('flash.delete_one', model: t('activerecord.models.wallet'))
-  rescue ActiveRecord::RecordNotFound
-    redirect_to wallets_path, notice:  t('flash.no_record', model: t('activerecord.models.wallet'))
+    begin
+      wallet = current_user.wallets.find(params[:wallet_id])
+      if !params[:confirmed].blank? and params[:confirmed].to_i == 1
+        wallet.destroy_without_expenses
+      elsif params[:confirmed].to_i == 2
+        wallet.destroy
+      end
+      redirect_to wallets_path, notice: t('flash.delete_one', model: t('activerecord.models.wallet'))
+    rescue ActiveRecord::RecordNotFound
+      redirect_to wallets_path, notice: t('flash.no_record', model: t('activerecord.models.wallet'))
+    end
+  end
+
+  def confirm_destroy
+    begin
+      @wallet = current_user.wallets.find(params[:wallet_id])
+      redirect_to wallet_destroy_path(@wallet, confirmed: 1) if @wallet.expenses_number == 0
+    rescue ActiveRecord::RecordNotFound
+      redirect_to wallets_path, notice: t('flash.no_record', model: t('activerecord.models.wallet'))
+    end
   end
 end

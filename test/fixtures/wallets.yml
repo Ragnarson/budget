@@ -27,3 +27,8 @@ home_1500_dollars:
   name: Home
   amount: 1500
   user: user_with_wallet_3
+
+wallet_without_expenses:
+  name: Test 10
+  amount: 1000
+  user: user_with_wallet_1

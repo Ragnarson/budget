@@ -40,20 +40,20 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "should create wallet and redirect to new with notice" do
-    post :create, wallet: { name: 'Some title' }
+    post :create, wallet: {name: 'Some title'}
     assert_redirected_to :wallets
     assert_equal I18n.t('flash.wallet_success', name: 'Some title'), flash[:notice]
   end
 
   test "should show error when name is empty" do
-    post :create, wallet: { name: '' }
+    post :create, wallet: {name: ''}
     assert_tag tag: 'span', content: I18n.t('errors.messages.blank')
     assert_template :new
   end
 
   test "on form page should be placeholder for planning wallet with expenses" do
     get :new
-    assert_tag tag: 'div', attributes: { id: 'budget_plan' }
+    assert_tag tag: 'div', attributes: {id: 'budget_plan'}
   end
 
   test "if no wallets are present should redirect to new wallet page" do
@@ -64,57 +64,88 @@ class WalletsControllerTest < ActionController::TestCase
 
   test "if first wallet was created should redirect to new expense page" do
     sign_in users(:user_without_wallet)
-    post :create, wallet: { name: 'First wallet', amount: 23 }
+    post :create, wallet: {name: 'First wallet', amount: 23}
     assert_redirected_to :new_expense
   end
 
   test "if wallets are present should show table with wallets list" do
-    post :create, wallet: { name: 'Budget name', amount: 500 }
+    post :create, wallet: {name: 'Budget name', amount: 500}
     get :index
-    assert_tag tag: 'table', attributes: { class: 'table table-striped' }
+    assert_tag tag: 'table', attributes: {class: 'table table-striped'}
   end
 
   test "if wallet was created, amount should be visible in table on index page" do
-    post :create, wallet: { name: 'Budget name', amount: 10 }
+    post :create, wallet: {name: 'Budget name', amount: 10}
     get :index
     assert_select 'tbody tr:last-child td:nth-child(2)', number_to_currency(10)
   end
 
   test "if wallet with expenses were created, wallet amount should be equal to the sum of amounts in expenses" do
-    post :create, wallet: { name: 'Budget name', amount: 300, expenses_attributes: { 0=> { name: 'food', amount: 34, execution_date: '2012-11-12' }, 1=> { name: 'food2', amount: 6, execution_date: '2012-11-12' } } }
+    post :create, wallet: {name: 'Budget name', amount: 300, expenses_attributes: {0 => {name: 'food', amount: 34, execution_date: '2012-11-12'}, 1 => {name: 'food2', amount: 6, execution_date: '2012-11-12'}}}
     get :index
     assert_select 'tbody tr:last-child td:nth-child(2)', number_to_currency(40)
   end
 
   test "should not update wallet if name is empty" do
-    put :update, id: wallets(:test_10000_dollars), wallet: { amount: 200, name: '' }
+    put :update, id: wallets(:test_10000_dollars), wallet: {amount: 200, name: ''}
     assert_template :edit
     assert_tag tag: 'span', content: I18n.t('errors.messages.blank')
   end
 
   test "should not update other users wallet" do
-    put :update, id: wallets(:cars_10000000_dollars), wallet: { user_id: users(:user_with_wallet_1), amount: 200, name: 'something' }
+    put :update, id: wallets(:cars_10000000_dollars), wallet: {user_id: users(:user_with_wallet_1), amount: 200, name: 'something'}
     assert_redirected_to :wallets
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.wallet')), flash[:notice]
   end
 
   test "should update user wallet" do
-    put :update, id: wallets(:test_10000_dollars), wallet: { amount: 200, name: 'something' }
+    put :update, id: wallets(:test_10000_dollars), wallet: {amount: 200, name: 'something'}
     assert_redirected_to :wallets
     assert_equal I18n.t('flash.update_one', model: I18n.t('activerecord.models.wallet')), flash[:notice]
   end
 
-  test "should destroy wallet and redirect to wallets" do
-    assert_difference('Wallet.count', -1) do
-      delete :destroy, id: wallets(:test_10000_dollars).id
+  test "before destroy wallet with expenses user should see confirm_destroy action" do
+    wallet = wallets(:test_10000_dollars)
+    get :confirm_destroy, wallet_id: wallet.id
+    assert_template :confirm_destroy
+    assert_tag tag: 'ul', attributes: {class: 'expenses'}
+    assert_select 'ul.expenses' do
+      assert_select "li", wallet.expenses_number
     end
-    assert_equal  I18n.t('flash.delete_one', model: I18n.t('activerecord.models.wallet')), flash[:notice]
+  end
+
+  test "wallet without expenses should be destroyed without confirmation page" do
+    wallet_id = wallets(:wallet_without_expenses).id
+    get :confirm_destroy, wallet_id: wallet_id
+    assert_redirected_to action: :destroy, wallet_id: wallet_id, confirmed: 1
+    get :destroy, wallet_id: wallet_id, confirmed: 1
     assert_redirected_to :wallets
   end
 
-  test "should not destroy expense with belongs to another user" do
+  test "should delete wallet with expenses" do
+    wallet = wallets(:test_10000_dollars)
+    wallet_expenses = wallet.expenses_number
+    all_expenses = Expense.count
+    assert_difference 'Wallet.count', -1 do
+      get :destroy, wallet_id: wallet.id, confirmed: 2
+    end
+    assert_equal Expense.count, (all_expenses-wallet_expenses)
+    assert_redirected_to :wallets
+  end
+
+  test "should delete wallet without expenses" do
+    wallet = wallets(:test_10000_dollars)
+    all_expenses = Expense.count
+    assert_difference 'Wallet.count', -1 do
+      get :destroy, wallet_id: wallet.id, confirmed: 1
+    end
+    assert_equal Expense.count, all_expenses
+    assert_redirected_to :wallets
+  end
+
+  test "should not destroy expense which belongs to another user" do
     assert_no_difference('Wallet.count') do
-      delete :destroy, id: wallets(:cars_10000000_dollars).id
+      get :destroy, wallet_id: wallets(:cars_10000000_dollars).id, confirmed: 1
     end
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.wallet')), flash[:notice]
     assert_redirected_to :wallets
@@ -123,10 +154,17 @@ class WalletsControllerTest < ActionController::TestCase
   test "should not destroy expense does not exist" do
     wallets(:test_10000_dollars).destroy
     assert_no_difference('Wallet.count') do
-      delete :destroy, id: 100
+      get :destroy, wallet_id: 100, confirmed: 1
     end
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.wallet')), flash[:notice]
     assert_redirected_to :wallets
   end
+
+  #test '' do
+  # destroy wallet which has expenses=> redirect do confirm
+  # wallet has no expense => destroy
+  # wallet has expenses and param confirmed => destroy
+  # should not destroy wallet with expenses, when param confirmed not present
+  #end
 
 end

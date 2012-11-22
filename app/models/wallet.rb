@@ -2,7 +2,7 @@ class Wallet < ActiveRecord::Base
   attr_accessible :name, :amount, :expenses_attributes
   before_create :initialize_amounts
 
-  has_many :expenses, inverse_of: :wallet
+  has_many :expenses, inverse_of: :wallet, dependent: :destroy
   belongs_to :user
 
   accepts_nested_attributes_for :expenses
@@ -12,6 +12,11 @@ class Wallet < ActiveRecord::Base
 
   def expenses_number
     expenses.size
+  end
+
+  def destroy_without_expenses
+    Expense.change_wallet(self.id)
+    destroy
   end
 
   private

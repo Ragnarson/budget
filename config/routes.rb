@@ -4,7 +4,13 @@ Budget::Application.routes.draw do
 
     devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
-    resources :wallets, except: :show
+    resources :wallets, except: [:show, :destroy] do
+      get :confirm_destroy
+      get :destroy
+      #/:id', :action => 'destroy', :as => 'destroy'
+      #get 'confirm_destroy/:id', :action => 'confirm_destroy', :as => 'confirm_destroy'
+      #destroy 'destroy/:id', :action => 'confirm_destroy', :as => 'confirm_destroy'
+    end
     resources :expenses, except: :show
     resources :incomes, except: :show
 

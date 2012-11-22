@@ -139,6 +139,8 @@ pl:
       odd: musi być nieparzyste
       record_invalid: ! 'Negatywne sprawdzenie poprawności: %{errors}'
       taken: zostało już zajęte
+      invalid_price: błędny format  np. 10,45
+      invalid_date: błędny format  np. DD.MM.RRRR
       too_long: jest za długie (maksymalnie %{count} znaków)
       too_short: jest za krótkie (przynajmniej %{count} znaków)
       wrong_length: ma nieprawidłową długość (powinna wynosić %{count} znaków)
@@ -165,6 +167,7 @@ pl:
     first_wallet: Proszę zdefiniować portfel
     add_expense: Dodaj pierwsze wydatki
     welcome: "Witaj %{name}! "
+    confirm_wallet_destroy: Przeczytaj zanim usuniesz
   helpers:
     select:
       prompt: Proszę wybrać
@@ -282,6 +285,8 @@ pl:
   delete: usuń
   edit: edytuj
   save: zapisz
+  cancel: anuluj
+  or: albo
   confirm_delete: 'Czy na pewno chcesz usunąć?'
   total_income: Suma przychodów
   total_net_profit: Suma wydatków netto
@@ -297,3 +302,5 @@ pl:
     wallet: Nie masz żadnych portfeli.
     expense: Nie masz żadnych wydatków.
   info_about_balance: Informacje o stanie konta
+  delete_only_wallet: usuń tylko portfel
+  delete_with_expenses: usuń portfel wraz z wydatkami
