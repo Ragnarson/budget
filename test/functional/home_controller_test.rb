@@ -8,16 +8,25 @@ class HomeControllerTest < ActionController::TestCase
     DatabaseCleaner.clean
   end
 
-  %w(index about).each do |action|
-    test "when authenticated should contain login, incomes, expenses, wallets and members links for #{action}" do
-      test_that_menu_is_present_on(action)
-    end
-    test "should be message with actual balance for #{action}" do
-      test_that_should_contain_message_with_actual_balance_on(action)
-    end
-    test "should contain footer and this button for #{action}" do
-      test_that_footer_should_contain_add_this_buttons(action)
-    end
+  test "should contain footer and this buttons for index" do
+    get :index
+    assert_select 'a.addthis_button_facebook_like'
+    assert_select 'a.addthis_button_tweet'
+    assert_select 'a.addthis_button_pinterest_pinit'
+    assert_select 'a.addthis_counter'
+    assert_select 'a.addthis_pill_style'
+  end
+
+  test "should contain footer and this buttons for about" do
+    test_that_footer_should_contain_add_this_buttons('about')
+  end
+
+  test "when authenticated should contain login, incomes, expenses, wallets and members links for about" do
+    test_that_menu_is_present_on('about')
+  end
+
+  test "should be message with actual balance for about" do
+    test_that_should_contain_message_with_actual_balance_on('about')
   end
 
   test 'should get index' do
@@ -27,6 +36,7 @@ class HomeControllerTest < ActionController::TestCase
   end
 
   test 'should get about' do
+    sign_in users(:user_with_wallet_2)
     get :about
     assert_response :success
     assert_template :about
@@ -48,45 +58,32 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'a', text: I18n.t('header.members'), count: 0
   end
 
-  test "add new expense form should not be visible on home page for guess" do
+  test 'should contain link to change language to Polish' do
+    I18n.locale = "en"
     get :index
-    assert_select 'input#expense_name', count: 0
-    assert_select 'input#expense_amount', count: 0
-    assert_select 'input#expense_execution_date', count: 0
-    assert_select 'select#expense_wallet_id', count: 0
-  end 
-
-  test "date input should contain current date by default" do
-    sign_in users(:user_with_wallet_1)
-    get :index
-    assert_select 'input#expense_execution_date[value=?]', Date.today.strftime("%d.%m.%Y")
+    assert_select "a[href=/pl]"
   end
 
-  test "add new expense form should be visible on home page if user is authenticated" do
-    sign_in users(:user_with_wallet_1)
+  test 'should contain link to change language to English' do
+    I18n.locale = "pl"
     get :index
-    assert_select 'form' do
-      assert_select 'input#expense_name'
-      assert_select 'input#expense_amount'
-      assert_select 'input#expense_execution_date'
-      assert_select 'select#expense_wallet_id'
-    end
+    assert_select "a[href=/en]"
   end
 
-  test 'should not be a message with actual balance without logging'  do
+  test 'should not change the language during user authentication' do
+    I18n.locale = "pl"
+    sign_in users(:user_with_wallet_2)
+    sign_out users(:user_with_wallet_2)
     get :index
-    assert_select 'a', text: I18n.t('header.balance'), count: 0
+    assert_select "a[href=/en]"
   end
 
-  test 'should be link to create new wallet' do
-    sign_in users(:user_without_wallet)
+  test 'should remember language which user selected' do
+    sign_in users(:user_with_wallet_2)
+    I18n.locale = "en"
+    sign_out users(:user_with_wallet_2)
     get :index
-    assert_select 'a', text: I18n.t('add_wallet')
+    assert_select "a[href=/pl]"
   end
 
-  test 'should be link to create new income' do
-    sign_in users(:user_without_income)
-    get :index
-    assert_select 'a', text: I18n.t('add_income')
-  end
 end

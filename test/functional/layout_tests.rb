@@ -23,11 +23,13 @@ module LayoutTests
   end
 
   def test_that_footer_should_contain_add_this_buttons(action)
+    sign_in users(:user_with_wallet_1)
     get action
     assert_select 'a.addthis_button_facebook_like'
     assert_select 'a.addthis_button_tweet'
     assert_select 'a.addthis_button_pinterest_pinit'
     assert_select 'a.addthis_counter'
+    assert_select 'a.addthis_pill_style'
   end
 
 end

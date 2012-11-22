@@ -32,3 +32,8 @@ wallet_without_expenses:
   name: Test 10
   amount: 1000
   user: user_with_wallet_1
+
+wallet_without_income:
+  name: entertainment
+  amount: 50
+  user: user_without_income

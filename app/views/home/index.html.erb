@@ -1,26 +1,30 @@
-<% unless user_signed_in? %>
-  <div class="pagination-centered">
-    <hr />
-    <h4><%= t('home.welcome') %></h4>
-    <p><%= t('home.information') %></p>
-    <%= link_to t('home.login'), user_omniauth_authorize_path(:google_oauth2), class: "btn btn-large btn-success" %>
-    <hr />
-  </div>
-<% else %>
-  <% if current_user.incomes.empty? %>
-    <p>
-      <%= t('specify.income') %>
-      <%= link_to t('add_income'), new_income_path, class: "btn btn-primary btn-small" %>
-    </p>
-    <hr />
-  <% end %>
-  <% if current_user.wallets.empty? %>
-    <p>
-      <%= t('specify.wallet') %>
-      <%= link_to t('add_wallet'), new_wallet_path, class: "btn btn-primary btn-small" %>
-    </p>
-    <hr />
-  <% else %>
-    <%= render 'expenses/form' %>
-  <% end %>
-<% end %>
+<!DOCTYPE html>
+<html>
+	<%= render 'layouts/head_section' %>
+	<body>
+		<div class="wrapper">
+			<div class="container">
+			  <div class="row ">
+				  <div class="pull-right">
+				    <% if I18n.locale == :pl %>
+				      <%= link_to (image_tag ("uk.png")), url_for(locale: 'en') %>
+				    <% else %>
+				      <%= link_to (image_tag ("poland.png")), url_for(locale:'pl') %>
+				    <% end %>
+				  </div>
+			  </div>
+			  <div class="row pagination-centered">
+				  <hr />
+				  <h4><%= t('home.welcome') %></h4>
+				  <p><%= t('home.information') %></p>
+				  <%= link_to t('home.login'), user_omniauth_authorize_path(:google_oauth2), class: "btn btn-large btn-success" %>
+				  <hr />
+				</div>
+			</div>
+		</div>
+	<%= render 'layouts/footer' %>
+	</body>
+</html>
+
+
+

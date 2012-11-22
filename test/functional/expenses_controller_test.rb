@@ -218,6 +218,12 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_redirected_to :expenses
   end
 
+  test 'should be link to create new income' do
+    sign_in users(:user_without_income)
+    get :new
+    assert_select 'a', text: I18n.t('add_income')
+  end
+
   private
   def assert_invalid(args)
     assert_equal Expense.new(args).valid?, false
