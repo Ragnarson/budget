@@ -10,7 +10,7 @@ Demo application can be found at {budget.shellyapp.com}[http://budget.shellyapp.
 == Team
 ==== Mentors
 * Michał Kwiatkowski (michalk@ragnarson.com)
-* Oskar Szrajera (gotar@ragnarson.com)
+* Oskar Szrajer (gotar@ragnarson.com)
 ==== Apprentices
 * Karolina Kruk (karolina.anna.kruk@gmail.com)
 * Marcin Brzeziński (marcin.brzezinski.inf@gmail.com)
