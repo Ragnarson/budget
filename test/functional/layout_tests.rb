@@ -10,6 +10,8 @@ module LayoutTests
     assert_select 'a', I18n.t('header.expenses')
     assert_select 'a', I18n.t('header.wallets')
     assert_select 'a', I18n.t('header.members')
+    assert_select 'li.visible-phone a', I18n.t('header.logout')
+    assert_select 'li.hidden-phone a', I18n.t('header.logout')
   end
 
   def test_that_should_contain_message_with_actual_balance_on(action)
