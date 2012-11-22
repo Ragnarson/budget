@@ -5,7 +5,7 @@ class Income < ActiveRecord::Base
   
   validates :source, length: { in: 1..128 }
   validates :amount, numericality: { greater_than: 0}
-  validates :tax, numericality: { greater_than: 0, less_than: 100 }, allow_nil: true
+  validates :tax, numericality: { greater_than_or_equal_to: 0, less_than: 100 }
 
   def net
     tax_rate = "0." + tax.to_s

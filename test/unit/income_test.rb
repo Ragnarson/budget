@@ -7,7 +7,7 @@ class IncomeTest < ActiveSupport::TestCase
   end
 
   test "should validate income" do
-    assert(@user.incomes.build(source: 1, amount: 200, tax: nil).valid?)
+    assert(@user.incomes.build(source: 1, amount: 200, tax: 0).valid?)
   end
 
   test "should save valid income into database" do

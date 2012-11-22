@@ -76,6 +76,7 @@ class IncomesControllerTest < ActionController::TestCase
       assert_select 'input#income_source'
       assert_select 'input#income_amount'
       assert_select 'input#income_tax'
+      assert_select 'div.percent span', '%'
       assert_select 'input[TYPE=submit]'
     end
   end
@@ -89,14 +90,19 @@ class IncomesControllerTest < ActionController::TestCase
   end
 
   test "should render new if income amount is not valid" do
-    post :create, income: { source: 'source', amount: 'zero' }
+    post :create, income: { source: 'source', amount: 'zero', tax: 0 }
     assert_template 'new'
   end
 
   test "should redirect to new income and notify about creation if source and amount are valid" do
-    post :create, income: { source: 'source', amount: 200 }
+    post :create, income: { source: 'source', amount: 200, tax: 0 }
     assert_redirected_to incomes_path
     assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.income')), flash[:notice]
+  end
+
+  test "should render new if income tax is nil" do
+    post :create, income: { source: 'source', amount: 200 }
+    assert_template 'new'
   end
 
   test "should get index" do

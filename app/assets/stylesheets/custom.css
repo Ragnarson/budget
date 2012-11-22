@@ -52,7 +52,10 @@ footer .addthis_default_style {
   padding-left: 0;
 }
 input.currency {
-  width: 166px;
+  width: 169px;
+}
+input.percent {
+  width: 179px;
 }
 .alert:first-letter {
   text-transform: uppercase;;
