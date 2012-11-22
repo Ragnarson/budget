@@ -18,18 +18,16 @@
 //= require_self
 
 $(document).ready(function () {
+  $('body').on("focus", "input.date_picker",function() {
+    $(this).datepicker({
+      'format': 'dd.mm.yyyy',
+      'autoclose': true
+    })
+  })
 
-    $('body').on("focus", "input.date_picker",function() {
-        $(this).datepicker({
-            'format': 'dd.mm.yyyy',
-            'autoclose': true
-        });
-    });
-
-    $('body').on("click", "input.currency", function() {
-        if($(this).val() == '0,00' || $(this).val() == '0.00') {
-            $(this).val('');
-        }
-    });
-
-});
+  $('body').on("focus click", "input.currency", function() {
+    if($(this).val() == '0,00' || $(this).val() == '0.00') {
+      $(this).val('')
+    }
+  })
+})
