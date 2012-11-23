@@ -2,7 +2,7 @@
 
 Using this application you are able to control your finances by easily managing the household wallet. You can add new categories, expenses and income. In a simple way you can plan a category by adding the future expenses. You can invite other people (eg, family members), so that all have access to the management of the wallet.
 
-Application is created under an internship in a {Ragnarson}[http://ragnarson.com] company. Source code is provided under {MIT license}[https://github.com/Ragnarson/budget/blob/master/LICENSE].
+Application is being developed during internship at {Ragnarson}[http://ragnarson.com]. Source code is provided under {MIT license}[https://github.com/Ragnarson/budget/blob/master/LICENSE].
 
 == Demo
 Demo application can be found at {budget.shellyapp.com}[http://budget.shellyapp.com]
@@ -11,7 +11,7 @@ Demo application can be found at {budget.shellyapp.com}[http://budget.shellyapp.
 ==== Mentors
 * Michał Kwiatkowski (michalk@ragnarson.com)
 * Oskar Szrajer (gotar@ragnarson.com)
-==== Apprentices
+==== Interns
 * Karolina Kruk (karolina.anna.kruk@gmail.com)
 * Marcin Brzeziński (marcin.brzezinski.inf@gmail.com)
 * Dawid Milewski (dawidmilewski89@gmail.com)
@@ -43,6 +43,3 @@ Please follow those steps.
 (3) Create database and assign its owner
   postgres=# CREATE DATABASE budget WITH OWNER budget;
 Your database should already be configured. You're now ready to run application.
-
-== License
-The project is licensed under the "MIT license", for the exact terms please see the {license file}[https://github.com/Ragnarson/budget/blob/master/LICENSE].
