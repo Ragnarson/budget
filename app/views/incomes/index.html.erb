@@ -43,7 +43,7 @@
 		<%= t('total_net_profit') %>: <%= number_to_currency @total_net %>
   </p>
 <% end %>
-<div class="form-actions">
+<div class="form-actions hidden-phone">
   <%= link_to t('add_income'), new_income_path, class: "btn btn-primary" %>
 </div>  
 

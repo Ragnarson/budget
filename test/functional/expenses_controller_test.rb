@@ -123,7 +123,8 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "should contain link to adding new expense" do
     get :index
-    assert_select 'div.form-actions a', I18n.t('add_expense')
+    assert_select 'div.form-actions.hidden-phone a', I18n.t('add_expense')
+    assert_select 'div.form-actions.visible-phone a', I18n.t('add_expense')
   end
 
   test "form should be visible on add new expense page" do

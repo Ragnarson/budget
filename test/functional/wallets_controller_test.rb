@@ -30,6 +30,12 @@ class WalletsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:wallet)
   end
 
+  test "should contain link to adding new wallet" do
+    get :index
+    assert_select 'div.form-actions.hidden-phone a', I18n.t('add_wallet')
+    assert_select 'div.form-actions.visible-phone a', I18n.t('add_wallet')
+  end
+
   test "should be form on page" do
     get :new
     assert_select 'form' do

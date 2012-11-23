@@ -30,6 +30,12 @@ class IncomesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:income)
   end
 
+  test "should contain link to adding new income" do
+    get :index
+    assert_select 'div.form-actions.hidden-phone a', I18n.t('add_income')
+    assert_select 'div.form-actions.visible-phone a', I18n.t('add_income')
+  end
+
   test "income with name 'First' should be on the top of table" do
     sign_in users(:user_with_wallet_1)
     get :index
