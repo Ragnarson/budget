@@ -167,7 +167,7 @@ pl:
     first_wallet: Proszę zdefiniować portfel
     add_expense: Dodaj pierwsze wydatki
     welcome: "Witaj %{name}! "
-    confirm_wallet_destroy: Przeczytaj zanim usuniesz
+    confirm_wallet_destroy: Przeczytaj zanim usuniesz portfel
   helpers:
     select:
       prompt: Proszę wybrać
@@ -304,3 +304,4 @@ pl:
   info_about_balance: Informacje o stanie konta
   delete_only_wallet: usuń tylko portfel
   delete_with_expenses: usuń portfel wraz z wydatkami
+  confirm_delete_wallet_html: Wybrany portfel <strong>%{name}</strong> wciąż posiada wydatki. Możesz usunać portfel wraz z wydatkami lub sam portfel, w tym przypadku, wydatki pozostaną w systemie.

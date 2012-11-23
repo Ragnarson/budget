@@ -1,12 +1,15 @@
 <p>
-  Selected wallet <strong><%= @wallet.name %></strong> still has expenses, if you want to delete it, those expenses will not belongs to any wallet
+  <%= t(:confirm_delete_wallet_html, name: @wallet.name) %>
 </p>
 
 <ul class="expenses">
   <%- @wallet.expenses.each do |expense| %>
-  <li><%= "#{expense.name} - #{number_to_currency expense.amount}" %></li>
-    <%- end  %>
+    <li><%= "#{expense.name} - #{number_to_currency expense.amount}" %></li>
+  <%- end %>
 </ul>
 
-<%= link_to t('delete_only_wallet'), wallet_destroy_path(@wallet, :confirmed=> 1), class: "btn btn-danger" %>
-<%= link_to t('delete_with_expenses'), wallet_destroy_path(@wallet, :confirmed=> 2), class: "btn btn-danger" %> <%= t('or')  %> <%= link_to t('cancel'), wallets_path %>
+<div class="form-actions">
+  <%= link_to t('delete_only_wallet'), wallet_destroy_path(@wallet, :confirmed => 1), class: "btn btn-danger" %>
+  <%= link_to t('delete_with_expenses'), wallet_destroy_path(@wallet, :confirmed => 2), class: "btn btn-danger" %>
+  <%= t('or') %> <%= link_to t('cancel'), wallets_path %>
+</div>

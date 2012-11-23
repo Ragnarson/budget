@@ -149,7 +149,7 @@ en:
     first_wallet: Please create your first wallet
     add_expense: Please add your expenses
     welcome: "Welcome %{name}! "
-    confirm_wallet_destroy: Read before confirm
+    confirm_wallet_destroy: Read before delete wallet
   helpers:
     select:
       prompt: Please select
@@ -284,3 +284,4 @@ en:
   info_about_balance: Information about balance
   delete_only_wallet: delete only wallet
   delete_with_expenses: delete wallet with expenses
+  confirm_delete_wallet_html: Selected wallet <strong>%{name}</strong> still has expenses, if you want to delete it, those expenses will not belongs to any wallet or you can delete wallet with all expenses.

@@ -71,3 +71,13 @@ input.percent {
   color: #fff;
   background-color: transparent;
 }
+.btn + .btn-danger {
+  margin-left: 10px;
+}
+ul.expenses {
+  margin-left: 40px;
+}
+ul.expenses li {
+  margin-bottom: 6px;
+  list-style: square;
+}
