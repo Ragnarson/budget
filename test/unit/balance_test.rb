@@ -18,7 +18,7 @@ class BalanceTest < ActiveSupport::TestCase
   test "should count actual balance properly when there are no expenses" do
     @user.incomes.build(amount: 100, tax: 10)
     @user.incomes.build(amount: 100, tax: 0)
-    assert_equal Balance.actual(@user), 190
+    assert_equal Balance.actual(@user), 190.91
   end
 
   test "should count actual balance properly" do
@@ -32,7 +32,7 @@ class BalanceTest < ActiveSupport::TestCase
     @user.incomes.build(amount: 100, tax: 10)
     @user.incomes.build(amount: 100, tax: 0)
     @user.expenses.build(amount: 100)
-    assert_equal Balance.actual(@user), 90
+    assert_equal Balance.actual(@user), 90.91
   end
 
 end

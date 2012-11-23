@@ -8,7 +8,6 @@ class Income < ActiveRecord::Base
   validates :tax, numericality: { greater_than_or_equal_to: 0, less_than: 100 }
 
   def net
-    tax_rate = "0." + tax.to_s
-    amount * (1 - tax_rate.to_f)
+    (amount/(1+(tax.to_f/100))).round(2)
   end
 end

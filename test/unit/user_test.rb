@@ -35,13 +35,13 @@ class UserTest < ActiveSupport::TestCase
   test "net profit sum should be equal to amount of lone users income" do
     user = User.new
     user.incomes[0] = Income.new(amount: 200, tax: 20)
-    assert_equal user.net_profits_sum, 160
+    assert_equal user.net_profits_sum, 166.67
   end
 
   test "net profit sum should be equal to all amounts summed up" do
     user = User.new
     user.incomes[0] = Income.new(amount: 100, tax: 10)
     user.incomes[1] = Income.new(amount: 20)
-    assert_equal user.net_profits_sum, 110
+    assert_equal user.net_profits_sum, 110.91
   end
 end

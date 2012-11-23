@@ -19,7 +19,7 @@ class IncomeTest < ActiveSupport::TestCase
   end
 
   test "net profit should be properly counted" do
-    assert_equal @user.incomes.build(source: "mother", amount: 200, tax: 10).net, 180
+    assert_equal @user.incomes.build(source: "mother", amount: 200, tax: 10).net, 181.82
   end
 
   test "should recognize negative tax" do
