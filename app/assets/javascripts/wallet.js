@@ -25,7 +25,9 @@ $(document).ready(function () {
   $('#add_expense_link').hide()
   $('#total_header').hide()
 
-  $('body').on("change", ".expense_amount input.currency", set_budget_amount())
+  $('body').on("change", ".expense_amount input.currency", function() {
+    set_budget_amount()
+  })
 
   $('#plan_budget_link').click(function() {
     show_budget_plan()
