@@ -31,3 +31,7 @@ $(document).ready(function () {
     }
   })
 })
+
+$(window).load(function () {
+  $('div#ki_container').addClass('hidden-phone')
+})
