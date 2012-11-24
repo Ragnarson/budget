@@ -8,16 +8,7 @@ class HomeControllerTest < ActionController::TestCase
     DatabaseCleaner.clean
   end
 
-  test "should contain footer and this buttons for index" do
-    get :index
-    assert_select 'a.addthis_button_facebook_like'
-    assert_select 'a.addthis_button_tweet'
-    assert_select 'a.addthis_button_pinterest_pinit'
-    assert_select 'a.addthis_counter'
-    assert_select 'a.addthis_pill_style'
-  end
-
-  test "should contain footer and this buttons for about" do
+  test "should contain footer and add this buttons for about" do
     test_that_footer_should_contain_add_this_buttons('about')
   end
 
