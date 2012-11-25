@@ -29,4 +29,5 @@ Budget::Application.routes.draw do
       end
     end
   end
+  match '*a', :to => 'errors#routing'
 end
