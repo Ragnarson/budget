@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_actual_balance
-    @actual_balance = Balance.actual(current_user) unless !user_signed_in?
+    @actual_balance = Balance.up_to(current_user, Date.today) unless !user_signed_in?
   end
 end

@@ -2,6 +2,7 @@ income_1:
   source: Test_1
   amount: 1000
   user: user_with_wallet_2
+  execution_date: <%= 1.days.ago %>
 
 income_2:
   source: Test_2

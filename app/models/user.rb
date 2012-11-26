@@ -34,4 +34,14 @@ class User < ActiveRecord::Base
   def expenses_sum
     self.expenses.map(&:amount).inject(0, &:+)
   end
+
+  def net_profits_sum_up_to(date)
+    incomes_with_date = incomes.where("execution_date <= ?", date).map(&:net).inject(0, &:+)
+    incomes_without_date =  incomes.where(:execution_date => nil).map(&:net).inject(0, &:+)
+    incomes_with_date+incomes_without_date
+  end
+
+  def expenses_sum_up_to(date)
+    self.expenses.where("execution_date <= ?", date).map(&:amount).inject(0, &:+)
+  end
 end

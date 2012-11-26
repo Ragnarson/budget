@@ -39,4 +39,19 @@ class BalanceControllerTest < ActionController::TestCase
     assert_select 'p', "#{I18n.t('total_amount')}: #{number_to_currency(200)}"
   end
 
+  test 'should contain expense' do
+    get :index
+    assert_select 'tr.expense td.amount', "-#{number_to_currency(200)}"
+  end
+
+  test 'should contain income' do
+    get :index
+    assert_select 'tr.income td.amount', "#{number_to_currency(1000)}"
+  end
+
+  test 'should contain day balance' do
+    get :index
+    assert_select 'tr.balance td.amount', "-#{number_to_currency(200)}"
+  end
+
 end

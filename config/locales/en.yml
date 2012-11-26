@@ -275,6 +275,8 @@ en:
   member: member
   row_num: No
   actions: Actions
+  balance:
+      operation: Operation
   home:
     welcome: Welcome to the Budget Application
     information: Control of your finances by easily managing the household wallet. You can add new categories, expenses and income. In a simple way we can plan a category by adding the future expenses. You can invite other people (eg, family members), so that all have access to the management of the wallet.
@@ -283,7 +285,6 @@ en:
     income: You do not have any incomes, please specify one.
     wallet: Please define your first wallet.
     expense: You do not have any expenses.
-  info_about_balance: Information about balance
   delete_only_wallet: delete only wallet
   delete_with_expenses: delete wallet with expenses
   confirm_delete_wallet_html: Selected wallet <strong>%{name}</strong> still has expenses, if you want to delete it, those expenses will not belongs to any wallet or you can delete wallet with all expenses.

@@ -295,6 +295,8 @@ pl:
   row_num: Lp
   member: użytkownik
   actions: Opcje
+  balance:
+    operation: Operacja
   home:
     welcome: Aplikacja do zarządzania domowym portfelem
     information: Kontroluj swoje finanse poprzez łatwe zarządzanie domowym portfelem. Możesz dodawać nowe kategorie, wydatki oraz przychody. W prosty sposób możemy zaplanować daną kategorię poprzez dodanie przyszłych wydatków. Istnieje możliwość zaproszenia innych osób (np. członków rodziny), tak żeby wszyscy mieli dostęp do zarządzania portfelem.
@@ -303,7 +305,6 @@ pl:
     income: Nie masz żadnych przychodów.
     wallet: Nie masz żadnych portfeli.
     expense: Nie masz żadnych wydatków.
-  info_about_balance: Informacje o stanie konta
   delete_only_wallet: usuń tylko portfel
   delete_with_expenses: usuń portfel wraz z wydatkami
   confirm_delete_wallet_html: Wybrany portfel <strong>%{name}</strong> wciąż posiada wydatki. Możesz usunać portfel wraz z wydatkami lub sam portfel, w tym przypadku, wydatki pozostaną w systemie.

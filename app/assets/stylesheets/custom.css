@@ -81,3 +81,19 @@ ul.expenses li {
   margin-bottom: 6px;
   list-style: square;
 }
+
+tr.expense td.amount {
+  color: red;
+}
+
+tr.income td.amount{
+  color: green;
+}
+
+tr.balance td.amount{
+  font-weight: bold;
+}
+
+tr.second-day{
+    background-color: #f9f9f9;
+}
