@@ -1,9 +1,9 @@
 <%= simple_form_for @wallet, html: { class: "form-horizontal" } do |f| %>
   <%= f.input :name %>
-  <%= f.input :amount, as: :currency, wrapper: 'append', wrapper_html: { id: 'budget_amount' } %>
+  <%= f.input :amount, as: :currency, wrapper: 'append', wrapper_html: { id: 'wallet_amount' } %>
 
   <h4 id="total_header"><%= t('total_amount') %>: <span id="total_amount"></span></h4>
-  <div id="budget_plan">
+  <div id="wallet_plan">
     <%= f.simple_fields_for :expenses do |builder| %>
       <%= render "expenses/expenses_fields", f: builder %>
     <% end %>
@@ -11,7 +11,7 @@
 
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-primary' %>
-    <%= link_to_add_fields t('plan_wallet'), f, :expenses, 'plan_budget_link' %>
+    <%= link_to_add_fields t('plan_wallet'), f, :expenses, 'plan_wallet_link' %>
     <%= link_to_add_fields t('add_expense'), f, :expenses, 'add_expense_link' %>
   </div>
 <% end %>

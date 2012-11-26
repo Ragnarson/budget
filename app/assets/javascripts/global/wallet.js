@@ -4,7 +4,7 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id))
 }
 
-function set_budget_amount() {
+function set_wallet_amount() {
   var sum = 0.0
   $('.expense_amount input.currency').each(function() {
     var input_value = parseFloat($(this).val().replace(',','.'))
@@ -14,10 +14,10 @@ function set_budget_amount() {
   $('#total_amount').text(sum.toFixed(2))
 }
 
-function show_budget_plan() {
+function show_wallet_plan() {
   $('#add_expense_link').show()
-  $('#plan_budget_link').hide()
-  $('#budget_amount').hide()
+  $('#plan_wallet_link').hide()
+  $('#wallet_amount').hide()
   $('#total_header').show()
 }
 
@@ -25,15 +25,15 @@ $(document).ready(function () {
   $('#add_expense_link').hide()
   $('#total_header').hide()
 
-  $('body').on("change", ".expense_amount input.currency", set_budget_amount)
+  $('body').on("change", ".expense_amount input.currency", set_wallet_amount)
 
-  $('#plan_budget_link').click(function() {
-    show_budget_plan()
+  $('#plan_wallet_link').click(function() {
+    show_wallet_plan()
     $('#total_amount').text('0')
   })
 
-  if($('#budget_plan').children().size()>0) {
-    show_budget_plan()
-    set_budget_amount()
+  if($('#wallet_plan').children().size()>0) {
+    show_wallet_plan()
+    set_wallet_amount()
   }
 })

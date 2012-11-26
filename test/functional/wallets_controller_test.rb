@@ -59,7 +59,7 @@ class WalletsControllerTest < ActionController::TestCase
 
   test "on form page should be placeholder for planning wallet with expenses" do
     get :new
-    assert_tag tag: 'div', attributes: {id: 'budget_plan'}
+    assert_tag tag: 'div', attributes: {id: 'wallet_plan'}
   end
 
   test "if no wallets are present should redirect to new wallet page" do
@@ -75,19 +75,19 @@ class WalletsControllerTest < ActionController::TestCase
   end
 
   test "if wallets are present should show table with wallets list" do
-    post :create, wallet: {name: 'Budget name', amount: 500}
+    post :create, wallet: {name: 'Wallet name', amount: 500}
     get :index
     assert_tag tag: 'table', attributes: {class: 'table table-striped'}
   end
 
   test "if wallet was created, amount should be visible in table on index page" do
-    post :create, wallet: {name: 'Budget name', amount: 10}
+    post :create, wallet: {name: 'Wallet name', amount: 10}
     get :index
     assert_select 'tbody tr:last-child td:nth-child(2)', number_to_currency(10)
   end
 
   test "if wallet with expenses were created, wallet amount should be equal to the sum of amounts in expenses" do
-    post :create, wallet: {name: 'Budget name', amount: 300, expenses_attributes: {0 => {name: 'food', amount: 34, execution_date: '2012-11-12'}, 1 => {name: 'food2', amount: 6, execution_date: '2012-11-12'}}}
+    post :create, wallet: {name: 'Wallet name', amount: 300, expenses_attributes: {0 => {name: 'food', amount: 34, execution_date: '2012-11-12'}, 1 => {name: 'food2', amount: 6, execution_date: '2012-11-12'}}}
     get :index
     assert_select 'tbody tr:last-child td:nth-child(2)', number_to_currency(40)
   end
