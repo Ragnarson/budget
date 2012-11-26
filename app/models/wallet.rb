@@ -19,6 +19,10 @@ class Wallet < ActiveRecord::Base
     destroy
   end
 
+  def remaining_amount
+    self.amount - self.expenses.map(&:amount).sum
+  end
+
   private
   def initialize_amounts
     @sum = 0

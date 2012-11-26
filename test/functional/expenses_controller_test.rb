@@ -144,7 +144,7 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "wallet select list should contain name and amount of each wallet" do
     get :new
-    assert_select 'select#expense_wallet_id option:first-child', "#{wallets(:test_10000_dollars).name} (#{number_to_currency wallets(:test_10000_dollars).amount-wallets(:test_10000_dollars).expenses.map(&:amount).sum})"
+    assert_select 'select#expense_wallet_id option:first-child', "#{wallets(:test_10000_dollars).name} (#{number_to_currency -100000})"
   end
 
   test "wallet select list should be in correct order based on expenses quantity" do
