@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   end
 
   def about
+    render "about_" + I18n.locale.to_s
   end
 
   def set_locale

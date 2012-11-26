@@ -33,6 +33,20 @@ class HomeControllerTest < ActionController::TestCase
     assert_template :about
   end
 
+  test 'should render polish about page if locale is pl' do
+    sign_in users(:user_with_wallet_2)
+    I18n.locale = "pl"
+    get :about
+    assert_template :about_pl
+  end
+
+  test 'should render english about page if locale is en' do
+    sign_in users(:user_with_wallet_2)
+    I18n.locale = "en"
+    get :about
+    assert_template :about_en
+  end
+
   test 'should contain hello message, basic information and login link' do
     get :index
     assert_select 'h4', I18n.t('home.welcome')
