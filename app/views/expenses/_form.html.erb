@@ -1,5 +1,5 @@
 <%= simple_form_for @expense, html: {class: "form-horizontal"} do |f| %>
-  <%= f.input :name %>
+  <%= f.input :name, autofocus: true %>
   <%= f.input :amount, as: :currency, wrapper: 'append' %>
   <%= f.association :wallet,
                     collection: current_user.wallets.sort_by(&:expenses_number).reverse,
