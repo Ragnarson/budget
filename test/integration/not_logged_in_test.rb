@@ -25,6 +25,7 @@ class NotLoggedInTest < ActionDispatch::IntegrationTest
   test "should show error 404 site if page doesn't exists" do
     get "/pl/siema"
     assert_template "404"
+    assert_response :missing
   end
 
 end

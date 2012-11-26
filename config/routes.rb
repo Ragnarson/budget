@@ -29,5 +29,7 @@ Budget::Application.routes.draw do
       end
     end
   end
+  #needed to suppress routing error while testing 'errors#routing'
+  match '/404' => 'errors#routing'
   match '*a', :to => 'errors#routing'
 end
