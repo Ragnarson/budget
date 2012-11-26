@@ -22,6 +22,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_profile
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    @user.locale = params[:user][:locale]
+
+    if @user.save
+      I18n.locale = @user.locale
+      flash.now[:notice] = t("flash.update_one")
+      render action: "edit_profile"
+    else
+      flash.now[:error] = t("flash.fail_changes")
+      render action: "edit_profile"
+    end
+  end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy

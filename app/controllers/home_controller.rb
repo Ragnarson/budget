@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   before_filter :set_locale
+  #before_filter :authenticate_user!, except: :index
+
   layout false, only: :index
 
   def index
@@ -10,13 +12,13 @@ class HomeController < ApplicationController
     render "about_" + I18n.locale.to_s
   end
 
+  private
+
   def set_locale
-    if params[:locale]
-      I18n.locale = params[:locale]
-    elsif cookies[:locale]
-      I18n.locale = cookies[:locale]
+    if current_user
+      I18n.locale = current_user.locale if current_user.locale
     else
-      I18n.locale = ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
+      params[:locale] ? I18n.locale = params[:locale] : I18n.locale = (lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/]
     end
   end
 end

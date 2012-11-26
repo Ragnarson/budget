@@ -1,19 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :set_locale, :get_actual_balance
+  before_filter :get_actual_balance
 
   def after_sign_in_path_for(resource)
-    new_expense_path
+    if current_user.locale.nil?
+      flash[:notice] = t("flash.no_locale")
+      edit_profile_path
+    else
+      I18n.locale = current_user.locale
+      new_expense_path
+    end
   end
 
   private
-
-  def set_locale
-    if params[:locale]
-      I18n.locale = params[:locale]
-      cookies[:locale] = params[:locale]
-    end
-  end
 
   def default_url_options(options={})
     {locale: I18n.locale}

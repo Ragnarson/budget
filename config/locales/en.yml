@@ -141,12 +141,14 @@ en:
     fail_two: << *fail_one
     success_few: << *success_one
     fail_few: << *fail_one
-    update_one: "%{model} was successfully updated"
+    fail_changes: There was problem with saving changes
+    update_one: Changes were successfully saved
     wallet_success: "Your new '%{name}' wallet was added successfully"
     no_wallets: You dont have any wallets. Please define new wallet
     no_members: "You didn't add any family member"
     add_wallet: First you have to add at least one wallet
     no_record: "Couldn't find any %{model}"
+    no_locale: Please choose the language settings
     first_wallet: Please create your first wallet
     add_expense: Please add your expenses
     welcome: "Welcome %{name}! "
@@ -157,7 +159,7 @@ en:
     submit:
       create: add %{model}
       submit: save %{model}
-      update: update %{model}
+      update: save changes
   number:
     currency:
       format:
@@ -233,6 +235,7 @@ en:
     attributes:
       user:
         email: Email address
+        locale: Language
       expense:
         name: Expense name
         amount: Amount

@@ -75,20 +75,16 @@ class HomeControllerTest < ActionController::TestCase
     assert_select "a[href=/en]"
   end
 
-  test 'should not change the language during user authentication' do
-    I18n.locale = "pl"
-    sign_in users(:user_with_wallet_2)
-    sign_out users(:user_with_wallet_2)
+  test 'after login should be Polish language' do
+    sign_in users(:user_with_locale_pl)
     get :index
-    assert_select "a[href=/en]"
+    assert_equal :pl, I18n.locale
   end
 
-  test 'should remember language which user selected' do
-    sign_in users(:user_with_wallet_2)
-    I18n.locale = "en"
-    sign_out users(:user_with_wallet_2)
+  test 'after login should be English language' do
+    sign_in users(:user_with_locale_en)
     get :index
-    assert_select "a[href=/pl]"
+    assert_equal :en, I18n.locale
   end
 
 end

@@ -22,3 +22,17 @@ user_without_income:
 user_with_wallet_3:
   email: user_with_wallet_3@budget.shellyapp.com
   encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+
+user_with_locale_pl:
+  email: user_with_locale_pl@budget.shellyapp.com
+  locale: "pl"
+  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+
+user_with_locale_en:
+  email: user_with_locale_en@budget.shellyapp.com
+  locale: "en"
+  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+
+user_with_no_locale:
+  email: user_with_no_locale@budget.shellyapp.com
+  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...

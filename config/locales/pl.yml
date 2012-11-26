@@ -159,12 +159,14 @@ pl:
     fail_two: "%{model} nie zostało zapisane"
     success_few: "%{model} zostały poprawnie zapisane"
     fail_few: "%{model} nie zostały zapisane"
-    update_one: "%{model} został poprawnie zapisany"
+    fail_changes: Zmiany nie zostały poprawnie zapisane
+    update_one: Zmiany zostały poprawnie zapisane
     wallet_success: "Portfel '%{name}' został poprawnie zapisany"
     no_wallets: Nie masz żadnych zdefiniowanych portfeli, dodaj nowy portfel
     no_members: "Nie masz dodanych użytkowników"
     add_wallet: Proszę zdefiniować pierwszy portfel
     no_record: "Taki  %{model} nie istnieje"
+    no_locale: "Proszę wybrać ustawienia języka"
     first_wallet: Proszę zdefiniować portfel
     add_expense: Dodaj pierwsze wydatki
     welcome: "Witaj %{name}! "
@@ -173,9 +175,9 @@ pl:
     select:
       prompt: Proszę wybrać
     submit:
-      create: Dodaj %{model}
-      submit: Zapisz %{model}
-      update: Zmień %{model}
+      create: dodaj %{model}
+      submit: zapisz %{model}
+      update: zapisz zmiany
   number:
     currency:
       format:
@@ -253,6 +255,7 @@ pl:
     attributes:
       user:
         email: Adres email
+        locale: Język
       expense:
         name: Nazwa wydatku
         amount: Kwota
@@ -273,7 +276,7 @@ pl:
     wallets: Portfele
     members: Zaproszenia
     about: O projekcie
-    balance: bilans
+    balance: Bilans
     edit_profile: Edytuj profil
     logout: Wyloguj się
   ago: temu
