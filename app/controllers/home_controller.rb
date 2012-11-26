@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
   before_filter :set_locale
-  #before_filter :authenticate_user!, except: :index
-
   layout false, only: :index
 
   def index
