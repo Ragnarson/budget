@@ -12,13 +12,13 @@ Demo application can be found at {budget.shellyapp.com}[http://budget.shellyapp.
 * Michał Kwiatkowski (michalk@ragnarson.com)
 * Oskar Szrajer (gotar@ragnarson.com)
 ==== Interns
-* Karolina Kruk (karolina.anna.kruk@gmail.com)
+* Maciej Borosiewicz (m.borosiewicz@gmail.com)
 * Marcin Brzeziński (marcin.brzezinski.inf@gmail.com)
+* Rafath Khan (rafath@zaraz.pl)
+* Karolina Kruk (karolina.anna.kruk@gmail.com)
+* Maciej Małecki (smt116@gmail.com)
 * Dawid Milewski (dawidmilewski89@gmail.com)
 * Sebastian Wesołowski (seba.wesol@gmail.com)
-* Maciej Małecki (smt116@gmail.com)
-* Rafath Khan (rafath@zaraz.pl)
-* Maciej Borosiewicz (m.borosiewicz@gmail.com)
 
 == Before you make a commit
 
