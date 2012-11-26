@@ -89,7 +89,7 @@ class IncomesControllerTest < ActionController::TestCase
   
   test "should create income" do
     assert_difference('Income.count') do
-      post :create, income: { source: 'source', amount: 200, tax: 23, user_id: 1 }
+      post :create, income: { source: 'source', amount: 200, tax: 23, user_id: 1, execution_date: '2012-11-25' }
     end
     assert_redirected_to incomes_path
     assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.income')), flash[:notice]
@@ -101,7 +101,7 @@ class IncomesControllerTest < ActionController::TestCase
   end
 
   test "should redirect to new income and notify about creation if source and amount are valid" do
-    post :create, income: { source: 'source', amount: 200, tax: 0 }
+    post :create, income: { source: 'source', amount: 200, tax: 0, execution_date: '2012-11-25' }
     assert_redirected_to incomes_path
     assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.income')), flash[:notice]
   end
@@ -161,5 +161,10 @@ class IncomesControllerTest < ActionController::TestCase
     put :update, id: 1, income: {amount: 20000}
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.income')), flash[:notice]
     assert_redirected_to :incomes
+  end
+
+  test "date input should contain current date by default" do
+    get :new
+    assert_select 'input#income_execution_date[value=?]', Date.today.strftime("%d.%m.%Y")
   end
 end

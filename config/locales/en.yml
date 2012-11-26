@@ -246,6 +246,7 @@ en:
         amount: Amount
         tax: Tax rate
         net: Net profit
+        execution_date: Date
   header:
     incomes: Income
     expenses: Expenses

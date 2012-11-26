@@ -266,6 +266,7 @@ pl:
         amount: Kwota
         tax: Podatek
         net: Netto
+        execution_date: Data
   header:
     incomes: Przychody
     expenses: Wydatki

@@ -7,15 +7,15 @@ class IncomeTest < ActiveSupport::TestCase
   end
 
   test "should validate income" do
-    assert(@user.incomes.build(source: 1, amount: 200, tax: 0).valid?)
+    assert(@user.incomes.build(source: 1, amount: 200, tax: 0, execution_date: '2012-11-11').valid?)
   end
 
   test "should save valid income into database" do
-    assert_equal @user.incomes.build(source: "mother", amount: 200, tax: 23).save, true
+    assert_equal @user.incomes.build(source: "mother", amount: 200, tax: 23, execution_date: '2012-11-11').save, true
   end
 
   test "should not save invalid income into database" do
-    assert_equal @user.incomes.build(source: 1, amount: nil, tax: 23).save, false
+    assert_equal @user.incomes.build(source: 1, amount: nil, tax: 23, execution_date: '2012-11-11').save, false
   end
 
   test "net profit should be properly counted" do

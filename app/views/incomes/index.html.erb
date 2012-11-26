@@ -11,6 +11,7 @@
         <th><%= t('activerecord.attributes.income.amount') %></th>
         <th><%= t('activerecord.attributes.income.tax') %></th>
 				<th><%= t('activerecord.attributes.income.net')%></th>
+        <th><%= t('activerecord.attributes.income.execution_date') %></th>
         <th><%= t('actions') %></th>
       </tr>
     </thead>
@@ -25,6 +26,11 @@
 						<% end %>
 					</td>
 					<td><%= number_to_currency income.net %></td>
+          <td>
+            <% if !income.execution_date.nil?%>
+                <%= l income.execution_date %>
+            <% end %>
+          </td>
           <td>
             <%= link_to t('edit'), edit_income_path(income), class: "btn btn-primary" %>
             <%= link_to t('delete'), income_path(income), method: :delete, class: "btn btn-danger", data: {confirm: t('confirm_delete')} %>

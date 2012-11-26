@@ -2,6 +2,7 @@ class IncomesController < ApplicationController
 
   def new
     @income = Income.new
+    @income.execution_date = Date.today.strftime("%d/%m/%Y")
   end
 
   def index
