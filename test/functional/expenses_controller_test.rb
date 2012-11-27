@@ -87,10 +87,10 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'tbody tr:nth-child(2) td:first-child', expenses(:expense_9).name
   end
 
-  test "table should contain delete and edit buttons when not using mobile phone" do
+  test "table should contain delete and edit buttons" do
     get :index
-    assert_select 'tbody tr td a.hidden-phone', I18n.t('edit')
-    assert_select 'tbody tr td a.hidden-phone', I18n.t('delete')
+    assert_select 'tbody tr td a', I18n.t('edit')
+    assert_select 'tbody tr td a', I18n.t('delete')
   end
 
   test "should contain pagination" do

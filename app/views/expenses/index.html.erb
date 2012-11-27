@@ -20,8 +20,8 @@
         <td><%= number_to_currency expense.amount %></td>
         <td><%= l expense.execution_date %> </td>
         <td>
-          <%= link_to t('edit'), edit_expense_path(expense), class: "btn btn-primary hidden-phone" %>
-          <%= link_to t('delete'), expense_path(expense), method: :delete, class: "btn btn-danger hidden-phone", data: {confirm: t('confirm_delete')} %></td>
+          <%= link_to t('edit'), edit_expense_path(expense), class: "btn btn-primary" %>
+          <%= link_to t('delete'), expense_path(expense), method: :delete, class: "btn btn-danger", data: {confirm: t('confirm_delete')} %></td>
       </tr>
     <% end %>
     </tbody>
