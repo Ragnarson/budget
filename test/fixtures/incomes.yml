@@ -1,66 +1,66 @@
 income_1:
   source: Test_1
   amount: 1000
-  user: user_with_wallet_2
   execution_date: <%= 1.days.ago %>
+  family: family_of_user_with_wallet_2  
 
 income_2:
   source: Test_2
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_3:
   source: Test_3
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_4:
   source: Test_4
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_5:
   source: Test_5
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_6:
   source: Test_6
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_7:
   source: Test_7
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_8:
   source: Test_8
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_9:
   source: Test_9
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_10:
   source: Test_10
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_11:
   source: Test_11
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_12:
   source: First
   amount: 1000
-  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 income_for_user_with_one_income_and_one_expense_in_same_date:
   source: Test
   amount: 200
   execution_date: <%= 1.days.ago %>
-  user: user_with_one_income_and_one_expense_in_same_date
+  family: family_of_user_with_one_income_and_one_expense_in_same_date

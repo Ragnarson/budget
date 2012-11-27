@@ -2,7 +2,7 @@
   <%= f.input :name, autofocus: true %>
   <%= f.input :amount, as: :currency, wrapper: 'append' %>
   <%= f.association :wallet,
-                    collection: current_user.wallets.sort_by(&:expenses_number).reverse,
+                    collection: current_user.families.first.wallets.sort_by(&:expenses_number).reverse,
                     label_method: lambda { |wallet| "#{wallet.name} (#{number_to_currency wallet.remaining_amount})" },
                     include_blank: false %>
   <%= f.input :execution_date, as: :date_picker %>

@@ -39,7 +39,7 @@ class IncomesControllerTest < ActionController::TestCase
   test "income with name 'First' should be on the top of table" do
     sign_in users(:user_with_wallet_1)
     get :index
-    assert_select 'tbody tr:first-child td:first-child', users(:user_with_wallet_1).incomes.last.source
+    assert_select 'tbody tr:first-child td:first-child', users(:user_with_wallet_1).families.first.incomes.last.source
   end
 
   test "table should contain information about source, amount, tax, net profit and also action buttons" do

@@ -1,4 +1,4 @@
-<% if current_user.incomes.empty? %>
+<% if current_user.families.first.incomes.empty? %>
   <p>
     <%= t('specify.income') %>
     <%= link_to t('add_income'), new_income_path, class: "btn btn-primary btn-small" %>

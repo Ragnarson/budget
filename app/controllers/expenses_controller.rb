@@ -3,11 +3,11 @@ class ExpensesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @expenses = current_user.expenses.order('execution_date DESC').paginate(page: params[:page], per_page: 10)
+    @expenses = current_user.families.first.expenses.order('execution_date DESC').paginate(page: params[:page], per_page: 10)
   end
 
   def new
-    redirect_to new_wallet_path, notice: t('flash.add_wallet') if current_user.wallets.empty?
+    redirect_to new_wallet_path, notice: t('flash.add_wallet') if current_user.families.first.wallets.empty?
     @expense = Expense.new
     @expense.execution_date = Date.today.strftime("%d.%m.%Y")
   end
@@ -23,20 +23,20 @@ class ExpensesController < ApplicationController
   end
 
   def edit
-    @expense = current_user.expenses.find(params[:id])
+    @expense = current_user.families.first.expenses.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
   end
 
   def update
-    current_user.expenses.find(params[:id]).update_attributes(params[:expense])
+    current_user.families.first.expenses.find(params[:id]).update_attributes(params[:expense])
     redirect_to expenses_path, notice: t('flash.update_one', model: t('activerecord.models.expense'))
   rescue ActiveRecord::RecordNotFound
     redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
   end
 
   def destroy
-    current_user.expenses.find(params[:id]).destroy
+    current_user.families.first.expenses.find(params[:id]).destroy
     redirect_to expenses_path, notice: t('flash.delete_one', model: t('activerecord.models.expense'))
   rescue ActiveRecord::RecordNotFound
     redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))

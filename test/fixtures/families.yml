@@ -1,0 +1,32 @@
+family_of_user_without_wallet:
+  users: user_without_wallet
+
+family_of_user_with_wallet_1:
+  users: user_with_wallet_1
+
+family_of_user_without_expenses:
+  users: user_without_expenses
+
+family_of_user_with_wallet_2:
+  users: user_with_wallet_2
+
+family_of_user_without_income:
+  users: user_without_income
+
+family_of_user_with_wallet_3:
+  users: user_with_wallet_3
+
+family_of_user_with_locale_pl:
+  users: user_with_locale_pl
+
+family_of_user_with_locale_en:
+  users: user_with_locale_en
+
+family_of_user_with_no_locale:
+  users: user_with_no_locale
+
+family_of_user_without_incomes_and_expenses:
+  users: user_without_incomes_and_expenses
+
+family_of_user_with_one_income_and_one_expense_in_same_date
+  users: user_with_one_income_and_one_expense_in_same_date
