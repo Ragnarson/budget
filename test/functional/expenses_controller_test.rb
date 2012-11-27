@@ -62,12 +62,12 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'tr.warning'
   end
 
-  test "table should contain information about name, amount, date and also action buttons with proper visibility" do
+  test "table should contain information about name, amount, date and also action buttons" do
     get :index
     assert_select 'thead th', I18n.t('activerecord.attributes.expense.name')
     assert_select 'thead th', I18n.t('activerecord.attributes.expense.amount')
     assert_select 'thead th', I18n.t('activerecord.attributes.expense.execution_date')
-    assert_select 'thead th.hidden-phone', I18n.t('actions')
+    assert_select 'thead th', I18n.t('actions')
   end
 
   test "expense with name 'First' should be on the top of table" do
