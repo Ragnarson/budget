@@ -279,7 +279,7 @@ en:
   row_num: No
   actions: Actions
   balance:
-      operation: Operation
+    operation: Operation
   home:
     welcome: Welcome to the Budget Application
     information: Control of your finances by easily managing the household wallet. You can add new categories, expenses and income. In a simple way we can plan a category by adding the future expenses. You can invite other people (eg, family members), so that all have access to the management of the wallet.

@@ -6,33 +6,18 @@ class BalanceTest < ActiveSupport::TestCase
     @user = User.new
   end
 
-  test "balance should be euqal zero if there is no income nor expenses" do
-    assert_equal Balance.actual(@user), 0
+  test "should count history of operations when there is one income and one expense with two different dates" do
+    @user = users(:user_with_wallet_2)
+    assert_equal Balance.history(@user, 1, 10 ).length, 4
   end
 
-  test "should count actual balance properly when there is no income" do
-    @user.expenses.build(amount: 100)
-    assert_equal Balance.actual(@user), -100
+  test "operation history should be equal zero when there is no expenses and incomes" do
+    @user = users(:user_without_incomes_and_expenses)
+    assert_equal Balance.history(@user, 1, 10 ).length, 0
   end
 
-  test "should count actual balance properly when there are no expenses" do
-    @user.incomes.build(amount: 100, tax: 10)
-    @user.incomes.build(amount: 100, tax: 0)
-    assert_equal Balance.actual(@user), 190.91
+  test "should count history of operations when there is one income and one expense in the same date" do
+    @user = users(:user_with_one_income_and_one_expense_in_same_date)
+    assert_equal Balance.history(@user, 1, 10 ).length, 3
   end
-
-  test "should count actual balance properly" do
-    @user.incomes.build(amount: 100)
-    @user.incomes.build(amount: 100)
-    @user.expenses.build(amount: 100)
-    assert_equal Balance.actual(@user), 100
-  end
-
-  test "should count actual balance wit tax properly" do
-    @user.incomes.build(amount: 100, tax: 10)
-    @user.incomes.build(amount: 100, tax: 0)
-    @user.expenses.build(amount: 100)
-    assert_equal Balance.actual(@user), 90.91
-  end
-
 end

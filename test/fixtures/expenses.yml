@@ -87,3 +87,9 @@ expense_15:
   amount: 200
   execution_date: <%= 2.days.ago %>
   wallet: books_300_dollars
+
+expense_for_user_with_one_income_and_one_expense_in_same_date:
+  name: Test
+  amount: 100
+  execution_date: <%= 1.days.ago %>
+  wallet: wallet_with_one_expense

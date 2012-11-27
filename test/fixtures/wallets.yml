@@ -37,3 +37,8 @@ wallet_without_income:
   name: entertainment
   amount: 50
   user: user_without_income
+
+wallet_with_one_expense:
+  name: Test
+  amount: 100
+  user: user_with_one_income_and_one_expense_in_same_date

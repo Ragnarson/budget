@@ -47,4 +47,12 @@ class User < ActiveRecord::Base
   def expenses_sum_up_to(date)
     self.expenses.where("execution_date <= ?", date).map(&:amount).inject(0, &:+)
   end
+
+  def balance_actual
+    self.net_profits_sum - self.expenses_sum
+  end
+
+  def balance_up_to(date)
+    self.net_profits_sum_up_to(date) - self.expenses_sum_up_to(date)
+  end
 end

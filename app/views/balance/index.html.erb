@@ -6,20 +6,20 @@
 <div>
   <table class="table">
     <thead>
-    <tr>
-      <th><%= t('balance.operation') %></th>
-      <th><%= t('activerecord.attributes.expense.amount') %></th>
-      <th><%= t('activerecord.attributes.expense.execution_date') %></th>
-    </tr>
+        <tr>
+          <th><%= t('balance.operation') %></th>
+          <th><%= t('activerecord.attributes.expense.amount') %></th>
+          <th><%= t('activerecord.attributes.expense.execution_date') %></th>
+        </tr>
     </thead>
     <tbody id="balance-table">
         <% @day_flag_css = true %>
         <% @balances.each do |balance| %>
-            <%= render :partial => "balance/balance", :object => balance %>
+           <%= render :partial => "balance/balance", :object => balance %>
         <% end %>
     </tbody>
   </table>
 </div>
-<div style="display: none;  ">
+<div class="display-none">
   <%= will_paginate @balances %>
 </div>

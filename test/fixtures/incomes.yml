@@ -58,3 +58,9 @@ income_12:
   source: First
   amount: 1000
   user: user_with_wallet_1
+
+income_for_user_with_one_income_and_one_expense_in_same_date:
+  source: Test
+  amount: 200
+  execution_date: <%= 1.days.ago %>
+  user: user_with_one_income_and_one_expense_in_same_date

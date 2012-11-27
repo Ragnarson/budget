@@ -2,7 +2,7 @@
 <% @day_flag_css = !@day_flag_css %>
 $('#balance-table').append('<% @balances.each do |balance| %> <%= j render :partial => "balance/balance", :object => balance %><% end %> ');
 <% if @balances.next_page %>
-    $('.pagination').replaceWith('<%= j will_paginate(@balances) %>');
+$('.pagination').replaceWith('<%= j will_paginate(@balances) %>');
 <% else %>
-    $('.pagination').remove();
+$('.pagination').remove();
 <% end %>

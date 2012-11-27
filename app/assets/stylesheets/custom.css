@@ -95,5 +95,8 @@ tr.balance td.amount{
 }
 
 tr.second-day{
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
+}
+.display-none{
+  display: none;
 }
