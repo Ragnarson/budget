@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.where(:users => {:invited_by => current_user.id})
+    @family = current_user.families.first
+    @users = @family.users
     redirect_to new_user_path, notice: t('flash.no_members') if @users.blank?
   end
 
@@ -14,6 +15,8 @@ class UsersController < ApplicationController
     @user.password = User.generate_password
     @user.invited_by = current_user.id
     if @user.save
+      @new_family = FamiliesUsers.new(family_id: current_user.families.first.id, user_id: @user.id)
+      @new_family.save()
       mail_params = {email: @user.email, current_user_email: current_user.email, url: "http://budget.shellyapp.com"}
       UserMailer.invite_email(mail_params).deliver
       redirect_to users_path, notice: t('flash.success_one', model: t('activerecord.models.user'))

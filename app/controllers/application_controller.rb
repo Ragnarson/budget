@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     if current_user
-      I18n.locale = current_user.locale if current_user.locale?  
+      I18n.locale = current_user.locale if current_user.locale?
     end
   end
 
@@ -25,6 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_actual_balance
-    @actual_balance = current_user.balance_up_to(Date.today) if user_signed_in?
+    @actual_balance = current_user.families.first.balance_up_to(Date.today) if user_signed_in?
   end
 end

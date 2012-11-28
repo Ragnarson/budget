@@ -9,7 +9,7 @@ user_without_expenses:
 user_without_wallet:
   email: user_without_wallet@budget.shellyapp.com
   invited_by: 1
-  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa... 
 
 user_with_wallet_2:
   email: user_with_wallet_2@budget.shellyapp.com

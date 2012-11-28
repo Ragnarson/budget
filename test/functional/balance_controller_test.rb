@@ -53,5 +53,4 @@ class BalanceControllerTest < ActionController::TestCase
     get :index
     assert_select 'tr.balance td.amount', "-#{number_to_currency(200)}"
   end
-
 end
