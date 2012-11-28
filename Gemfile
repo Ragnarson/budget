@@ -4,7 +4,6 @@ gem 'rails', '3.2.9'
 
 gem 'sqlite3'
 gem 'pg'
-gem 'database_cleaner', :group => :test
 
 gem 'therubyracer'
 
@@ -34,4 +33,10 @@ group :development, :test do
   gem 'turn'
   gem 'minitest'
   gem 'tconsole'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'poltergeist'
 end

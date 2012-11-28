@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127221856) do
+ActiveRecord::Schema.define(:version => 20121127154542) do
 
   create_table "expenses", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -32,15 +32,15 @@ ActiveRecord::Schema.define(:version => 20121127221856) do
   end
 
   create_table "incomes", :force => true do |t|
-    t.string   "source",                                                    :null => false
-    t.decimal  "amount",                      :precision => 8, :scale => 2
-    t.integer  "tax",            :limit => 2
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
+    t.string   "source",                                       :null => false
+    t.decimal  "amount",         :precision => 8, :scale => 2
+    t.decimal  "tax",            :precision => 2, :scale => 0
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.integer  "wallet_id"
     t.integer  "user_id"
-    t.integer  "family_id"
     t.date     "execution_date"
+    t.integer  "family_id"
   end
 
   create_table "users", :force => true do |t|
