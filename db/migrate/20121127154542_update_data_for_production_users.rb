@@ -4,7 +4,12 @@ class UpdateDataForProductionUsers < ActiveRecord::Migration
       if user.families.empty?
         if user.invited_by
           @family = FamiliesUsers.where(:user_id => user.invited_by).first
-          @family_id = @family.family_id
+          if !@family.empty?
+            @family = Family.create()
+            @family_id = @family.id
+          else
+            @family_id = @family.family_id
+          end
           @user_family = FamiliesUsers.create(:family_id => @family_id, :user_id => user.id)
           @user_family.save
         else
