@@ -18,7 +18,7 @@
 //= require_self
 
 $(document).ready(function () {
-  var lang = document.location.href.substring(28).substring(0, 2)
+  var lang = document.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
   if (!(lang == "en" || lang == "pl")){
     lang = "en"
   }
