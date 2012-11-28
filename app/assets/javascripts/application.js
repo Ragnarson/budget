@@ -18,11 +18,14 @@
 //= require_self
 
 $(document).ready(function () {
+  var lang = document.location.href.substring(28).substring(0, 2)
+  if (!(lang == "en" || lang == "pl")){
+    lang = "en"
+  }
   $('body').on("focus", "input.date_picker",function() {
-    $(this).datepicker({
-      'format': 'dd.mm.yyyy',
-      'autoclose': true
-    })
+    $(this).datepicker(
+      $.datepicker.setDefaults($.datepicker.regional[lang])
+    )
   })
 
   $('body').on("focus click", "input.currency", function() {
