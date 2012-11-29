@@ -28,7 +28,6 @@ class ActionDispatch::IntegrationTest
   teardown do
     DatabaseCleaner.clean
     Capybara.reset_sessions!
-    Capybara.use_default_driver
   end
 
   private

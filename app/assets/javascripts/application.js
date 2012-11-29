@@ -19,10 +19,12 @@
 
 $(document).ready(function () {
   var lang = document.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
+
   if (!(lang == "en" || lang == "pl")){
     lang = "en"
   }
-  $('body').on("focus", "input.date_picker",function() {
+
+  $('body').on("focus", "input.date_picker", function() {
     $(this).datepicker(
       $.datepicker.setDefaults($.datepicker.regional[lang])
     )
