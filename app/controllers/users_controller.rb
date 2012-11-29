@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.password = User.generate_password
     @user.invited_by = current_user.id
+    @user.locale = params[:locale]
     if @user.save
       @new_family = FamiliesUsers.new(family_id: current_user.families.first.id, user_id: @user.id)
       @new_family.save()
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.locale = params[:user][:locale]
+    @user.locale = params[:locale]
 
     if @user.save
       I18n.locale = @user.locale
