@@ -4,7 +4,7 @@
   <body>
     <div class="wrapper">
       <div class="wrapper-inner">
-        <%= render 'layouts/menu' unless current_user.nil? %>
+        <%= render 'layouts/menu' if current_user %>
         <article class="container">
           <div class="row">
             <div class="span12">
