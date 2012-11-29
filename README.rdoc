@@ -1,4 +1,4 @@
-= Budget
+= Budget {<img src="https://travis-ci.org/Ragnarson/budget.png" />}[https://travis-ci.org/Ragnarson/budget]
 
 Using this application you are able to control your finances by easily managing the household wallet. You can add new categories, expenses and income. In a simple way you can plan a category by adding the future expenses. You can invite other people (eg, family members), so that all have access to the management of the wallet.
 
