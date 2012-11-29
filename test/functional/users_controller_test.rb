@@ -25,6 +25,7 @@ class UsersControllerTest < ActionController::TestCase
     get :new
     assert_select 'form' do
       assert_select 'input#user_email'
+      assert_select 'a', I18n.t('back')
       assert_select 'input[TYPE=submit]'
     end
   end

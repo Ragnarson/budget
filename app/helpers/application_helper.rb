@@ -8,4 +8,12 @@ module ApplicationHelper
     end
     raw(content)
   end
+
+  def url_for(options = nil)
+    if options == :back
+      controller.request.env["HTTP_REFERER"]
+    else
+      super
+    end
+  end
 end

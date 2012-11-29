@@ -42,6 +42,7 @@ class WalletsControllerTest < ActionController::TestCase
       assert_select 'input#wallet_name'
       assert_select 'input#wallet_amount'
       assert_select 'input[TYPE=submit]'
+      assert_select 'a', I18n.t('back')
     end
   end
 

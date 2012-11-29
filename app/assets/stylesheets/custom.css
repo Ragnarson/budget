@@ -103,3 +103,6 @@ tr.second-day{
 .display-none{
   display: none;
 }
+.form-actions .btn + a {
+  margin-left: 10px;
+}

@@ -11,7 +11,8 @@ class PlanningWalletTest < ActionDispatch::IntegrationTest
     visit '/pl'
     click_on I18n.t('home.login', locale: 'pl')
 
-    visit '/pl/wallets/new'
+    click_on I18n.t('header.wallets', locale: 'pl')
+    click_on I18n.t('add_wallet', locale: 'pl')
     click_on I18n.t('plan_wallet', locale: 'pl')
 
     assert '0', find('#total_amount').text

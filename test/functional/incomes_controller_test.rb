@@ -83,6 +83,7 @@ class IncomesControllerTest < ActionController::TestCase
       assert_select 'input#income_amount'
       assert_select 'input#income_tax'
       assert_select 'div.percent span', '%'
+      assert_select 'a', I18n.t('back')
       assert_select 'input[TYPE=submit]'
     end
   end
