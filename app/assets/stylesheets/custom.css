@@ -4,6 +4,9 @@ html, body {
 body {
   padding-top: 0;
 }
+form input[type="text"] {
+  font-size: 16px;
+}
 .wrapper-inner {
   border-top: 60px solid transparent;
 }
