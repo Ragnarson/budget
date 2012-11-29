@@ -9,16 +9,16 @@ Demo application can be found at {budget.shellyapp.com}[http://budget.shellyapp.
 
 == Team
 ==== Mentors
-* Michał Kwiatkowski (michalk@ragnarson.com)
-* Oskar Szrajer (gotar@ragnarson.com)
+* {Michał Kwiatkowski}[http://github.com/mkwiatkowski] (michalk@ragnarson.com)
+* {Oskar Szrajer}[http://github.com/gotar] (gotar@ragnarson.com)
 ==== Interns
-* Maciej Borosiewicz (m.borosiewicz@gmail.com)
-* Marcin Brzeziński (marcin.brzezinski.inf@gmail.com)
-* Rafath Khan (rafath@zaraz.pl)
-* Karolina Kruk (karolina.anna.kruk@gmail.com)
-* Maciej Małecki (smt116@gmail.com)
-* Dawid Milewski (dawidmilewski89@gmail.com)
-* Sebastian Wesołowski (seba.wesol@gmail.com)
+* {Dawid Milewski}[http://github.com/c2h5oh-Ruby] (dawidmilewski89@gmail.com)
+* {Karolina Kruk}[http://github.com/keysha] (karolina.anna.kruk@gmail.com)
+* {Maciej Borosiewicz}[http://github.com/xmbr] (m.borosiewicz@gmail.com)
+* {Maciej Małecki}[http://github.com/smt116] (smt116@gmail.com)
+* {Marcin Brzeziński}[http://github.com/cintrzyk] (marcin.brzezinski.inf@gmail.com)
+* {Rafath Khan}[http://github.com/rafath] (rafath@zaraz.pl)
+* {Sebastian Wesołowski}[http://github.com/Weso1ek] (seba.wesol@gmail.com)
 
 == Before you make a commit
 
@@ -45,4 +45,4 @@ Please follow those steps.
 Your database should already be configured. You're now ready to run application.
 
 == Integration tests with phantomjs
-Integration testing using {phantomjs}[http://phantomjs.org/download.html]. You should remember about adding localization of phantomjs bin directory to your PATH.
+Integration testing using {phantomjs}[http://phantomjs.org/download.html]. Remember to add phantomjs to your PATH.
