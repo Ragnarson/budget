@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.locale = params[:locale]
+    @user.locale = params[:user][:locale]
 
     if @user.save
       I18n.locale = @user.locale
