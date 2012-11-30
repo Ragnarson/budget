@@ -28,6 +28,8 @@ Budget::Application.routes.draw do
         post :index
       end
     end
+    #needed for error pages with locale in URL
+    match '*a', :to => 'errors#routing'
   end
 
   #needed to suppress routing error while testing 'errors#routing'
