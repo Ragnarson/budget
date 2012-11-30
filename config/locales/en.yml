@@ -155,6 +155,7 @@ en:
     welcome: "Welcome %{name}! "
     confirm_wallet_destroy: Read before delete wallet
     invalid_date: Given date is not valid
+    low_balance: Low account balance.
   helpers:
     select:
       prompt: Please select

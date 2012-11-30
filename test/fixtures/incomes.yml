@@ -64,3 +64,18 @@ income_for_user_with_one_income_and_one_expense_in_same_date:
   amount: 200
   execution_date: <%= 1.days.ago %>
   family: family_of_user_with_one_income_and_one_expense_in_same_date
+
+income_for_user_with_low_balance:
+  source: Test
+  amount: 50
+  family: family_of_user_with_low_balance
+
+income_for_user_without_low_balance:
+  source: Test
+  amount: 500
+  family: family_of_user_without_low_balance
+
+income_for_user_with_locale_en:
+  source: Payment
+  amount: 1600
+  family: family_of_user_with_locale_en

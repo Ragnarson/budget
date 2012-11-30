@@ -1,12 +1,33 @@
 require 'test_helper'
+require_relative 'layout_tests'
 
 class UsersControllerTest < ActionController::TestCase
+  include LayoutTests
+
   def setup
     sign_in users(:user_without_wallet)
   end
 
   def after
     DatabaseCleaner.clean
+  end
+
+  %w(index new).each do |action|
+    test "when authenticated should contain login, incomes, expenses, wallets and members links for #{action}" do
+      test_that_menu_is_present_on(action)
+    end
+    test "should be message with actual balance for #{action}" do
+      test_that_should_contain_message_with_actual_balance_on(action)
+    end
+    test "should contain footer and this button for #{action}" do
+      test_that_footer_should_contain_add_this_buttons(action)
+    end
+    test "should contain warning about low balance for #{action}" do
+      test_of_presences_low_balance_warning(action)
+    end
+    test "should not contain warning about low balance for #{action}" do
+      test_of_not_presences_low_balance_warning(action)
+    end
   end
 
   test "should get new" do

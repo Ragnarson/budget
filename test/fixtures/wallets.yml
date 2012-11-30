@@ -52,3 +52,8 @@ wallet_with_one_expense:
   name: Test
   amount: 100
   family: family_of_user_with_one_income_and_one_expense_in_same_date
+
+wallet_for_user_with_low_balance:
+  name: Food
+  amount: 250
+  family: family_of_user_with_low_balance

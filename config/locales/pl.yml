@@ -171,6 +171,7 @@ pl:
     first_wallet: Proszę zdefiniować portfel
     add_expense: Dodaj pierwsze wydatki
     welcome: "Witaj %{name}! "
+    low_balance: Niskie saldo konta.
     confirm_wallet_destroy: Przeczytaj zanim usuniesz portfel
     invalid_date: Podana data jest niepoprawna
   helpers:

@@ -44,3 +44,13 @@ user_without_incomes_and_expenses:
 user_with_one_income_and_one_expense_in_same_date:
   email: with_one_income_and_one_expense_in_same_date@budget.shellyapp.com
   encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+
+user_with_low_balance:
+  email: user_with_low_balance@budget.shellyapp.com
+  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+  locale: "pl"
+
+user_without_low_balance:
+  email: user_without_low_balance@budget.shellyapp.com
+  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+  locale: "pl"

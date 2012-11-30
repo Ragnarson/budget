@@ -22,6 +22,12 @@ class BalanceControllerTest < ActionController::TestCase
     test "should contain footer and this button for #{action}" do
       test_that_footer_should_contain_add_this_buttons(action)
     end
+    test "should contain warning about low balance for #{action}" do
+      test_of_presences_low_balance_warning(action)
+    end
+    test "should not contain warning about low balance for #{action}" do
+      test_of_not_presences_low_balance_warning(action)
+    end
   end
 
   test 'should be message with actual balance on balance view' do

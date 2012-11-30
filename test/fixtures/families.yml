@@ -30,3 +30,9 @@ family_of_user_without_incomes_and_expenses:
 
 family_of_user_with_one_income_and_one_expense_in_same_date:
   users: user_with_one_income_and_one_expense_in_same_date
+
+family_of_user_with_low_balance:
+  users: user_with_low_balance
+
+family_of_user_without_low_balance:
+  users: user_without_low_balance

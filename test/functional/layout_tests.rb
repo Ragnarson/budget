@@ -33,4 +33,16 @@ module LayoutTests
     assert_select 'a.addthis_pill_style'
   end
 
+  def test_of_presences_low_balance_warning(action)
+    sign_in users(:user_with_low_balance)
+    get action
+    assert_select 'div.alert', /#{I18n.t('flash.low_balance', locale: 'pl')}(.*)/
+  end
+
+  def test_of_not_presences_low_balance_warning(action)
+    sign_in users(:user_without_low_balance)
+    get action
+    assert_select 'div.alert', { html: /#{I18n.t('flash.low_balance', locale: 'pl')}(.*)/, count: 0 }
+  end
+
 end

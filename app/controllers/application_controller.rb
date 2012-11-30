@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :get_actual_balance, :set_locale
+  before_filter :get_actual_balance, :set_locale, :low_balance_warning
 
   def after_sign_in_path_for(resource)
     if current_user.locale.nil?
@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     else
       new_expense_path
     end
+  end
+
+  def low_balance_warning
+    flash[:error] = t("flash.low_balance") if get_actual_balance < 200 if user_signed_in?
   end
 
   private
