@@ -9,7 +9,7 @@ class AmountFieldTest < ActionDispatch::IntegrationTest
     allow_google_login_as(@user)
 
     visit '/pl'
-    click_on I18n.t('home.login', locale: 'pl')
+    log_in_pl
     assert_equal '0,00', find('input.currency').value
 
     find('input.currency').click()

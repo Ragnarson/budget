@@ -35,33 +35,4 @@ class DatepickerTest < ActionDispatch::IntegrationTest
     click_on_date
     assert_equal "Su", first_day_of_the_week
   end
-
-  private
-  def log_in_pl
-    click_on I18n.t('home.login', locale: 'pl')
-  end
-
-  def log_in_en
-    click_on I18n.t('home.login', locale: 'en')
-  end
-
-  def click_on_date
-    find('#expense_execution_date').click
-  end
-
-  def choose_next_month
-    find('.ui-datepicker-next').click
-  end
-
-  def choose_day(date)
-    find(".ui-state-default:contains('#{date.day}')").click
-  end
-
-  def date_value
-    find('#expense_execution_date').value
-  end
-  
-  def first_day_of_the_week
-    find('.ui-datepicker-calendar thead tr th span').text    
-  end
 end

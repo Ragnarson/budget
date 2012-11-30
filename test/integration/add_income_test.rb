@@ -25,9 +25,4 @@ class AddIncomeTest < ActionDispatch::IntegrationTest
     assert_equal find('tbody tr td:nth-child(5)').text, Time.now.strftime("%d.%m.%Y")
 
   end
-
-  private
-  def log_in_pl
-    click_on I18n.t('home.login', locale: 'pl')
-  end
 end
