@@ -138,6 +138,3 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 .pagination ul li.current {
   font-weight: bold;;
 }
->>>>>>> added family and user fields to expenses with proper migration
-added monthly pagination for expenses, removed numerical pagination
-added tablesorter.js for sorting expenses:app/assets/stylesheets/custom.css
