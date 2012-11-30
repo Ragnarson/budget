@@ -58,8 +58,8 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should edit user language and show a success notice" do
     sign_in users(:user_with_locale_en)
-    put :update, id: users(:user_with_locale_en), user: {locale: 'en'}
-    assert_equal users(:user_with_locale_en).reload.locale, 'en'
+    put :update, id: users(:user_with_locale_en), user: {locale: 'pl'}
+    assert_equal users(:user_with_locale_en).reload.locale, 'pl'
     assert_equal I18n.t('flash.update_one'), flash[:notice]  
   end
 

@@ -1,6 +1,6 @@
 module LoginTestHelper
 
-private
+	private
   def log_in_pl
     click_on I18n.t('home.login', locale: 'pl')
   end

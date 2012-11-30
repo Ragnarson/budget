@@ -1,7 +1,7 @@
 module DatepickerTestHelper
 
-private
-	def click_on_date
+  private
+  def click_on_date
     find('#expense_execution_date').click
   end
 
@@ -16,7 +16,7 @@ private
   def date_value
     find('#expense_execution_date').value
   end
-  
+
   def first_day_of_the_week
     find('.ui-datepicker-calendar thead tr th span').text    
   end

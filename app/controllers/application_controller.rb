@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
       flash[:notice] = t("flash.no_locale")
       edit_profile_path
     else
-      I18n.locale = current_user.locale
       new_expense_path
     end
   end
@@ -15,8 +14,12 @@ class ApplicationController < ActionController::Base
   private
 
   def set_locale
-    if current_user
-      I18n.locale = current_user.locale if current_user.locale?
+    if params[:locale]
+      I18n.locale = params[:locale]
+    elsif current_user.try(:locale)
+      I18n.locale = current_user.locale
+    else
+      I18n.locale = (lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/]
     end
   end
 

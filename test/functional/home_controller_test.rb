@@ -75,16 +75,22 @@ class HomeControllerTest < ActionController::TestCase
     assert_select "a[href=/en]"
   end
 
-  test 'after login should be Polish language' do
+  test 'if no locale in URL should be user language' do
     sign_in users(:user_with_locale_pl)
     get :index
     assert_equal :pl, I18n.locale
   end
 
-  test 'after login should be English language' do
-    sign_in users(:user_with_locale_en)
-    get :index
+  test 'locale in URL should be without changing after user login' do
+    sign_in users(:user_with_locale_pl)
+    get :index, locale: "en" 
     assert_equal :en, I18n.locale
   end
-
+  
+  test 'if no locale in URL and no locale in user profile should be language from browser' do
+    sign_in users(:user_with_no_locale)
+    request.env['HTTP_ACCEPT_LANGUAGE'] = 'pl-PL,pl;q=0.8,en-US;q=0.6,en;q=0.4'
+    get :index
+    assert_equal :pl, I18n.locale
+  end
 end
