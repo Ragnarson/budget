@@ -28,4 +28,11 @@ class NotLoggedInTest < ActionDispatch::IntegrationTest
     assert_response :missing
   end
 
+  test "should get back to the proper site when user clicks back link on 404 site" do
+    visit "/en"
+    visit "/en/wrong"
+    click_link I18n.t('back', locale: 'en')
+    assert current_path, '/en'
+  end
+
 end
