@@ -106,3 +106,38 @@ tr.second-day{
 .form-actions .btn + a {
   margin-left: 10px;
 }
+table.tablesorter {
+  width: 100%;
+  text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+  padding: 4px;
+}
+table.tablesorter thead tr .header {
+  cursor: pointer;
+}
+table.tablesorter tbody td {
+  color: #3D3D3D;
+  padding: 4px;
+  background-color: #FFF;
+  vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+  background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+  background: url(asc.gif) right no-repeat;
+
+}
+table.tablesorter thead tr .headerSortDown {
+  background: url(desc.gif) right no-repeat;
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+  background-color: #8dbdd8;
+}
+.pagination ul li.current {
+  font-weight: bold;;
+}
+>>>>>>> added family and user fields to expenses with proper migration
+added monthly pagination for expenses, removed numerical pagination
+added tablesorter.js for sorting expenses:app/assets/stylesheets/custom.css

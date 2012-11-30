@@ -90,4 +90,9 @@ class ExpenseTest < ActiveSupport::TestCase
   test "should save valid expense to database" do
     assert_equal wallets(:test_10000_dollars).expenses.build(name: 'Milk', amount: 3, execution_date: '2012-01-12').save, true
   end
+
+  test "should always return expenses, even if given date is invalid" do
+    expenses = Expense.by_date(families(:family_of_user_with_wallet_1), 'some date')
+    assert_equal expenses.count, Expense.by_date(families(:family_of_user_with_wallet_1), Date.today).count
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127154542) do
+ActiveRecord::Schema.define(:version => 20121128163511) do
 
   create_table "expenses", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -20,7 +20,12 @@ ActiveRecord::Schema.define(:version => 20121127154542) do
     t.datetime "updated_at",                                                     :null => false
     t.integer  "wallet_id"
     t.date     "execution_date"
+    t.integer  "family_id"
+    t.integer  "user_id"
   end
+
+  add_index "expenses", ["family_id"], :name => "index_expenses_on_family_id"
+  add_index "expenses", ["user_id"], :name => "index_expenses_on_user_id"
 
   create_table "families", :force => true do |t|
     t.datetime "created_at"

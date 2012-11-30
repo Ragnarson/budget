@@ -42,24 +42,11 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:expenses)
   end
 
-  test "should get table with ten rows on first page" do
-    get :index, :page => 1
-    assert_select 'tbody tr', count: 10
-  end
-
-  test "should get table with one row on second page" do
-    get :index, :page => 2
-    assert_select 'tbody tr', count: 1
-  end
-
-  test "should get index with information about no expenses on third page" do
-    get :index, :page => 3
-    assert_select 'p', I18n.t('specify.expense')
-  end
-
-  test "first tr should have 'warning' class, because it contain future expense" do
+  test "tr should have 'warning' class, if expense has date in future" do
     get :index
-    assert_select 'tr.warning'
+    assigns(:expenses).each do |e|
+      assert_select 'tr.warning' if e.execution_date.to_time > Time.now
+    end
   end
 
   test "table should contain information about name, amount, date and also action buttons" do
@@ -72,19 +59,19 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "expense with name 'First' should be on the top of table" do
     get :index
-    assert_select 'tbody tr:first-child td:first-child', 'First'
+    assert_select 'tbody tr:first-child td:first-child', 'Test 1 day'
   end
 
   test "expenses in array should be in proper order" do
     get :index
-    assert_equal expenses(:expense_11), assigns(:expenses)[0]
-    assert_equal expenses(:expense_9), assigns(:expenses)[1]
+    assert_equal expenses(:expense_10), assigns(:expenses)[0]
+    assert_equal expenses(:expense_8), assigns(:expenses)[1]
   end
 
   test "expenses in table on page should be in proper order" do
     get :index
-    assert_select 'tbody tr:nth-child(1) td:first-child', expenses(:expense_11).name
-    assert_select 'tbody tr:nth-child(2) td:first-child', expenses(:expense_9).name
+    assert_select 'tbody tr:nth-child(1) td:first-child', expenses(:expense_10).name
+    assert_select 'tbody tr:nth-child(2) td:first-child', expenses(:expense_8).name
   end
 
   test "table should contain delete and edit buttons" do
@@ -93,25 +80,24 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'tbody tr td a', I18n.t('delete')
   end
 
-  test "should contain pagination" do
-    get :index
-    assert_select 'div.pagination'
-  end
-
-  test "should contain pagination with two pages" do
-    get :index
-    assert_select 'div.pagination li', count: 4
-  end
-
-  test "should not contain pagination" do
-    sign_in users(:user_with_wallet_2)
-    get :index
-    assert_select 'div.pagination', count: 0
-  end
-
   test "should get index with pagination" do
     get :index
     assert_select 'div.pagination'
+  end
+
+
+  test "should get index with pagination when there is no expenses and params[:d] its not blank" do
+    get :index, d: '2015-01-01'
+    assert_select 'div.pagination'
+    assert_blank assigns(:expenses)
+  end
+
+  test "pagination should contain name of 3 months" do
+    get :index
+    assert_select 'div.pagination li', count: 3
+    assert_select 'div.pagination li:nth-child(1) a', I18n.l(Date.today-1.month, format: :month_with_year)
+    assert_select 'div.pagination li:nth-child(2) a', I18n.l(Date.today, format: :month_with_year)
+    assert_select 'div.pagination li:nth-child(3) a', I18n.l(Date.today+1.month, format: :month_with_year)
   end
 
   test "should get index with information about no expenses" do
@@ -163,13 +149,13 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   test "should create expense and redirect to new with notice on valid inputs" do
-    post :create, expense: { name: 'My new SSD', amount: 500, wallet_id: wallets(:test_10000_dollars).id, execution_date: '2012-11-25' }
+    post :create, expense: {name: 'My new SSD', amount: 500, wallet_id: wallets(:test_10000_dollars).id, execution_date: '2012-11-25'}
     assert_redirected_to :new_expense
     assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
   end
 
   test "should render new template on invalids inputs" do
-    post :create, expense: { name: 'Milk', amount: -100 }
+    post :create, expense: {name: 'Milk', amount: -100}
     assert_template :new
   end
 
@@ -177,7 +163,7 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_difference('Expense.count', -1) do
       delete :destroy, id: expenses(:expense_1).id
     end
-    assert_equal  I18n.t('flash.delete_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
+    assert_equal I18n.t('flash.delete_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
     assert_redirected_to :expenses
   end
 

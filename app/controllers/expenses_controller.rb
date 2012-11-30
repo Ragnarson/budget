@@ -1,20 +1,25 @@
 class ExpensesController < ApplicationController
-  require 'will_paginate/array'
   before_filter :authenticate_user!
 
   def index
-    @expenses = current_user.families.first.expenses.order('execution_date DESC').paginate(page: params[:page], per_page: 10)
+    @expenses = Expense.by_date(current_user.families.first, params[:d])
   end
 
   def new
     redirect_to new_wallet_path, notice: t('flash.add_wallet') if current_user.families.first.wallets.empty?
     @expense = Expense.new
-    @expense.execution_date = Date.today.strftime("%d.%m.%Y")
+    date = Date.today.strftime("%d.%m.%Y")
+    begin
+      date = Date.parse(params[:d]) unless params[:d].blank?
+    rescue
+    end
+    @expense.execution_date = date
   end
 
   def create
     @expense = Expense.new(params[:expense])
-
+    @expense.family =  current_user.families.first
+    @expense.user =  current_user
     if @expense.save
       redirect_to new_expense_path, notice: t('flash.success_one', model: t('activerecord.models.expense'))
     else

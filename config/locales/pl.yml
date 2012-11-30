@@ -35,6 +35,7 @@ pl:
       default: ! '%d.%m.%Y'
       long: ! '%B %d, %Y'
       short: ! '%d %b'
+      month_with_year: ! "%B `%y"
     month_names:
     - 
     - styczeń

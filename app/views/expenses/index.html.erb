@@ -1,10 +1,12 @@
 <div class="form-actions visible-phone">
-  <%= link_to t('add_expense'), new_expense_path, class: "btn btn-primary" %>
+  <%= link_to t('add_expense'), new_expense_path(d: params[:d]), class: "btn btn-primary" %>
 </div>
 <% if @expenses.blank? %>
+  <%= date_pagination(params[:d]) unless params[:d].blank? %>
   <p><%= t('specify.expense') %></p>
 <% else %>
-  <table class="table table-striped">
+  <%= date_pagination(params[:d]) %>
+  <table id="expenses" class="table table-striped tablesorter">
     <thead>
     <tr>
       <th><%= t('activerecord.attributes.expense.name') %></th>
@@ -26,10 +28,7 @@
     <% end %>
     </tbody>
   </table>
-  <div class="hidden-phone">
-    <%= will_paginate @expenses %>
-  </div>
 <% end %>
 <div class="form-actions hidden-phone">
-  <%= link_to t('add_expense'), new_expense_path, class: "btn btn-primary" %>
+  <%= link_to t('add_expense'), new_expense_path(d: params[:d]), class: "btn btn-primary" %>
 </div>

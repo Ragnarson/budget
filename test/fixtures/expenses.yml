@@ -3,93 +3,125 @@ expense_1:
   amount: 10000
   execution_date: <%= 131.days.ago %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_2:
   name: Test
   amount: 10000
   execution_date: <%= 12.days.ago %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_3:
   name: Test
   amount: 10000
   execution_date: <%= 13.days.from_now %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_4:
   name: Test
   amount: 10000
   execution_date: <%= 10.days.ago %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_5:
   name: Test
   amount: 10000
   execution_date: <%= 13.days.from_now %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_6:
   name: Test
   amount: 10000
   execution_date: <%= 17.days.ago %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_7:
   name: Test
   amount: 10000
   execution_date: <%= 13.days.ago %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_8:
-  name: Test
+  name: Test 2 days
   amount: 10000
   execution_date: <%= 2.days.ago %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_9:
   name: Second
   amount: 10000
   execution_date: <%= 101.days.from_now %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_10:
-  name: Test
+  name: Test 1 day
   amount: 10000
   execution_date: <%= 1.days.ago %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_11:
   name: First
   amount: 10000
   execution_date: <%= 103.days.from_now %>
   wallet: test_10000_dollars
+  user: user_with_wallet_1
+  family: family_of_user_with_wallet_1
 
 expense_12:
   name: test
   amount: 200
   execution_date: <%= 2.days.ago %>
   wallet: cars_10000000_dollars
+  user: user_with_wallet_2
+  family: family_of_user_with_wallet_2
 
 expense_13:
   name: test
   amount: 200
   execution_date: <%= 2.days.ago %>
   wallet: home_1500_dollars
+  user: user_with_wallet_3
+  family: family_of_user_with_wallet_3
 
 expense_14:
   name: test
   amount: 200
   execution_date: <%= 2.days.ago %>
   wallet: books_300_dollars
+  user: user_with_wallet_3
+  family: family_of_user_with_wallet_3
 
 expense_15:
   name: test
   amount: 200
   execution_date: <%= 2.days.ago %>
   wallet: books_300_dollars
+  user: user_with_wallet_3
+  family: family_of_user_with_wallet_3
 
 expense_for_user_with_one_income_and_one_expense_in_same_date:
   name: Test
   amount: 100
   execution_date: <%= 1.days.ago %>
   wallet: wallet_with_one_expense
+  user: user_with_one_income_and_one_expense_in_same_date
+  family: family_of_user_with_one_income_and_one_expense_in_same_date
