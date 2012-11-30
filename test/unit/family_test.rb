@@ -40,4 +40,9 @@ class FamilyTest < ActiveSupport::TestCase
     family.incomes[1] = Income.new(amount: 20)
     assert_equal family.net_profits_sum, 110.91
   end
+
+  test "should return expenses from whole month" do
+    expenses = families(:family_of_user_with_wallet_1).expenses_by_date(Date.parse('2012-11-10'))
+    assert_equal expenses.count, families(:family_of_user_with_wallet_1).expenses_by_date(Date.parse('2012-11-01')).count
+  end
 end

@@ -33,4 +33,9 @@ class Family < ActiveRecord::Base
   def balance_up_to(date)
     self.net_profits_sum_up_to(date) - self.expenses_sum_up_to(date)
   end
+
+  def expenses_by_date(date)
+    date = Date.today if date.blank?
+    self.expenses.where(['execution_date between ? AND ?', date.at_beginning_of_month, date.at_end_of_month]).order('execution_date DESC')
+  end
 end

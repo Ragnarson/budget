@@ -172,6 +172,7 @@ pl:
     add_expense: Dodaj pierwsze wydatki
     welcome: "Witaj %{name}! "
     confirm_wallet_destroy: Przeczytaj zanim usuniesz portfel
+    invalid_date: Podana data jest niepoprawna
   helpers:
     select:
       prompt: Proszę wybrać

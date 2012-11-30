@@ -154,6 +154,7 @@ en:
     add_expense: Please add your expenses
     welcome: "Welcome %{name}! "
     confirm_wallet_destroy: Read before delete wallet
+    invalid_date: Given date is not valid
   helpers:
     select:
       prompt: Please select

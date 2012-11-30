@@ -42,13 +42,6 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:expenses)
   end
 
-  test "tr should have 'warning' class, if expense has date in future" do
-    get :index
-    assigns(:expenses).each do |e|
-      assert_select 'tr.warning' if e.execution_date.to_time > Time.now
-    end
-  end
-
   test "table should contain information about name, amount, date and also action buttons" do
     get :index
     assert_select 'thead th', I18n.t('activerecord.attributes.expense.name')
@@ -98,6 +91,12 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'div.pagination li:nth-child(1) a', I18n.l(Date.today-1.month, format: :month_with_year)
     assert_select 'div.pagination li:nth-child(2) a', I18n.l(Date.today, format: :month_with_year)
     assert_select 'div.pagination li:nth-child(3) a', I18n.l(Date.today+1.month, format: :month_with_year)
+  end
+
+  test "should redirect to index with notice when given date params is invalid" do
+    get :index, d: 'xxx'
+    assert_equal I18n.t('flash.invalid_date'), flash[:notice]
+    assert_redirected_to :expenses
   end
 
   test "should get index with information about no expenses" do
@@ -196,7 +195,7 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_redirected_to :expenses
   end
 
-  test "should not update expense that not exist" do
+  test "should not update expense that does not exist" do
     expenses(:expense_1).destroy
     put :update, id: 1, expense: {name: 'New car'}
     assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]

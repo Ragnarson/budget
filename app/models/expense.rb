@@ -13,22 +13,9 @@ class Expense < ActiveRecord::Base
             format: {with: /^(20\d\d)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/, message: I18n.t('errors.messages.invalid_date')}
   validates :wallet, presence: true
 
-  scope :not_categorized, conditions: {wallet_id: 0}
-  scope :by_month, lambda { |family_id, date=Date.today| {
-      conditions: ["expenses.execution_date between ? AND ? AND expenses.family_id=?",
-                   date.to_date.at_beginning_of_month, date.to_date.at_end_of_month, family_id]} }
+  scope :not_categorized, where(wallet_id: 0)
 
   def self.change_wallet(old_wallet_id, new_wallet_id = 0)
     update_all("wallet_id=#{new_wallet_id}", wallet_id: old_wallet_id)
-  end
-
-  def self.by_date(family_id, date)
-    begin
-      date = Date.parse(date)
-    rescue
-      date = Date.today
-    end
-    where(['expenses.execution_date between ? AND ? AND expenses.family_id=?',
-           date.at_beginning_of_month, date.at_end_of_month, family_id]).order('expenses.execution_date DESC')
   end
 end
