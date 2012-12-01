@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :get_actual_balance, :set_locale, :low_balance_warning
+  rescue_from Exception, with: :render_500
 
   def after_sign_in_path_for(resource)
     if current_user.locale.nil?
@@ -33,5 +34,9 @@ class ApplicationController < ActionController::Base
 
   def get_actual_balance
     @actual_balance = current_user.families.first.balance_up_to(Date.today) if user_signed_in?
+  end
+
+  def render_500(exception)
+    render template: "errors/500.html", status: 500
   end
 end

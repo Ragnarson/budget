@@ -98,6 +98,7 @@ en:
       year: Year
   errors: &errors
     page_not_found: 'Error 404: we are sorry, page you requested was not found'
+    undefined_error: Application error
     format: ! '%{attribute} %{message}'
     messages:
       accepted: must be accepted

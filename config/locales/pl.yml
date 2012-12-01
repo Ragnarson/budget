@@ -121,6 +121,7 @@ pl:
       year: Rok
   errors: &errors
     page_not_found: 'Błąd 404: przepraszamy, podana strona nie istnieje'
+    undefined_error: Błąd aplikacji
     format: ! '%{attribute} %{message}'
     messages:
       accepted: musi zostać zaakceptowane
