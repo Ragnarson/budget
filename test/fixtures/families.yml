@@ -36,3 +36,6 @@ family_of_user_with_low_balance:
 
 family_of_user_without_low_balance:
   users: user_without_low_balance
+
+family_of_user_with_expenses:
+  users: user_with_expenses

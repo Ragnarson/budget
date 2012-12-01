@@ -57,3 +57,8 @@ wallet_for_user_with_low_balance:
   name: Food
   amount: 250
   family: family_of_user_with_low_balance
+
+wallet_for_check_order_of_expenses:
+  name: Order
+  amount: 15000
+  family: family_of_user_with_expenses

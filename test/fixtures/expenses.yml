@@ -125,3 +125,17 @@ expense_for_user_with_one_income_and_one_expense_in_same_date:
   wallet: wallet_with_one_expense
   user: user_with_one_income_and_one_expense_in_same_date
   family: family_of_user_with_one_income_and_one_expense_in_same_date
+
+expense_aaa:
+  name: AAA
+  amount: 100
+  execution_date: <%= Date.today %>
+  wallet: wallet_for_check_order_of_expenses
+  user: user_with_expenses
+
+expense_bbb:
+  name: BBB
+  amount: 200
+  execution_date: <%= Date.today %>
+  wallet: wallet_for_check_order_of_expenses
+  user: user_with_expenses

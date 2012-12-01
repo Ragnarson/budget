@@ -54,3 +54,8 @@ user_without_low_balance:
   email: user_without_low_balance@budget.shellyapp.com
   encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
   locale: "pl"
+
+user_with_expenses:
+  email: user_with_expenses@budget.shellyapp.com
+  encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+  locale: "pl"
