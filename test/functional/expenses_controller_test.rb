@@ -28,18 +28,16 @@ class ExpensesControllerTest < ActionController::TestCase
     test "should not contain warning about low balance for #{action}" do
       test_of_not_presences_low_balance_warning(action)
     end
+    test "guest should be redirected for #{action}" do
+      sign_out users(:user_with_wallet_1)
+      test_that_guest_will_be_redirect(action)
+    end
   end
 
   test "should get new" do
     get :new
     assert_response :success
     assert_not_nil assigns(:expense)
-  end
-
-  test "should be redirected to sign_in" do
-    sign_out users(:user_with_wallet_1)
-    get :new
-    assert_response 302
   end
 
   test "should get index" do

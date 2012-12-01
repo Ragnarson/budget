@@ -28,6 +28,10 @@ class IncomesControllerTest < ActionController::TestCase
     test "should not contain warning about low balance for #{action}" do
       test_of_not_presences_low_balance_warning(action)
     end
+    test "guest should be redirected for #{action}" do
+      sign_out users(:user_without_wallet)
+      test_that_guest_will_be_redirect(action)
+    end
   end
 
   test "should get new" do

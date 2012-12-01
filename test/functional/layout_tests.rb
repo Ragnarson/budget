@@ -45,4 +45,9 @@ module LayoutTests
     assert_select 'div.alert', { html: /#{I18n.t('flash.low_balance', locale: 'pl')}(.*)/, count: 0 }
   end
 
+  def test_that_guest_will_be_redirect(action)
+    get action
+    assert_response 302
+  end
+
 end
