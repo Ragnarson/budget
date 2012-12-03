@@ -37,6 +37,6 @@ class ApplicationController < ActionController::Base
   end
 
   def render_500(exception)
-    render template: "errors/500.html", status: 500
+    render template: "errors/500", formats: [:html], status: 500
   end
 end
