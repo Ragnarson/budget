@@ -5,7 +5,27 @@ class PlanningWalletTest < ActionDispatch::IntegrationTest
     @user = users(:user_with_locale_pl)
   end
 
-  test "that total amount should be calculated from expense amount" do
+  test "should create wallet with amount" do
+    allow_google_login_as(@user)
+
+    visit '/pl'
+    log_in_pl
+
+    click_on I18n.t('header.wallets', locale: 'pl')
+    click_on I18n.t('add_wallet', locale: 'pl')
+    
+    fill_in 'wallet_name', with: 'Food'
+    fill_in 'wallet_amount', with: '200'
+    assert_equal '200', find('#wallet_amount input.currency').value
+    assert_equal 'Food', find('#wallet_name').value
+
+    click_on I18n.t('add_wallet', locale: 'pl')
+    assert current_path, '/pl/wallets'
+    assert_equal true, all('tr').last.all('td')[0].has_content?('Food'), "No 'Food' wallet found"
+    assert_equal true, all('tr').last.all('td')[1].has_content?('200,00'), "Wrong amount of 'Food' wallet"
+  end
+
+  test "wallet amount should be calculated from expenses amount" do
     allow_google_login_as(@user)
 
     visit '/pl'
@@ -14,9 +34,45 @@ class PlanningWalletTest < ActionDispatch::IntegrationTest
     click_on I18n.t('header.wallets', locale: 'pl')
     click_on I18n.t('add_wallet', locale: 'pl')
     click_on I18n.t('plan_wallet', locale: 'pl')
+    click_on I18n.t('add_expense', locale: 'pl')
+    
+    fill_in 'wallet_name', with: 'Girls'
+    #1expense
+    all(".expense_amount")[0].find("input.currency").set('10,25')
+    all(".expense_amount")[0].find(".expense_name input").set('Ewa')
+    all(".expense_amount")[0].find(".date_picker input").click
+    choose_day(Date.today)
+    #2expense
+    all(".expense_amount")[1].find("input.currency").set('10,25')
+    all(".expense_amount")[1].find(".expense_name input").set('Ola')
+    all(".expense_amount")[1].find(".date_picker input").click
+    choose_day(Date.today)
 
-    assert '0', find('#total_amount').text
-    find('input.currency').set('100')
-    assert '100.00', find('#total_amount').text
+    click_on I18n.t('add_wallet', locale: 'pl')
+    
+    assert current_path, '/pl/wallets'
+    assert_equal true, all('tr').last.all('td')[0].has_content?('Girls'), "No 'Girls' wallet found"
+    assert_equal true, all('tr').last.all('td')[1].has_content?('20,50'), "Wrong amount of 'Girls' wallet"
+  end
+
+  test "wallet should be created without expense" do
+    allow_google_login_as(@user)
+
+    visit '/pl'
+    log_in_pl
+
+    click_on I18n.t('header.wallets', locale: 'pl')
+    click_on I18n.t('add_wallet', locale: 'pl')
+    click_on I18n.t('plan_wallet', locale: 'pl')
+    
+    fill_in 'wallet_name', with: 'Girls'
+    find(".expense_amount input.currency").set('10,25')
+    find(".remove_fields").click
+
+    click_on I18n.t('add_wallet', locale: 'pl')
+    
+    assert current_path, '/pl/wallets'
+    assert_equal true, all('tr').last.all('td')[0].has_content?('Girls'), "No 'Girls' wallet found"
+    assert_equal true, all('tr').last.all('td')[1].has_content?('0,00'), "Wrong amount of 'Girls' wallet"
   end
 end

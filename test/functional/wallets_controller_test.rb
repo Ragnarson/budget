@@ -68,11 +68,6 @@ class WalletsControllerTest < ActionController::TestCase
     assert_template :new
   end
 
-  test "on form page should be placeholder for planning wallet with expenses" do
-    get :new
-    assert_tag tag: 'div', attributes: {id: 'wallet_plan'}
-  end
-
   test "if no wallets are present should redirect to new wallet page" do
     sign_in users(:user_without_wallet)
     get :index

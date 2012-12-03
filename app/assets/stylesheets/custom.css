@@ -29,16 +29,8 @@ form input[type="text"] {
   margin-bottom: 30px;
   text-align: center;
 }
-#wallet_amount_wrapper ul.income_options {
-  list-style: none;
-  margin-left: 160px;
-}
 ul.income_options li {
   margin-bottom: 6px;
-}
-.wallet-amount .help-inline {
-  vertical-align: top;
-  padding-top: 4px;
 }
 footer .addthis_default_style {
     margin-top: 10px;

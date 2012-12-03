@@ -1,5 +1,7 @@
 <div class="row expense_amount">
-  <%= f.input :name, autofocus: true %>
+  <%= link_to "-", '#', class: 'remove_fields btn btn-small btn-danger' %>
+  <%= f.input :name, autofocus: true, wrapper_html: {class: "expense_name"} %>
   <%= f.input :amount, as: :currency, wrapper: 'append' %>
   <%= f.input :execution_date, as: :date_picker %>
+  <%= f.input :_destroy, as: :hidden %>
 </div>
