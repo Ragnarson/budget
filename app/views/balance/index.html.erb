@@ -15,7 +15,7 @@
     <tbody id="balance-table">
         <% @day_flag_css = true %>
         <% @balances.each do |balance| %>
-           <%= render :partial => "balance/balance", :object => balance %>
+           <%= render partial: "balance/balance", object: balance %>
         <% end %>
     </tbody>
   </table>

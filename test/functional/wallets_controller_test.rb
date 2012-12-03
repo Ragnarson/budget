@@ -177,11 +177,4 @@ class WalletsControllerTest < ActionController::TestCase
     assert_redirected_to :wallets
   end
 
-  #test '' do
-  # destroy wallet which has expenses=> redirect do confirm
-  # wallet has no expense => destroy
-  # wallet has expenses and param confirmed => destroy
-  # should not destroy wallet with expenses, when param confirmed not present
-  #end
-
 end

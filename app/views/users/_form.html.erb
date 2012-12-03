@@ -1,7 +1,7 @@
-<%= simple_form_for @user, :url => create_user_path, :html => { :class => "form-horizontal"} do |f| %>
-  <%= f.input :email, :class => 'control-label' %>
+<%= simple_form_for @user, url: create_user_path, :html => { class: "form-horizontal"} do |f| %>
+  <%= f.input :email, class: 'control-label' %>
   <div class="form-actions">
-    <%= f.button :submit, t('helpers.submit.create', model: ''), :class => 'btn btn-primary'%>
+    <%= f.button :submit, t('helpers.submit.create', model: ''), class: 'btn btn-primary'%>
     <%= link_to I18n.t('back'), :back %>
   </div>
 <% end %>

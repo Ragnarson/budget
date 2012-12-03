@@ -9,7 +9,7 @@
 </ul>
 
 <div class="form-actions">
-  <%= link_to t('delete_only_wallet'), wallet_destroy_path(@wallet, :confirmed => 1), class: "btn btn-danger" %>
-  <%= link_to t('delete_with_expenses'), wallet_destroy_path(@wallet, :confirmed => 2), class: "btn btn-danger" %>
+  <%= link_to t('delete_only_wallet'), wallet_destroy_path(@wallet, confirmed: 1), class: "btn btn-danger" %>
+  <%= link_to t('delete_with_expenses'), wallet_destroy_path(@wallet, confirmed: 2), class: "btn btn-danger" %>
   <%= t('or') %> <%= link_to t('cancel'), wallets_path %>
 </div>

@@ -6,13 +6,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.families.empty?
       if @user.invited_by
-        @join_family = FamiliesUsers.find(:families_users => {:user_id => @user.invited_by})
-        @user_family = FamiliesUsers.create(:family_id => @join_family.family_id, :user_id => @user.id)
+        @join_family = FamiliesUsers.find(families_users: {user_id: @user.invited_by})
+        @user_family = FamiliesUsers.create(family_id: @join_family.family_id, user_id: @user.id)
         @user_family.save
       else
         @new_family = Family.create()
         @new_family.save
-        @user_family = FamiliesUsers.create(:family_id => @new_family.id, :user_id => @user.id)
+        @user_family = FamiliesUsers.create(family_id: @new_family.id, user_id: @user.id)
         @user_family.save
       end
     end
