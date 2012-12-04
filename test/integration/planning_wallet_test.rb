@@ -21,8 +21,8 @@ class PlanningWalletTest < ActionDispatch::IntegrationTest
 
     click_on I18n.t('add_wallet', locale: 'pl')
     assert current_path, '/pl/wallets'
-    assert_equal true, all('tr').last.all('td')[0].has_content?('Food'), "No 'Food' wallet found"
-    assert_equal true, all('tr').last.all('td')[1].has_content?('200,00'), "Wrong amount of 'Food' wallet"
+    assert all('tr').last.all('td')[0].has_content?('Food'), "No 'Food' wallet found"
+    assert all('tr').last.all('td')[1].has_content?('200,00'), "Wrong amount of 'Food' wallet"
   end
 
   test "wallet amount should be calculated from expenses amount" do
@@ -51,8 +51,8 @@ class PlanningWalletTest < ActionDispatch::IntegrationTest
     click_on I18n.t('add_wallet', locale: 'pl')
     
     assert current_path, '/pl/wallets'
-    assert_equal true, all('tr').last.all('td')[0].has_content?('Girls'), "No 'Girls' wallet found"
-    assert_equal true, all('tr').last.all('td')[1].has_content?('20,50'), "Wrong amount of 'Girls' wallet"
+    assert all('tr').last.all('td')[0].has_content?('Girls'), "No 'Girls' wallet found"
+    assert all('tr').last.all('td')[1].has_content?('20,50'), "Wrong amount of 'Girls' wallet"
   end
 
   test "wallet should be created without expense" do
@@ -72,7 +72,7 @@ class PlanningWalletTest < ActionDispatch::IntegrationTest
     click_on I18n.t('add_wallet', locale: 'pl')
     
     assert current_path, '/pl/wallets'
-    assert_equal true, all('tr').last.all('td')[0].has_content?('Girls'), "No 'Girls' wallet found"
-    assert_equal true, all('tr').last.all('td')[1].has_content?('0,00'), "Wrong amount of 'Girls' wallet"
+    assert all('tr').last.all('td')[0].has_content?('Girls'), "No 'Girls' wallet found"
+    assert all('tr').last.all('td')[1].has_content?('0,00'), "Wrong amount of 'Girls' wallet"
   end
 end
