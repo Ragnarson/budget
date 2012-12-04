@@ -2,7 +2,7 @@
   <%= link_to t('add_wallet'), new_wallet_path, class: "btn btn-primary" %>
 </div>
 <% unless @wallets.blank? %>
-  <table class="table table-striped">
+  <table id="wallets" class="table table-striped">
     <thead>
     <tr>
       <th><%= t('activerecord.attributes.wallet.name') %></th>
