@@ -5,7 +5,7 @@ class Expense < ActiveRecord::Base
   belongs_to :family
   belongs_to :user
 
-  validates :name, length: {in: 3..128}, presence: true
+  validates :name, length: {maximum: 128}, presence: true
   validates :amount, presence: true,
             format: {with: /^\d+?(?:\.\d{0,2})?$/, message: I18n.t('errors.messages.invalid_price')},
             numericality: {greater_than: 0}

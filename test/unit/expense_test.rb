@@ -23,16 +23,8 @@ class ExpenseTest < ActiveSupport::TestCase
     assert_invalid(amount: 100, execution_date: '2012-10-11')
   end
 
-  test "should recognize too short name" do
-    assert_invalid(name: 'M', amount: 100, execution_date: '2012-11-11')
-  end
-
   test "should recognize too long name" do
     assert_invalid(name: 'a'*130, amount: 100, execution_date: '2012-11-11')
-  end
-
-  test "should recognize name as array type" do
-    assert_invalid(name: ['aaa', 'bbb'], amount: 100, execution_date: '2012-11-11')
   end
 
   test "should recognize empty amount" do

@@ -135,7 +135,7 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   test "should create expense and redirect to new with notice on valid inputs" do
-    post :create, expense: {name: 'My new SSD', amount: 500, wallet_id: wallets(:test_10000_dollars).id, execution_date: '2012-11-25'}
+    post :create, expense: {name: 'A', amount: 500, wallet_id: wallets(:test_10000_dollars).id, execution_date: '2012-11-25'}
     assert_redirected_to :new_expense
     assert_equal I18n.t('flash.success_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
   end
