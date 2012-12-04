@@ -37,8 +37,7 @@ class UsersController < ApplicationController
 
     if @user.save
       I18n.locale = @user.locale
-      flash.now[:notice] = t("flash.update_one")
-      render action: "edit_profile"
+      redirect_to edit_profile_path, notice: t("flash.update_one")
     else
       flash.now[:error] = t("flash.fail_changes")
       render action: "edit_profile"
