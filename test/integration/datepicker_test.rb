@@ -15,7 +15,7 @@ class DatepickerTest < ActionDispatch::IntegrationTest
     click_on_date
     choose_next_month
     choose_day(date_to_click)
-    assert_equal date_to_click.to_s, date_value
+    assert_equal date_to_click.strftime('%d.%m.%Y').to_s, date_value
   end
 
   test "should open datepicker in proper language on polish sites" do

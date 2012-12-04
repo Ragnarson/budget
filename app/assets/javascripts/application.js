@@ -24,9 +24,8 @@ $(document).ready(function () {
     lang = "en"
   }
   $('body').on("focus", "input.date_picker", function() {
-    $(this).datepicker(
-      $.datepicker.setDefaults($.datepicker.regional[lang])
-    )
+    $(this).datepicker({ dateFormat: "dd.mm.yy" })
+    $(this).datepicker($.datepicker.setDefaults($.datepicker.regional[lang]))
   })
 
   $('body').on("focus click", "input.currency", function () {
