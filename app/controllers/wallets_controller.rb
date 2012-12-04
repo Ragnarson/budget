@@ -15,11 +15,7 @@ class WalletsController < ApplicationController
     @wallet.user_id = current_user.id
     @wallet.family_id = current_user.families.first.id
     if @wallet.save
-      if current_user.families.first.wallets.count == 1
-        redirect_to new_expense_path
-      else
-        redirect_to wallets_path, notice: t('flash.wallet_success', name: @wallet.name)
-      end
+      redirect_to wallets_path, notice: t('flash.wallet_success', name: @wallet.name) 
     else
       render action: 'new'
     end
