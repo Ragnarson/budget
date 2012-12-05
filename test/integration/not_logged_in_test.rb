@@ -31,7 +31,7 @@ class NotLoggedInTest < ActionDispatch::IntegrationTest
   test "should get back to the proper site when user clicks back link on 404 site" do
     visit "/en"
     visit "/en/wrong"
-    click_link I18n.t('back', locale: 'en')
+    click_link I18n.t('back.back', locale: 'en')
     assert current_path, '/en'
   end
 

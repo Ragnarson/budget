@@ -106,7 +106,7 @@ class ExpensesControllerTest < ActionController::TestCase
       assert_select 'input#expense_execution_date'
       assert_select 'select#expense_wallet_id'
       assert_select 'input[TYPE=submit]'
-      assert_select 'a', I18n.t('back')
+      assert_select 'a', I18n.t('back.expenses')
     end
   end
 
