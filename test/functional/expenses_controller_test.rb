@@ -65,6 +65,12 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'div.pagination'
   end
 
+  test "should get index with pagination when there is no expenses and params[:d] is blank" do
+    sign_in users(:user_without_expenses)
+    get :index
+    assert_select 'div.pagination'
+    assert_blank assigns(:expenses)
+  end
 
   test "should get index with pagination when there is no expenses and params[:d] its not blank" do
     get :index, d: '2015-01-01'

@@ -2,7 +2,7 @@
   <%= link_to t('add_expense'), new_expense_path(d: params[:d]), class: "btn btn-primary" %>
 </div>
 <% if @expenses.blank? %>
-  <%= date_pagination(params[:d]) unless params[:d].blank? %>
+  <%= date_pagination(params[:d]) %>
   <p><%= t('specify.expense') %></p>
 <% else %>
   <%= date_pagination(params[:d]) %>
