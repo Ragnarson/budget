@@ -10,6 +10,6 @@
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-primary' %>
     <%= link_to_add_fields t('plan_wallet'), f, :expenses, 'plan_wallet_link' %>
-    <%= link_to I18n.t('back'), :back %>
+    <%= link_to t('back.wallets'), wallets_path %>
   </div>
 <% end %>

@@ -2,6 +2,6 @@
   <%= f.input :email, class: 'control-label' %>
   <div class="form-actions">
     <%= f.button :submit, t('helpers.submit.create', model: ''), class: 'btn btn-primary'%>
-    <%= link_to I18n.t('back'), :back %>
+    <%= link_to t('back.members'), users_path %>
   </div>
 <% end %>

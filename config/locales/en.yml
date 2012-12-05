@@ -294,4 +294,9 @@ en:
   delete_only_wallet: delete only wallet
   delete_with_expenses: delete wallet with expenses
   confirm_delete_wallet_html: Selected wallet <strong>%{name}</strong> still has expenses, if you want to delete it, those expenses will not belongs to any wallet or you can delete wallet with all expenses.
-  back: back
+  back:
+    back: Back to previous page
+    expenses: Back to list of expenses
+    income: Back to list of income
+    wallets: Back to list of wallets
+    members: Back to list of users
