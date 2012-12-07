@@ -46,8 +46,18 @@ class WalletsControllerTest < ActionController::TestCase
     assert_select 'div.form-actions.visible-phone a', I18n.t('add_wallet')
   end
 
-  test "should be form on page" do
+  test "should be form on new wallet page" do
     get :new
+    assert_select 'form' do
+      assert_select 'input#wallet_name'
+      assert_select 'input#wallet_amount'
+      assert_select 'input[TYPE=submit]'
+      assert_select 'a', I18n.t('back.wallets')
+    end
+  end
+
+  test "should be form on edit wallet page" do
+    get :edit, id: wallets(:test_10000_dollars).id
     assert_select 'form' do
       assert_select 'input#wallet_name'
       assert_select 'input#wallet_amount'
