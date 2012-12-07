@@ -5,13 +5,13 @@ class LowBalanceWarningTest < ActionDispatch::IntegrationTest
     @user = users(:user_with_low_balance)
   end
 
-  test "that low balance warning will not be displayed if user balance will be greater than 200" do
+  test "that low balance warning will not be displayed if user balance will be greater than 10%" do
     allow_google_login_as(@user)
 
     visit '/pl'
     log_in_pl
 
-    assert page.has_content?(I18n.t('flash.low_balance', locale: 'pl'))
+    assert page.has_selector?('#actual_balance.warning')
 
     click_on I18n.t('header.incomes', locale: 'pl')
     click_on I18n.t('add_income', locale: 'pl')
@@ -20,8 +20,6 @@ class LowBalanceWarningTest < ActionDispatch::IntegrationTest
     fill_in('income_tax', with: 0)
     click_on I18n.t('add_income', locale: 'pl')
 
-    click_on I18n.t('header.incomes', locale: 'pl')
-    click_on I18n.t('header.expenses', locale: 'pl')
-    assert page.has_no_content?(I18n.t('flash.low_balance', locale: 'pl'))
+    assert page.has_no_selector?('#actual_balance.warning')
   end
 end
