@@ -67,12 +67,12 @@ income_for_user_with_one_income_and_one_expense_in_same_date:
 
 income_for_user_with_low_balance:
   source: Test
-  amount: 50
+  amount: 100
   family: family_of_user_with_low_balance
 
 income_for_user_without_low_balance:
   source: Test
-  amount: 500
+  amount: 5000
   family: family_of_user_without_low_balance
 
 income_for_user_with_locale_en:
