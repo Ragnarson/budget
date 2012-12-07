@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :get_actual_balance, :set_locale, :low_balance_warning
+  before_filter :get_actual_balance, :get_actual_balance_ratio, :set_locale
   rescue_from Exception, with: :render_500
 
   def after_sign_in_path_for(resource)
@@ -10,10 +10,6 @@ class ApplicationController < ActionController::Base
     else
       new_expense_path
     end
-  end
-
-  def low_balance_warning
-    flash[:error] = t("flash.low_balance") if get_actual_balance < 200 if user_signed_in?
   end
 
   private
@@ -34,6 +30,17 @@ class ApplicationController < ActionController::Base
 
   def get_actual_balance
     @actual_balance = current_user.families.first.balance_up_to(Date.today) if user_signed_in?
+  end
+
+  def get_actual_balance_ratio
+    if user_signed_in?
+      if current_user.families.first.expenses.any?
+        sum_of_actual_income = current_user.families.first.net_profits_sum_up_to(Date.today)
+        @actual_balance_ratio = @actual_balance / sum_of_actual_income
+      else
+        @actual_balance_ratio = 1
+      end
+    end
   end
 
   def render_500(exception)

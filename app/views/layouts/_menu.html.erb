@@ -16,7 +16,7 @@
           <li><%= link_to t('header.about'), about_path %></li>
         </ul>
         <ul class="nav pull-right">
-          <li>
+          <li id="actual_balance"<%= ' class=warning' if @actual_balance_ratio <= 0.1 %>>
             <%= link_to "#{t('header.balance')}: #{number_to_currency(@actual_balance)}", actual_balance_path %>
           </li>
           <li class="dropdown hidden-phone">

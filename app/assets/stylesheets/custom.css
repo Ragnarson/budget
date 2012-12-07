@@ -130,3 +130,6 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 .pagination ul li.current {
   font-weight: bold;;
 }
+ul.nav li.warning a {
+  color: #d40000;
+}

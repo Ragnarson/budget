@@ -139,3 +139,19 @@ expense_bbb:
   execution_date: <%= Date.today %>
   wallet: wallet_for_check_order_of_expenses
   user: user_with_expenses
+
+expense_for_user_with_low_balance:
+  name: Test
+  amount: 91
+  execution_date: <%= 1.days.ago %>
+  wallet: wallet_for_user_with_low_balance
+  user: user_with_low_balance
+  family: family_of_user_with_low_balance
+
+expense_for_user_without_low_balance:
+  name: Test
+  amount: 100
+  execution_date: <%= 1.days.ago %>
+  wallet: wallet_for_user_without_low_balance
+  user: user_without_low_balance
+  family: family_of_user_without_low_balance

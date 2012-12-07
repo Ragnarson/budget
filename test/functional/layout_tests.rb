@@ -36,13 +36,13 @@ module LayoutTests
   def test_of_presences_low_balance_warning(action)
     sign_in users(:user_with_low_balance)
     get action
-    assert_select 'div.alert', /#{I18n.t('flash.low_balance', locale: 'pl')}(.*)/
+    assert_select 'li#actual_balance.warning', count: 1
   end
 
   def test_of_not_presences_low_balance_warning(action)
     sign_in users(:user_without_low_balance)
     get action
-    assert_select 'div.alert', { html: /#{I18n.t('flash.low_balance', locale: 'pl')}(.*)/, count: 0 }
+    assert_select 'li#actual_balance.warning', count: 0
   end
 
   def test_that_guest_will_be_redirect(action)
