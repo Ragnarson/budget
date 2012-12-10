@@ -16,6 +16,6 @@ class EditProfileTest < ActionDispatch::IntegrationTest
     select('English', from: 'user_locale')
     click_on I18n.t('helpers.submit.update', locale: 'pl')
 
-    assert current_path, '/en/edit_profile'
+    assert_equal current_path, '/en/edit'
   end
 end
