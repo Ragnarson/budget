@@ -10,7 +10,7 @@
         <th><%= t('activerecord.attributes.income.source') %></th>
         <th><%= t('activerecord.attributes.income.amount') %></th>
         <th><%= t('activerecord.attributes.income.tax') %></th>
-				<th><%= t('activerecord.attributes.income.net')%></th>
+        <th><%= t('activerecord.attributes.income.net')%></th>
         <th><%= t('activerecord.attributes.income.execution_date') %></th>
         <th><%= t('actions') %></th>
       </tr>
@@ -21,11 +21,11 @@
           <td><%= income.source %></td>
           <td><%= number_to_currency income.amount %> </td>
           <td>
-						<% if income.tax %>
-						  <%= income.tax  %>%
-						<% end %>
-					</td>
-					<td><%= number_to_currency income.net %></td>
+            <% if income.tax %>
+              <%= income.tax  %>%
+            <% end %>
+          </td>
+          <td><%= number_to_currency income.net %></td>
           <td>
             <% if !income.execution_date.nil?%>
                 <%= l income.execution_date %>
@@ -43,10 +43,10 @@
     <%= will_paginate @expenses %>
   </div>
   <p>
-	  <%= t('total_income') %>: <%= number_to_currency @total %>
+    <%= t('total_income') %>: <%= number_to_currency @total %>
   </p>
-	<p>
-		<%= t('total_net_profit') %>: <%= number_to_currency @total_net %>
+  <p>
+    <%= t('total_net_profit') %>: <%= number_to_currency @total_net %>
   </p>
 <% end %>
 <div class="form-actions hidden-phone">

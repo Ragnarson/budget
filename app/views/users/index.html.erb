@@ -3,20 +3,20 @@
 <% else %>
   <table class="table table-striped">
     <thead>
-		  <tr>
-		    <th><%= t 'activerecord.attributes.user.email' %></th>
-		    <th>&nbsp;</th>
-		  </tr>
-		</thead>
-	  <tbody>
-		  <% @users.each_with_index do |user| %>
-		    <tr>
-		      <td><%= user.email %></td>
+      <tr>
+        <th><%= t 'activerecord.attributes.user.email' %></th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
           <td><%= link_to t('delete'), destroy_user_path(user.id), class: "btn btn-danger", data: { confirm: t('confirm_delete')} %></td>
-		    </tr>
-		  <% end %>
-	  </tbody>
-	</table>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 <div class="form-actions">
   <%= link_to t('add_member'), new_user_path, class: "btn btn-primary" %>
