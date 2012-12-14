@@ -9,8 +9,6 @@ notifications:
     - dawidmilewski89@gmail.com
     - seba.wesol@gmail.com
     - smt116@gmail.com
-    - rafath@zaraz.pl
-    - m.borosiewicz@gmail.com
 before_script:
   - "cp config/database.yml.travis config/database.yml"
   - "psql -c 'create database budget_test;' -U postgres"
