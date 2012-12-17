@@ -1,4 +1,4 @@
-GOOGLE_KEY: 'Client ID'
+GOOGLE_ID: 'Client ID'
 GOOGLE_SECRET: 'Client secret' 
 
 SECRET_TOKEN: 'some secret phrase of at least 30 characters'
