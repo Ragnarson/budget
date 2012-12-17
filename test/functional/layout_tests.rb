@@ -50,4 +50,9 @@ module LayoutTests
     assert_response 302
   end
 
+  def test_that_edit_and_delete_buttons_are_present
+    get :index
+    assert_select 'tbody tr td a.hidden-phone', I18n.t('edit')
+    assert_select 'tbody tr td a.hidden-phone', I18n.t('delete')
+  end
 end

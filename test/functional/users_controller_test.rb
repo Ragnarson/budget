@@ -104,4 +104,9 @@ class UsersControllerTest < ActionController::TestCase
     assert_tag tag: 'span', content: I18n.t('errors.messages.blank')
     assert_template :new
   end
+
+  test "table should contain delete button for desktop" do
+    get :index
+    assert_select 'tbody tr td a.hidden-phone', I18n.t('delete')
+  end
 end

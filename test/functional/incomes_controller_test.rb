@@ -62,11 +62,9 @@ class IncomesControllerTest < ActionController::TestCase
     assert_select 'thead th', I18n.t('actions')
   end
 
-  test "table should contain delete and edit buttons" do
+  test "table should contain delete and edit buttons for desktop" do
     sign_in users(:user_with_wallet_1)
-    get :index
-    assert_select 'tbody tr td a', I18n.t('edit')
-    assert_select 'tbody tr td a', I18n.t('delete')
+    test_that_edit_and_delete_buttons_are_present
   end
 
   test "should contain pagination" do
