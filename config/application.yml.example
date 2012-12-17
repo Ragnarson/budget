@@ -1,0 +1,10 @@
+GOOGLE_KEY: 'Client ID'
+GOOGLE_SECRET: 'Client secret' 
+
+SECRET_TOKEN: 'some secret phrase of at least 30 characters'
+
+development:
+  MAILER_HOST: "localhost:3000"
+
+production:
+  MAILER_HOST: "example.com"

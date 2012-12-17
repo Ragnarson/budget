@@ -203,7 +203,7 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   require "omniauth-google-oauth2"
-  config.omniauth :google_oauth2, "84144236811.apps.googleusercontent.com", "w4D1PU08qZg_5Lnkez13Re99",
+  config.omniauth :google_oauth2, ENV['GOOGLE_ID'], ENV['GOOGLE_SECRET'],
                   { scope: "userinfo.email", access_type: "offline", approval_prompt: "" }
 
   # ==> Warden configuration
