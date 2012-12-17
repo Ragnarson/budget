@@ -14,7 +14,7 @@
           <td><%= user.email %></td>
           <td>
             <%= link_to image_tag("delete-icon.png"), destroy_user_path(user.id), class: "action-icon visible-phone", data: { confirm: t('confirm_delete') } %>
-            <%= link_to t('delete'), destroy_user_path(user.id), class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
+            <%= link_to add_bootstrap_icon(t('delete'), 'trash'), destroy_user_path(user.id), class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
           </td>
         </tr>
       <% end %>
@@ -22,5 +22,5 @@
   </table>
 <% end %>
 <div class="form-actions">
-  <%= link_to t('add_member'), new_user_path, class: "btn btn-primary" %>
+  <%= link_to add_bootstrap_icon(t('add_member'), 'plus'), new_user_path, class: "btn btn-primary" %>
 </div>  

@@ -1,5 +1,5 @@
 <div class="form-actions visible-phone">
-  <%= link_to t('add_income'), new_income_path, class: "btn btn-primary" %>
+  <%= link_to add_bootstrap_icon(t('add_income'), 'plus'), new_income_path, class: "btn btn-primary" %>
 </div>
 <% if @incomes.empty? %>
   <p><%= t('specify.income') %></p>
@@ -34,8 +34,8 @@
           <td>
             <%= link_to image_tag("edit-icon.png"), edit_income_path(income), class: "action-icon visible-phone" %>
             <%= link_to image_tag("delete-icon.png"), income_path(income), method: :delete, class: "action-icon visible-phone", data: { confirm: t('confirm_delete') } %>
-            <%= link_to t('edit'), edit_income_path(income), class: "btn btn-primary hidden-phone" %>
-            <%= link_to t('delete'), income_path(income), method: :delete, class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
+            <%= link_to add_bootstrap_icon(t('edit'), 'pencil'), edit_income_path(income), class: "btn btn-primary hidden-phone" %>
+            <%= link_to add_bootstrap_icon(t('delete'), 'trash'), income_path(income), method: :delete, class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
           </td>
         </tr>
       <% end %>
@@ -52,6 +52,6 @@
   </p>
 <% end %>
 <div class="form-actions hidden-phone">
-  <%= link_to t('add_income'), new_income_path, class: "btn btn-primary" %>
+  <%= link_to add_bootstrap_icon(t('add_income'), 'plus'), new_income_path, class: "btn btn-primary" %>
 </div>  
 
