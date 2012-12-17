@@ -1,5 +1,5 @@
 <div class="form-actions visible-phone">
-  <%= link_to t('add_wallet'), new_wallet_path, class: "btn btn-primary" %>
+  <%= link_to add_bootstrap_icon(t('add_wallet'), 'plus'), new_wallet_path, class: "btn btn-primary" %>
 </div>
 <% unless @wallets.blank? %>
   <table id="wallets" class="table table-striped">
@@ -18,8 +18,8 @@
         <td>
           <%= link_to image_tag("edit-icon.png"), edit_wallet_path(wallet), class: "action-icon visible-phone" %>
           <%= link_to image_tag("delete-icon.png"), wallet_confirm_destroy_path(wallet), class: "action-icon visible-phone", data: { confirm: t('confirm_delete') } %>
-          <%= link_to t('edit'), edit_wallet_path(wallet), class: "btn btn-primary hidden-phone" %>
-          <%= link_to t('delete'), wallet_confirm_destroy_path(wallet), class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
+          <%= link_to add_bootstrap_icon(t('edit'), 'pencil'), edit_wallet_path(wallet), class: "btn btn-primary hidden-phone" %>
+          <%= link_to add_bootstrap_icon(t('delete'), 'trash'), wallet_confirm_destroy_path(wallet), class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
         </td>
       </tr>
     <% end %>
@@ -27,5 +27,5 @@
   </table>
 <% end %>
 <div class="form-actions hidden-phone">
-  <%= link_to t('add_wallet'), new_wallet_path, class:  "btn btn-primary" %>
+  <%= link_to add_bootstrap_icon(t('add_wallet'), 'plus'), new_wallet_path, class: "btn btn-primary" %>
 </div>
