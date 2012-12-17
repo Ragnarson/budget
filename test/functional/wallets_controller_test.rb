@@ -176,4 +176,7 @@ class WalletsControllerTest < ActionController::TestCase
     assert_redirected_to :wallets
   end
 
+  test "table should contain delete and edit buttons for desktop" do
+    test_that_edit_and_delete_buttons_are_present
+  end
 end

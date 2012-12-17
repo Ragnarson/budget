@@ -69,6 +69,9 @@ input.percent {
 .btn + .btn-danger {
   margin-left: 10px;
 }
+a.action-icon img {
+  margin: 4px;
+}
 ul.expenses {
   margin-left: 40px;
 }
