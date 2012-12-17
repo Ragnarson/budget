@@ -54,10 +54,8 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'thead th', I18n.t('actions')
   end
 
-  test "table should contain delete and edit buttons" do
-    get :index
-    assert_select 'tbody tr td a', I18n.t('edit')
-    assert_select 'tbody tr td a', I18n.t('delete')
+  test "table should contain delete and edit buttons for desktop" do
+    test_that_edit_and_delete_buttons_are_present
   end
 
   test "should get index with pagination" do

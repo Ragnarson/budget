@@ -20,10 +20,13 @@
       <tr<%= ' class=warning' if expense.execution_date.future? %>>
         <td><%= expense.name %></td>
         <td><%= number_to_currency expense.amount %></td>
-        <td><%= l expense.execution_date %> </td>
+        <td><%= l expense.execution_date %></td>
         <td>
-          <%= link_to t('edit'), edit_expense_path(expense, d: params[:d]), class: "btn btn-primary" %>
-          <%= link_to t('delete'), expense_path(expense), method: :delete, class: "btn btn-danger", data: {confirm: t('confirm_delete')} %></td>
+          <%= link_to image_tag("edit-icon.png"), edit_expense_path(expense, d: params[:d]), class: 'action-icon visible-phone' %>
+          <%= link_to image_tag("delete-icon.png"), expense_path(expense), method: :delete, data: { confirm: t('confirm_delete') }, class: 'action-icon visible-phone' %>
+          <%= link_to t('edit'), edit_expense_path(expense, d: params[:d]), class: "btn btn-primary hidden-phone" %>
+          <%= link_to t('delete'), expense_path(expense), method: :delete, class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
+        </td>
       </tr>
     <% end %>
     </tbody>

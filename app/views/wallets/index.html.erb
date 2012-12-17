@@ -16,8 +16,10 @@
         <td><%= wallet.name %></td>
         <td><%= number_to_currency wallet.amount %></td>
         <td>
-          <%= link_to t('edit'), edit_wallet_path(wallet), class: "btn btn-primary" %>
-          <%= link_to t('delete'), wallet_confirm_destroy_path(wallet), class: "btn btn-danger", data: {confirm: t('confirm_delete')} %>
+          <%= link_to image_tag("edit-icon.png"), edit_wallet_path(wallet), class: "action-icon visible-phone" %>
+          <%= link_to image_tag("delete-icon.png"), wallet_confirm_destroy_path(wallet), class: "action-icon visible-phone", data: { confirm: t('confirm_delete') } %>
+          <%= link_to t('edit'), edit_wallet_path(wallet), class: "btn btn-primary hidden-phone" %>
+          <%= link_to t('delete'), wallet_confirm_destroy_path(wallet), class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
         </td>
       </tr>
     <% end %>
