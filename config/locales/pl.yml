@@ -299,7 +299,7 @@ pl:
   total_income: Suma przychodów
   total_net_profit: Suma wydatków netto
   member: użytkownik
-  actions: Opcje
+  actions: Akcje
   balance:
     operation: Operacja
   home:

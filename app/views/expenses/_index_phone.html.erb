@@ -1,0 +1,25 @@
+<%= link_to add_bootstrap_icon(t('add_expense'), 'plus'), new_expense_path(d: params[:d]), class: "btn btn-primary btn-mini" %>
+
+<table class="expenses_table table table-striped tablesorter">
+  <thead>
+    <tr>
+      <th><%= t('activerecord.attributes.expense.name') %></th>
+      <th><%= t('activerecord.attributes.expense.amount') %></th>
+      <th><%= t('activerecord.attributes.expense.execution_date') %></th>
+      <th><%= t('actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr <%= ' class=warning' if expense.execution_date.future? %>>
+        <td><%= expense.name %></td>
+        <td><b><%= number_to_currency expense.amount %></b></td>
+        <td><%= l expense.execution_date %></td>
+        <td nowrap>
+          <%= link_to add_bootstrap_icon('pencil'), edit_expense_path(expense, d: params[:d]), class: 'btn btn-mini btn-primary' %>
+          <%= link_to add_bootstrap_icon('trash'), expense_path(expense), method: :delete, data: { confirm: t('confirm_delete') }, class: 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

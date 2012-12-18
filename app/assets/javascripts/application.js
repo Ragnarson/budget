@@ -34,8 +34,8 @@ $(document).ready(function () {
     }
   })
 
-  if ($("table#expenses").length) {
-    $("table#expenses").tablesorter({
+  if ($("table.expenses_table").length) {
+    $("table.expenses_table").tablesorter({
       headers: {3: {sorter: false}}
     });
   }

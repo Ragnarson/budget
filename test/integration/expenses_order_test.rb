@@ -12,11 +12,11 @@ class ExpensesOrderTest < ActionDispatch::IntegrationTest
     log_in_pl
     click_on I18n.t('header.expenses', locale: 'pl')
 
-    find('table#expenses thead tr:first-child th:first-child').click()
-    assert_equal 'AAA', find('table#expenses tbody tr:first-child td:first-child').text
-    find('table#expenses thead tr:first-child th:first-child').click()
-    assert_equal 'BBB', find('table#expenses tbody tr:first-child td:first-child').text
-    find('table#expenses thead tr:first-child th:first-child').click()
-    assert_equal 'AAA', find('table#expenses tbody tr:first-child td:first-child').text
+    find('table.expenses_table thead tr:first-child th:first-child').click()
+    assert_equal 'AAA', find('table.expenses_table tbody tr:first-child td:first-child').text
+    find('table.expenses_table thead tr:first-child th:first-child').click()
+    assert_equal 'BBB', find('table.expenses_table tbody tr:first-child td:first-child').text
+    find('table.expenses_table thead tr:first-child th:first-child').click()
+    assert_equal 'AAA', find('table.expenses_table tbody tr:first-child td:first-child').text
   end
 end

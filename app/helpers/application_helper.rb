@@ -17,7 +17,7 @@ module ApplicationHelper
     end
   end
 
-  def add_bootstrap_icon(text, icon)
+  def add_bootstrap_icon(text="", icon)
     raw("<i class=\"icon-#{icon} icon-white\"></i> #{text}")
   end
 end

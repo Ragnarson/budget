@@ -8,16 +8,22 @@ class ActionButtonsInIndexTableTest < ActionDispatch::IntegrationTest
     log_in_pl
   end
 
-  %w(expenses incomes wallets).each do |action|
+  test "that edit and delete buttons are present on expenses index page" do
+    click_on I18n.t("header.expenses", locale: 'pl')
+    assert find(:xpath, '//table/tbody/tr/td/a[@class="btn btn-mini btn-primary"]/i[@class="icon-pencil icon-white"]')
+    assert find(:xpath, '//table/tbody/tr/td/a[@class="btn btn-mini btn-danger"]/i[@class="icon-trash icon-white"]')
+  end
+
+  %w(incomes wallets).each do |action|
     test "that edit and delete buttons are present on #{action} index page for" do
       click_on I18n.t("header.#{action}", locale: 'pl')
-      assert find(:xpath, '//table/tbody/tr/td/a[@class="action-icon visible-phone"]/img[@src="/assets/edit-icon.png"]')
-      assert find(:xpath, '//table/tbody/tr/td/a[@class="action-icon visible-phone"]/img[@src="/assets/delete-icon.png"]')
+      assert find(:xpath, '//table/tbody/tr/td[@class="visible-phone"]/a[@class="btn btn-primary btn-mini"]/i[@class="icon-pencil icon-white"]')
+      assert find(:xpath, '//table/tbody/tr/td[@class="visible-phone"]/a[@class="btn btn-danger btn-mini"]/i[@class="icon-trash icon-white"]')
     end
   end
 
   test "that delete button is present on users index page" do
     click_on I18n.t('header.members', locale: 'pl')
-    assert find(:xpath, '//table/tbody/tr/td/a[@class="action-icon visible-phone"]/img[@src="/assets/delete-icon.png"]')
+    assert find(:xpath, '//table/tbody/tr/td/a[@class="btn btn-danger btn-mini visible-phone"]/i[@class="icon-trash icon-white"]')
   end
 end

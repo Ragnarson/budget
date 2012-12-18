@@ -31,9 +31,11 @@
                 <%= l income.execution_date %>
             <% end %>
           </td>
-          <td>
-            <%= link_to image_tag("edit-icon.png"), edit_income_path(income), class: "action-icon visible-phone" %>
-            <%= link_to image_tag("delete-icon.png"), income_path(income), method: :delete, class: "action-icon visible-phone", data: { confirm: t('confirm_delete') } %>
+          <td nowrap class="visible-phone">
+            <%= link_to add_bootstrap_icon('pencil'), edit_income_path(income), class: "btn btn-primary btn-mini" %>
+            <%= link_to add_bootstrap_icon('trash'), income_path(income), method: :delete, class: "btn btn-danger btn-mini", data: { confirm: t('confirm_delete') } %>
+          </td>
+          <td class="hidden-phone">
             <%= link_to add_bootstrap_icon(t('edit'), 'pencil'), edit_income_path(income), class: "btn btn-primary hidden-phone" %>
             <%= link_to add_bootstrap_icon(t('delete'), 'trash'), income_path(income), method: :delete, class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
           </td>

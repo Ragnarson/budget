@@ -13,7 +13,7 @@
         <tr>
           <td><%= user.email %></td>
           <td>
-            <%= link_to image_tag("delete-icon.png"), destroy_user_path(user.id), class: "action-icon visible-phone", data: { confirm: t('confirm_delete') } %>
+            <%= link_to add_bootstrap_icon('trash'), destroy_user_path(user.id), class: "btn btn-danger btn-mini visible-phone", data: { confirm: t('confirm_delete') } %>
             <%= link_to add_bootstrap_icon(t('delete'), 'trash'), destroy_user_path(user.id), class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
           </td>
         </tr>

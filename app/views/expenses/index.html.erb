@@ -1,37 +1,39 @@
-<div class="form-actions visible-phone">
-  <%= link_to add_bootstrap_icon(t('add_expense'), 'plus'), new_expense_path(d: params[:d]), class: "btn btn-primary" %>
-</div>
+<%= date_pagination(params[:d]) %>
+
 <% if @expenses.blank? %>
-  <%= date_pagination(params[:d]) %>
   <p><%= t('specify.expense') %></p>
-<% else %>
-  <%= date_pagination(params[:d]) %>
-  <table id="expenses" class="table table-striped tablesorter">
-    <thead>
-    <tr>
-      <th><%= t('activerecord.attributes.expense.name') %></th>
-      <th><%= t('activerecord.attributes.expense.amount') %></th>
-      <th><%= t('activerecord.attributes.expense.execution_date') %></th>
-      <th><%= t('actions') %></th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @expenses.each do |expense| %>
-      <tr<%= ' class=warning' if expense.execution_date.future? %>>
-        <td><%= expense.name %></td>
-        <td><%= number_to_currency expense.amount %></td>
-        <td><%= l expense.execution_date %></td>
-        <td>
-          <%= link_to image_tag("edit-icon.png"), edit_expense_path(expense, d: params[:d]), class: 'action-icon visible-phone' %>
-          <%= link_to image_tag("delete-icon.png"), expense_path(expense), method: :delete, data: { confirm: t('confirm_delete') }, class: 'action-icon visible-phone' %>
-          <%= link_to add_bootstrap_icon(t('edit'), 'pencil'), edit_expense_path(expense, d: params[:d]), class: "btn btn-primary hidden-phone" %>
-          <%= link_to add_bootstrap_icon(t('delete'), 'trash'), expense_path(expense), method: :delete, class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-<% end %>
-<div class="form-actions hidden-phone">
   <%= link_to add_bootstrap_icon(t('add_expense'), 'plus'), new_expense_path(d: params[:d]), class: "btn btn-primary" %>
-</div>
+<% else %>
+  <div class="visible-phone">
+    <%= render 'index_phone' %>
+  </div>
+
+  <div class="hidden-phone">
+    <table class="expenses_table table table-striped tablesorter">
+      <thead>
+        <tr>
+          <th><%= t('activerecord.attributes.expense.name') %></th>
+          <th><%= t('activerecord.attributes.expense.amount') %></th>
+          <th><%= t('activerecord.attributes.expense.execution_date') %></th>
+          <th><%= t('actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @expenses.each do |expense| %>
+          <tr<%= ' class=warning' if expense.execution_date.future? %>>
+            <td><%= expense.name %></td>
+            <td><%= number_to_currency expense.amount %></td>
+            <td><%= l expense.execution_date %></td>
+            <td nowrap>
+              <%= link_to add_bootstrap_icon(t('edit'), 'pencil'), edit_expense_path(expense, d: params[:d]), class: "btn btn-primary btn-small" %>
+              <%= link_to add_bootstrap_icon(t('delete'), 'trash'), expense_path(expense), method: :delete, class: "btn btn-danger btn-small", data: { confirm: t('confirm_delete') } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="form-actions">
+      <%= link_to add_bootstrap_icon(t('add_expense'), 'plus'), new_expense_path(d: params[:d]), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

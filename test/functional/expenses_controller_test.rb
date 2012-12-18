@@ -55,7 +55,9 @@ class ExpensesControllerTest < ActionController::TestCase
   end
 
   test "table should contain delete and edit buttons for desktop" do
-    test_that_edit_and_delete_buttons_are_present
+    get :index
+    assert_select 'div.hidden-phone table tbody tr td a', I18n.t('edit')
+    assert_select 'div.hidden-phone table tbody tr td a', I18n.t('delete')
   end
 
   test "should get index with pagination" do
@@ -63,25 +65,32 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'div.pagination'
   end
 
-  test "should get index with pagination when there is no expenses and params[:d] is blank" do
+  test "should get index with pagination and add new expense link when there is no expenses and params[:d] is blank" do
     sign_in users(:user_without_expenses)
     get :index
     assert_select 'div.pagination'
+    assert_select 'a', I18n.t('add_expense')
     assert_blank assigns(:expenses)
   end
 
-  test "should get index with pagination when there is no expenses and params[:d] its not blank" do
+  test "should get index with pagination and add new expense link when there is no expenses and params[:d] its not blank" do
     get :index, d: '2015-01-01'
     assert_select 'div.pagination'
+    assert_select 'a', I18n.t('add_expense')
     assert_blank assigns(:expenses)
   end
 
   test "pagination should contain name of 3 months" do
     get :index
-    assert_select 'div.pagination li', count: 3
-    assert_select 'div.pagination li:nth-child(1) a', I18n.l(Date.today-1.month, format: :month_with_year)
-    assert_select 'div.pagination li:nth-child(2) a', I18n.l(Date.today, format: :month_with_year)
-    assert_select 'div.pagination li:nth-child(3) a', I18n.l(Date.today+1.month, format: :month_with_year)
+    assert_select 'div.pagination.hidden-phone li', count: 3
+    assert_select 'div.pagination.hidden-phone li:nth-child(1) a', I18n.l(Date.today-1.month, format: :month_with_year)
+    assert_select 'div.pagination.hidden-phone li:nth-child(2) a', I18n.l(Date.today, format: :month_with_year)
+    assert_select 'div.pagination.hidden-phone li:nth-child(3) a', I18n.l(Date.today+1.month, format: :month_with_year)
+    
+    assert_select 'div.pagination.visible-phone li', count: 3
+    assert_select 'div.pagination.visible-phone li:nth-child(1) a', I18n.l(Date.today-1.month, format: :month_with_year)
+    assert_select 'div.pagination.visible-phone li:nth-child(2) a', I18n.l(Date.today, format: :month_with_year)
+    assert_select 'div.pagination.visible-phone li:nth-child(3) a', I18n.l(Date.today+1.month, format: :month_with_year)
   end
 
   test "should redirect to index with notice when given date params is invalid" do
@@ -98,8 +107,8 @@ class ExpensesControllerTest < ActionController::TestCase
 
   test "should contain link to adding new expense" do
     get :index
-    assert_select 'div.form-actions.hidden-phone a', I18n.t('add_expense')
-    assert_select 'div.form-actions.visible-phone a', I18n.t('add_expense')
+    assert_select 'div.hidden-phone div.form-actions a', I18n.t('add_expense')
+    assert_select 'div.visible-phone a', I18n.t('add_expense')
   end
 
   test "form should be visible on add new expense page" do

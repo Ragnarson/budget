@@ -101,6 +101,9 @@ tr.second-day{
 .form-actions .btn + a {
   margin-left: 10px;
 }
+.visible-phone .expenses_table{
+  font-size: 0.7em;
+}
 table.tablesorter {
   width: 100%;
   text-align: left;

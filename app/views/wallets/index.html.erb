@@ -15,11 +15,13 @@
       <tr>
         <td><%= wallet.name %></td>
         <td><%= number_to_currency wallet.amount %></td>
-        <td>
-          <%= link_to image_tag("edit-icon.png"), edit_wallet_path(wallet), class: "action-icon visible-phone" %>
-          <%= link_to image_tag("delete-icon.png"), wallet_confirm_destroy_path(wallet), class: "action-icon visible-phone", data: { confirm: t('confirm_delete') } %>
+        <td nowrap class="visible-phone">
+          <%= link_to add_bootstrap_icon('pencil'), edit_wallet_path(wallet), class: "btn btn-primary btn-mini" %>
+          <%= link_to add_bootstrap_icon('trash'), wallet_path(wallet), method: :delete, class: "btn btn-danger btn-mini", data: { confirm: t('confirm_delete') } %>
+        </td>
+        <td class="hidden-phone">
           <%= link_to add_bootstrap_icon(t('edit'), 'pencil'), edit_wallet_path(wallet), class: "btn btn-primary hidden-phone" %>
-          <%= link_to add_bootstrap_icon(t('delete'), 'trash'), wallet_confirm_destroy_path(wallet), class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
+          <%= link_to add_bootstrap_icon(t('delete'), 'trash'), wallet_path(wallet), method: :delete, class: "btn btn-danger hidden-phone", data: { confirm: t('confirm_delete') } %>
         </td>
       </tr>
     <% end %>
