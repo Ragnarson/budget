@@ -63,7 +63,12 @@ wallet_for_user_without_low_balance:
   amount: 1000
   family: family_of_user_without_low_balance
 
-wallet_for_check_order_of_expenses:
+wallet_for_destroy_and_check_order_of_expenses:
   name: Order
+  amount: 15000
+  family: family_of_user_with_expenses
+
+empty_wallet_for_destroy:
+  name: empty
   amount: 15000
   family: family_of_user_with_expenses
