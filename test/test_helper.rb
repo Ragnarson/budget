@@ -2,7 +2,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'datepicker_test_helper'
-require 'login_test_helper'
+require 'user_test_helper'
 
 require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
@@ -25,7 +25,7 @@ end
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
   include DatepickerTestHelper
-  include LoginTestHelper
+  include UserTestHelper
 
   self.use_transactional_fixtures = false
 
