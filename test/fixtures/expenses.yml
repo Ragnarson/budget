@@ -130,14 +130,14 @@ expense_aaa:
   name: AAA
   amount: 100
   execution_date: <%= Date.today %>
-  wallet: wallet_for_check_order_of_expenses
+  wallet: wallet_for_destroy_and_check_order_of_expenses
   user: user_with_expenses
 
 expense_bbb:
   name: BBB
   amount: 200
   execution_date: <%= Date.today %>
-  wallet: wallet_for_check_order_of_expenses
+  wallet: wallet_for_destroy_and_check_order_of_expenses
   user: user_with_expenses
 
 expense_for_user_with_low_balance:
