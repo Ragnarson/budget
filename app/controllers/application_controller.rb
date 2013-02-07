@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   def get_actual_balance_ratio
     if user_signed_in?
-      if current_user.families.first.expenses.any?
+      if current_user.families.first.expenses.where("execution_date <= ?", Date.today).any?
         sum_of_actual_income = current_user.families.first.net_profits_sum_up_to(Date.today)
         @actual_balance_ratio = @actual_balance / sum_of_actual_income
       else

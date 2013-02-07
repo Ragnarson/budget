@@ -11,6 +11,9 @@ DatabaseCleaner.start
 require 'capybara/rails'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, timeout: 60)
+end
 Capybara.current_driver = :poltergeist
 
 class ActiveSupport::TestCase
