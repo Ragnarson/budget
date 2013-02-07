@@ -37,19 +37,19 @@ class PlanningWalletTest < ActionDispatch::IntegrationTest
     click_on I18n.t('add_expense', locale: 'pl')
     
     fill_in 'wallet_name', with: 'Girls'
-    #1expense
+    # First expense
     all(".expense_amount")[0].find("input.currency").set('10,25')
     all(".expense_amount")[0].find(".expense_name input").set('Ewa')
     all(".expense_amount")[0].find(".date_picker input").click
-    choose_day(Date.today)
-    #2expense
+    choose_day(Date.tomorrow)
+    # Second expense
     all(".expense_amount")[1].find("input.currency").set('10,25')
     all(".expense_amount")[1].find(".expense_name input").set('Ola')
     all(".expense_amount")[1].find(".date_picker input").click
-    choose_day(Date.today)
+    choose_day(Date.tomorrow)
 
     click_on I18n.t('add_wallet', locale: 'pl')
-    
+
     assert current_path, '/pl/wallets'
     assert find('table#wallets').has_content?('Girls'), "No 'Girls' wallet found"
     assert find('table#wallets').has_content?('20,50'), "Wrong amount of 'Girls' wallet"
