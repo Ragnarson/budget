@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_actual_balance
-    @actual_balance = current_user.families.first.balance_up_to(Date.today) if user_signed_in?
+    @actual_balance = current_user.families.first.balance_up_to(Date.today, false) if user_signed_in?
   end
 
   def get_actual_balance_ratio

@@ -9,7 +9,10 @@ Budget::Application.routes.draw do
       get :destroy
     end
 
-    resources :expenses, except: :show
+    resources :expenses, except: :show do
+      get :mark_as_done
+    end
+
     resources :incomes, except: :show
 
     match '/new_family_member' => 'users#new', as: :new_user

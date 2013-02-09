@@ -1,5 +1,5 @@
 <% @day_flag_css = !@day_flag_css if balance.type == :balance %>
-<tr  class='<%= balance.type %> <%= ' warning' if !balance.date.nil? && balance.date.future? %> <%= ' second-day' if @day_flag_css %>'>
+<tr  class='<%= balance.type %><%= ' warning' if (!balance.date.nil? and balance.date.future?) or (balance.type == :expense and !balance.done) %><%= ' second-day' if @day_flag_css %>'>
   <td><%= balance.name if balance.type != :balance %></td>
   <td class="amount"><%= '-' if balance.type == :expense %><%= number_to_currency balance.amount %></td>
   <td><%= l balance.date if balance.date && balance.type == :balance %> </td>

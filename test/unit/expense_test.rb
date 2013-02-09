@@ -82,4 +82,14 @@ class ExpenseTest < ActiveSupport::TestCase
   test "should save valid expense to database" do
     assert_equal wallets(:test_10000_dollars).expenses.build(name: 'Milk', amount: 3, execution_date: '2012-01-12').save, true
   end
+
+  test "should be marked as done" do
+    expense = Expense.create(name: 'Expense', amount: 10, execution_date: Date.yesterday, wallet_id: wallets(:test_10000_dollars).id)
+    assert_equal expense.done, true
+  end
+
+  test "should not be marked as done" do
+    expense = Expense.create(name: 'Expense', amount: 10, execution_date: Date.tomorrow, wallet_id: wallets(:test_10000_dollars).id)
+    assert_equal expense.done, false
+  end
 end

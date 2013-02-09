@@ -46,7 +46,7 @@ class BalanceControllerTest < ActionController::TestCase
 
   test 'should be message with sum of expenses on balance view' do
     get :index
-    assert_select 'p', "#{I18n.t('total_amount')}: #{number_to_currency(200)}"
+    assert_select 'p', "#{I18n.t('total_amount')}: #{number_to_currency(300)}"
   end
 
   test 'should contain expense' do
@@ -62,5 +62,10 @@ class BalanceControllerTest < ActionController::TestCase
   test 'should contain day balance' do
     get :index
     assert_select 'tr.balance td.amount', "-#{number_to_currency(200)}"
+  end
+
+  test "table should contain tr with warning class for not done expense" do
+    get :index
+    assert_select 'tr.expense.warning', count: 1
   end
 end
