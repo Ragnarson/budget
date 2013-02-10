@@ -1,6 +1,6 @@
 class MarkExpenseAsDone < ActiveRecord::Migration
   def up
-    add_column :expenses, :done, :boolean, default: 1
+    add_column :expenses, :done, :boolean, default: true
 
     Expense.all.each do |e|
       if e.execution_date.future?
