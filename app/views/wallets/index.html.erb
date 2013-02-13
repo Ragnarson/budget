@@ -7,6 +7,7 @@
     <tr>
       <th><%= t('activerecord.attributes.wallet.name') %></th>
       <th><%= t('activerecord.attributes.wallet.amount') %></th>
+      <th><%= t('activerecord.attributes.wallet.remaining_amount') %></th>
       <th><%= t('actions') %></th>
     </tr>
     </thead>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= wallet.name %></td>
         <td><%= number_to_currency wallet.amount %></td>
+        <td><%= number_to_currency wallet.remaining_amount %></td>
         <td nowrap class="visible-phone">
           <%= link_to add_bootstrap_icon('pencil'), edit_wallet_path(wallet), class: "btn btn-primary btn-mini" %>
           <%= link_to add_bootstrap_icon('trash'), wallet_confirm_destroy_path(wallet), class: "btn btn-danger btn-mini", data: { confirm: t('confirm_delete') } %>

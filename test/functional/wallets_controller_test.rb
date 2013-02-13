@@ -180,13 +180,15 @@ class WalletsControllerTest < ActionController::TestCase
     get :index
     assert_select 'thead th:nth-child(1)', I18n.t('activerecord.attributes.wallet.name')
     assert_select 'thead th:nth-child(2)', I18n.t('activerecord.attributes.wallet.amount')
-    assert_select 'thead th:nth-child(3)', I18n.t('actions')
+    assert_select 'thead th:nth-child(3)', I18n.t('activerecord.attributes.wallet.remaining_amount')
+    assert_select 'thead th:nth-child(4)', I18n.t('actions')
   end
 
   test "table should contain information about name and amount" do
     get :index
-    assert_select 'tbody tr:first-child td:nth-child(1)', 'Test 10'
-    assert_select 'tbody tr:first-child td:nth-child(2)', '$1,000.00'
+    assert_select 'tbody tr:nth-child(2) td:nth-child(1)', 'Test'
+    assert_select 'tbody tr:nth-child(2) td:nth-child(2)', '$10,000.00'
+    assert_select 'tbody tr:nth-child(2) td:nth-child(3)', '-$100,000.00'
   end
 
   test "table should contain delete and edit buttons for desktop" do
