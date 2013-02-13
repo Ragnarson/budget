@@ -176,6 +176,19 @@ class WalletsControllerTest < ActionController::TestCase
     assert_redirected_to :wallets
   end
 
+  test "table should contain headers for columns" do
+    get :index
+    assert_select 'thead th:nth-child(1)', I18n.t('activerecord.attributes.wallet.name')
+    assert_select 'thead th:nth-child(2)', I18n.t('activerecord.attributes.wallet.amount')
+    assert_select 'thead th:nth-child(3)', I18n.t('actions')
+  end
+
+  test "table should contain information about name and amount" do
+    get :index
+    assert_select 'tbody tr:first-child td:nth-child(1)', 'Test 10'
+    assert_select 'tbody tr:first-child td:nth-child(2)', '$1,000.00'
+  end
+
   test "table should contain delete and edit buttons for desktop" do
     test_that_edit_and_delete_buttons_are_present
   end
