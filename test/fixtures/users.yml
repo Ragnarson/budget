@@ -1,6 +1,7 @@
 user_with_wallet_1:
   email: user_with_wallet_1@budget.shellyapp.com
   encrypted_password: $2a$10$KD9pkYenNFEk9Td5v7IcJ.lQl3wP32lWKKw.t8CXjbVa...
+  locale: "en"
 
 user_without_expenses:
   email: user_without_expenses@budget.shellyapp.com
