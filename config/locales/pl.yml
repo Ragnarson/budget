@@ -267,6 +267,7 @@ pl:
       wallet:
         name: Nazwa portfela
         amount: Kwota
+        remaining_amount: Pozostała kwota
       income:
         source: Źródło przychodu
         amount: Kwota
