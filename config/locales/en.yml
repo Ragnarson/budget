@@ -247,6 +247,7 @@ en:
       wallet:
         name: Wallet name
         amount: Amount
+        remaining_amount: Remaining amount
       income:
         source: Source of income
         amount: Amount
