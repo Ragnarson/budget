@@ -28,16 +28,6 @@ home_1500_dollars:
   amount: 1500
   family: family_of_user_with_wallet_3
 
-home_2000_dollars:
-  name: Home
-  amount: 2000
-  family: family_of_user_with_locale_pl
-
-home_2500_dollars:
-  name: Home
-  amount: 2500
-  family: family_of_user_with_locale_en
-
 wallet_without_expenses:
   name: Test 10
   amount: 1000
@@ -63,7 +53,7 @@ wallet_for_user_without_low_balance:
   amount: 1000
   family: family_of_user_without_low_balance
 
-wallet_for_destroy_and_check_order_of_expenses:
+wallet_for_destroy:
   name: Order
   amount: 15000
   family: family_of_user_with_expenses
@@ -72,3 +62,8 @@ empty_wallet_for_destroy:
   name: empty
   amount: 15000
   family: family_of_user_with_expenses
+
+wallet_for_family_with_users_pl_and_en:
+  name: Food
+  amount: 10000
+  family: family_of_users_with_locale_pl_and_en

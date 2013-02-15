@@ -19,10 +19,12 @@
 //= require_self
 
 $(document).ready(function () {
-  var lang = document.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
+  var lang = document.location.pathname.replace(/^\/([^\/]*).*$/, '$1')
+
   if (!(lang == "en" || lang == "pl")) {
     lang = "en"
   }
+
   $('body').on("focus", "input.date_picker", function() {
     $(this).datepicker({ dateFormat: "dd.mm.yy" })
     $(this).datepicker($.datepicker.setDefaults($.datepicker.regional[lang]))
@@ -34,13 +36,8 @@ $(document).ready(function () {
     }
   })
 
-  if ($("table.expenses_table").length) {
-    $("table.expenses_table").tablesorter({
-      headers: {3: {sorter: false}}
-    });
-  }
-});
+})
 
 $(window).load(function () {
   $('div#uvTab').addClass('hidden-phone')
-});
+})
