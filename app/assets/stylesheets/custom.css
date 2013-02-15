@@ -66,9 +66,6 @@ input.percent {
   color: #fff;
   background-color: transparent;
 }
-.btn + .btn-danger {
-  margin-left: 10px;
-}
 a.action-icon img {
   margin: 4px;
 }

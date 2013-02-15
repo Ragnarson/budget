@@ -1,11 +1,12 @@
 class Balance
-  attr_accessor :name, :amount, :date, :type
+  attr_accessor :name, :amount, :date, :type, :done
 
-  def initialize(name = "balance", amount, date, type)
+  def initialize(name = "balance", amount, date, type, done)
     @name = name
     @amount = amount
     @date = date
     @type = type
+    @done = done
   end
 
   def self.history(family, page, per_page)
@@ -21,12 +22,12 @@ class Balance
         last_execution_date = income_or_expense.execution_date if income_or_expense.execution_date
         amount = family.balance_up_to(last_execution_date) if !income_or_expense.execution_date &&  last_execution_date
 
-        operations << Balance.new(amount, income_or_expense.execution_date, :balance)
+        operations << Balance.new(amount, income_or_expense.execution_date, :balance, nil)
       end
       if (income_or_expense.kind_of? Expense)
-        operations << Balance.new(income_or_expense.name, income_or_expense.amount, income_or_expense.execution_date, :expense)
+        operations << Balance.new(income_or_expense.name, income_or_expense.amount, income_or_expense.execution_date, :expense, income_or_expense.done)
       else
-        operations << Balance.new(income_or_expense.source, income_or_expense.net, income_or_expense.execution_date, :income)
+        operations << Balance.new(income_or_expense.source, income_or_expense.net, income_or_expense.execution_date, :income, nil)
       end
     end
     page ||= 1

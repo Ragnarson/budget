@@ -54,8 +54,9 @@ class ExpensesControllerTest < ActionController::TestCase
     assert_select 'thead th', I18n.t('actions')
   end
 
-  test "table should contain delete and edit buttons for desktop" do
+  test "table should contain delete, edit and done buttons for desktop" do
     get :index
+    assert_select 'div.hidden-phone table tbody tr td a', I18n.t('mark_as_done')
     assert_select 'div.hidden-phone table tbody tr td a', I18n.t('edit')
     assert_select 'div.hidden-phone table tbody tr td a', I18n.t('delete')
   end
@@ -206,5 +207,30 @@ class ExpensesControllerTest < ActionController::TestCase
     sign_in users(:user_without_income)
     get :new
     assert_select 'a', text: I18n.t('add_income')
+  end
+
+  test "table should contain tr with warning class for not done expense" do
+    sign_in users(:user_with_expenses)
+    get :index
+    assert_select 'div.hidden-phone table.expenses_table tbody tr.warning', count: 1
+    assert_select 'div.visible-phone table.expenses_table tbody tr.warning', count: 1
+  end
+
+  test "should mark expense as done" do
+    get :mark_as_done, expense_id: expenses(:expense_10)
+    assert_equal I18n.t('flash.update_one', model: I18n.t('activerecord.models.expense')), flash[:notice]
+    assert_redirected_to :expenses
+  end
+
+  test "should not mark already done expense as done" do
+    get :mark_as_done, expense_id: expenses(:expense_8)
+    assert_equal I18n.t('flash.expense_already_done'), flash[:notice]
+    assert_redirected_to :expenses
+  end
+
+  test "should not mark expense which belong to another user as done" do
+    get :mark_as_done, expense_id: expenses(:expense_12)
+    assert_equal I18n.t('flash.no_record', model: I18n.t('activerecord.models.expense')), flash[:notice]
+    assert_redirected_to :expenses
   end
 end

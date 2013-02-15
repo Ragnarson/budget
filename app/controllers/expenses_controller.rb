@@ -44,6 +44,18 @@ class ExpensesController < ApplicationController
     redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
   end
 
+  def mark_as_done
+    expense = current_user.families.first.expenses.find(params[:expense_id])
+    if expense.done
+      redirect_to expenses_path, notice: t('flash.expense_already_done')
+    else
+      expense.update_attributes(execution_date: Date.today)
+      redirect_to expenses_path, notice: t('flash.update_one', model: t('activerecord.models.expense'))
+    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to expenses_path, notice: t('flash.no_record', model: t('activerecord.models.expense'))
+  end
+
   private
   def sanitise_params
     if params[:d]

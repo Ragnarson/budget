@@ -1,5 +1,6 @@
 class Expense < ActiveRecord::Base
   attr_accessible :name, :amount, :execution_date, :wallet_id, :family_id, :user_id
+  before_save :is_already_paid?
 
   belongs_to :wallet, inverse_of: :expenses
   belongs_to :family
@@ -17,5 +18,14 @@ class Expense < ActiveRecord::Base
 
   def self.change_wallet(old_wallet_id, new_wallet_id = 0)
     update_all("wallet_id=#{new_wallet_id}", wallet_id: old_wallet_id)
+  end
+
+  private
+  def is_already_paid?
+    if self.execution_date.future?
+      self.done = 0
+    else
+      self.done = 1
+    end
   end
 end
