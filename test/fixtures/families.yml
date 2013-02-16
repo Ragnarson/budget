@@ -16,11 +16,10 @@ family_of_user_without_income:
 family_of_user_with_wallet_3:
   users: user_with_wallet_3
 
-family_of_user_with_locale_pl:
-  users: user_with_locale_pl
-
-family_of_user_with_locale_en:
-  users: user_with_locale_en
+family_of_users_with_locale_pl_and_en:
+  users: 
+    - user_with_locale_pl
+    - user_with_locale_en
 
 family_of_user_with_no_locale:
   users: user_with_no_locale
