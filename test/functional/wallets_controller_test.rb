@@ -189,7 +189,7 @@ class WalletsControllerTest < ActionController::TestCase
     get :index
     assert_select 'tbody tr:first-child td:nth-child(1)', 'Cars'
     assert_select 'tbody tr:first-child td:nth-child(2)', '$10,000,000.00'
-    assert_select 'tbody tr:first-child td:nth-child(3)', '$9,999,800.00'
+    assert_select 'tbody tr:first-child td:nth-child(3)', '$9,999,700.00'
   end
 
   test "table should contain delete and edit buttons for desktop" do

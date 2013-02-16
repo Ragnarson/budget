@@ -22,16 +22,20 @@ class Family < ActiveRecord::Base
     incomes_with_date+incomes_without_date
   end
 
-  def expenses_sum_up_to(date)
-    self.expenses.where("execution_date <= ?", date).map(&:amount).inject(0, &:+)
+  def expenses_sum_up_to(date, all = true)
+    if all
+      self.expenses.where("execution_date <= ?", date).map(&:amount).inject(0, &:+)
+    else
+      self.expenses.where("execution_date <= ?", date).where(done: true).map(&:amount).inject(0, &:+)
+    end
   end
 
   def balance_actual
     self.net_profits_sum - self.expenses_sum
   end
 
-  def balance_up_to(date)
-    self.net_profits_sum_up_to(date) - self.expenses_sum_up_to(date)
+  def balance_up_to(date, all = true)
+    self.net_profits_sum_up_to(date) - self.expenses_sum_up_to(date, all)
   end
 
   def expenses_by_date(date)

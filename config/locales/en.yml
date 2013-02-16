@@ -156,6 +156,7 @@ en:
     welcome: "Welcome %{name}! "
     confirm_wallet_destroy: Read before delete wallet
     invalid_date: Given date is not valid
+    expense_already_done: Expense is already done
   helpers:
     select:
       prompt: Please select
@@ -273,6 +274,7 @@ en:
   no_wallets: No wallets
   delete: delete
   edit: edit
+  mark_as_done: done
   save: save
   cancel: cancel
   or: or

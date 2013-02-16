@@ -21,6 +21,7 @@ expense_3:
   wallet: test_10000_dollars
   user: user_with_wallet_1
   family: family_of_user_with_wallet_1
+  done: false
 
 expense_4:
   name: Test
@@ -37,6 +38,7 @@ expense_5:
   wallet: test_10000_dollars
   user: user_with_wallet_1
   family: family_of_user_with_wallet_1
+  done: false
 
 expense_6:
   name: Test
@@ -69,6 +71,7 @@ expense_9:
   wallet: test_10000_dollars
   user: user_with_wallet_1
   family: family_of_user_with_wallet_1
+  done: false
 
 expense_10:
   name: Test 1 day
@@ -77,6 +80,7 @@ expense_10:
   wallet: test_10000_dollars
   user: user_with_wallet_1
   family: family_of_user_with_wallet_1
+  done: false
 
 expense_11:
   name: First
@@ -85,6 +89,7 @@ expense_11:
   wallet: test_10000_dollars
   user: user_with_wallet_1
   family: family_of_user_with_wallet_1
+  done: false
 
 expense_12:
   name: test
@@ -93,6 +98,16 @@ expense_12:
   wallet: cars_10000000_dollars
   user: user_with_wallet_2
   family: family_of_user_with_wallet_2
+
+expense_not_done_for_family_with_wallet_2:
+  name: Car
+  amount: 100
+  execution_date: <%= Date.today %>
+  wallet: cars_10000000_dollars
+  wallet: cars_10000000_dollars
+  user: user_with_wallet_2
+  family: family_of_user_with_wallet_2
+  done: false
 
 expense_13:
   name: test
@@ -129,16 +144,17 @@ expense_for_user_with_one_income_and_one_expense_in_same_date:
 expense_aaa:
   name: AAA
   amount: 100
-  execution_date: <%= Date.today %>
   wallet: wallet_for_destroy
+  execution_date: <%= 2.days.ago %>
   user: user_with_expenses
 
 expense_bbb:
   name: BBB
   amount: 200
-  execution_date: <%= Date.today %>
   wallet: wallet_for_destroy
+  execution_date: <%= Date.tomorrow %>
   user: user_with_expenses
+  done: false
 
 expense_for_user_with_low_balance:
   name: Test

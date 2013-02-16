@@ -11,11 +11,12 @@
   </thead>
   <tbody>
     <% @expenses.each do |expense| %>
-      <tr <%= ' class=warning' if expense.execution_date.future? %>>
+      <tr<%= ' class=warning' unless expense.done %>>
         <td><%= expense.name %></td>
         <td><b><%= number_to_currency expense.amount %></b></td>
         <td><%= l expense.execution_date %></td>
         <td nowrap>
+          <%= link_to add_bootstrap_icon('ok'), expense_mark_as_done_path(expense), class: "btn btn-success btn-mini" unless expense.done %>
           <%= link_to add_bootstrap_icon('pencil'), edit_expense_path(expense, d: params[:d]), class: 'btn btn-mini btn-primary' %>
           <%= link_to add_bootstrap_icon('trash'), expense_path(expense), method: :delete, data: { confirm: t('confirm_delete') }, class: 'btn btn-mini btn-danger' %>
         </td>
