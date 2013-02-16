@@ -3,7 +3,7 @@ class MarkExpenseAsDone < ActiveRecord::Migration
     add_column :expenses, :done, :boolean, default: true
 
     Expense.all.each do |e|
-      if e.execution_date.future?
+      if e.execution_date.nil? or e.execution_date.future?
         e.done = 0
         e.save
       end
